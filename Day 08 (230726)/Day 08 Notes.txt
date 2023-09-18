@@ -1,0 +1,152 @@
+Day 08 Notes
+============
+StringJoiner
+============
+- StringJoiner class provides a convenient way to join strings with a specified delimiter, prefix, and suffix.
+- It is a utility class in Java introduced in Java 8.
+- It is present in java.util package
+
+Java Optional class
+===================
+- Optional is a container class to represent an optional value that may or may not be present.
+- It helps in avoiding NullPointerException when dealing with nullable values.
+- It was introduced in Java 8
+- It is present in java.util package
+
+Serialization
+=============
+Serialization is a mechanism of converting the state of an object into a byte stream. 
+
+Deserialization is the reverse process where the byte stream is used to recreate the actual Java object in memory.
+
+These processes are essential for:
+- persisting objects
+- transferring data over networks
+- storing objects in
+	- files
+	- databases.
+
+Refer image: 02_serialize-deserialize-java.png
+
+- The byte stream created is platform independent. 
+- So, the object serialized on one platform can be deserialized on a different platform. 
+- To make a Java object serializable we implement the java.io.Serializable interface.
+
+Serializable Interface
+----------------------
+- It is a Marker Interface
+- A marker interface does not contain any methods
+- If any class implements a marker interface, some special permission is given to that class' instance
+- If a class wants its objects to be serialized (to travel to different resource) it MUST implement the Serializable interface
+
+There are some more marker interfaces in Java:
+- Cloneable interface
+- RandomAccess interface
+- Serializable interface
+
+String to transfer data
+-----------------------
+Generally all data is converted to String and transported.
+
+String also implements the Serializable interface
+
+JSON data format
+XML data format
+
+SerialVersion UId
+
+- SerialVersionUID (Serial Version UID) is a special static final field present in classes that implement the java.io.Serializable interface. 
+- It is used during the serialization and deserialization processes to ensure that the serialized data is compatible with the class definition.
+
+Multithreading
+==============
+Multitasking
+------------
+- Execution of multiple tasks at the same time
+Ex: Eclipse and Teams 
+
+Multithreading
+--------------
+- Execution of sub processes withing 1 application 
+Ex: In Teams
+	- Screen is shared
+	- recording is happening
+	- video is working
+	- sound transfer
+
+Threads
+-------	
+- Sub processes are known as Threads
+- These threads working together is Multithreading
+
+In multithreading there are 2 areas of study:
+
+1. To create an application that contains multiple sub processes that work together (in sync with each other)
+
+2. One application is accessed by multiple requests
+	
+3. What is thread un-safe code
+
+4. What and how to make code thread safe
+
+- Every application contains at least 1 thread
+- Without multithreading, there is a sequential flow
+
+Ways to create a thread
+-----------------------
+There are 2 ways of creating a thread:
+
+1. Extending the Thread class
+2. Implementing the Runnable interface
+
+Extending the thread class
+--------------------------
+- Thread class implements Runnable interface
+- It is present in java.lang package
+- It contains many constructors and methods for thread manipulation	
+
+Implementing the Runnable interface
+-----------------------------------
+- Create an object of class implementing the runnable interface
+- Wrap it in a Thread constructor
+- Calling the start() on thread object	
+- Runnable is the parent interface in Multithreading
+- It is a functional interface
+- Present in java.lang package
+- Containing the abstract method: void run()
+	
+- run() is the place where we have to write the logic of our sub-processes
+For ex: spell checking logic, grammar check logic, video recording logic etc
+
+- run() is the starting point of the functionality of any sub process (similar to main())
+
+Race Condition
+--------------
+When 2 threads want to access a shared resource at the same time, it is known as Race Condition.
+
+Thread Unsafety
+---------------
+It is a good feature if the code block is non-critical.
+But if its the other way around, race condition may produce inconsistent results (aka Thread Unsafe code)
+
+To stop this thread interferences, we need thread safety
+
+Thread safety can be achieved with following 3 mechanisms:
+1. synchronized method
+2. synchronized block
+3. static synchronization
+
+Lock
+----
+The mechanism of mutual exclusion depends upon an intrisic property known as Lock
+
+Object level lock
+-----------------
+One object -> Multiple Threads -> synchronized method and synchronized block
+
+Limitation: Object level lock does not work when more than 1 object is shared among multiple threads
+
+Class level lock
+----------------
+Multiple objects -> Multiple threads -> static synchronized block and static synchronized method
+-----X-----X-----X-----X-----X-----X-----

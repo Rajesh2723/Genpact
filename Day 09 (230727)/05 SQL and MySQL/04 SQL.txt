@@ -1,0 +1,352 @@
+SQL (Structured Query Language)
+===============================
+What is SQL?
+-> SQL stands for Structured Query Language
+-> It is the official language to communicate with the database
+-> Simply put, to work with any database we need to write SQL Queries
+-> SQL instructions are known as SQL Queries
+-> SQL lets us access and manipulate databases
+
+What Can SQL do?
+----------------
+SQL can
+> execute queries against a database
+> retrieve data from a database
+> insert, update, delete records from a database
+> SQL can create new databases, new tables and alter them
+
+SQL Commands
+-------------
+SQL uses certain commands like Create, Drop, Insert, etc. to carry out the required tasks. 
+These SQL commands are mainly categorized into 5 categories as: 
+1. DDL - Data Definition Language
+2. DML - Data Manipulation Language
+3. DQL - Data Query Language
+4. DCL - Data Control Language
+5. TCL - Transaction Control Language
+-------------------------------------
+1. DDL - Data Definition Language
+Used to define/modify data structure
+
+List of DDL commands: CREATE, DROP, TRUNCATE, ALTER
+
+CREATE: This command is used to create the database or its objects (like table, index, function, views, store procedure, and triggers).
+
+Ex1: CREATE SCHEMA `school` ;
+
+Ex2: 
+
+CREATE TABLE `school`.`students` (
+  `id` INT NOT NULL AUTO INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `city` VARCHAR(45) NOT NULL,
+  `state` VARCHAR(45) NOT NULL,
+  `cert_name` VARCHAR(45) NOT NULL,
+  `cert_price` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`));
+  
+  Compulsory - NOT NULL
+  Optional - NULL
+  
+ALTER: This is used to alter the structure of the database.
+Ex: ALTER TABLE students 
+CHANGE COLUMN `name` `student_name` VARCHAR(25) NULL,
+CHANGE COLUMN `city` `student_city` VARCHAR(35) NULL,
+CHANGE COLUMN `state` `student_state` VARCHAR(40) NULL;
+
+DROP: This command is used to delete objects from the database.
+Syntax: DROP TABLE table_name;
+Syntax: DROP DATABASE schema_name;
+
+ALTER: This is used to alter the structure of the database.
+Ex: ALTER TABLE `school`.`students` 
+CHANGE COLUMN `name` `student_name` VARCHAR(45) NULL DEFAULT NULL ,
+CHANGE COLUMN `city` `student_city` VARCHAR(45) NULL DEFAULT NULL ,
+CHANGE COLUMN `state` `student_state` VARCHAR(45) NULL DEFAULT NULL ;
+
+TRUNCATE: This is used to remove all records from a table
+Ex: TRUNCATE TABLE <table-name>
+
+2. DML - Data Manipulation Language
+
+The SQL commands that deals with the manipulation of data
+
+List of DML commands: 
+
+INSERT : It is used to insert data into a table.
+
+Syntax: INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...); 
+
+Ex1: Example: INSERT INTO students (id, student_city, student_state, student_name, cert_price, cert_name) VALUES (103, 'Kanpur', 'UP', 'OCJA', 28000, 'Harsh');
+
+INSERT INTO students VALUES (103, 'Kanpur', 'UP', 'OCJA', 28000, 'Harsh');
+
+UPDATE: It is used to update existing data within a table.
+UPDATE table_name SET column1 = value1, column2 = value2, ... WHERE condition;
+
+DELETE : It is used to delete records from a database table.
+DELETE FROM table_name WHERE condition;
+
+3. DQL - Data Query Language
+
+DQL statements are used for performing queries on the data within schema objects
+
+List of DQL: 
+
+> SELECT: It is used to retrieve data from the database.
+Syntax1: To Select specific columns from db
+SELECT column1, column2, ... FROM table_name;
+
+Syntax2: To select all columns at once
+SELECT * FROM table_name;
+
+Syntax3: To select based on a condition
+SELECT column1, column2, ... FROM table_name WHERE condition;
+
+Restricting Data with WHERE, AND, OR, comparison operators and other operators
+-------------------------------------------------------------------------------
+WHERE and comparison operators
+1. SELECT name, stud_cert_price FROM student_add_cert 
+WHERE stud_cert_price > 10000;
+
+WHERE and AND/OR
+2. SELECT name, student_cert_name, stud_cert_price FROM student_add_cert 
+WHERE stud_cert_price > 10000 AND student_state='MP';
+
+3. SELECT name, student_cert_name, stud_cert_price FROM student_add_cert 
+WHERE stud_cert_price > 10000 OR student_state='MP';
+
+WHERE and BETWEEN: Price BETWEEN 1500 AND 2500
+4. SELECT * FROM student_add_cert WHERE stud_cert_price 
+BETWEEN 10000 AND 20000;
+
+10000 and 20000 are inclusive
+
+WHERE and LIKE
+5. SELECT * FROM student_add_cert WHERE student_cert_name LIKE 'Core%';
+
+Sorting - ORDER BY
+6. SELECT * FROM student_add_cert WHERE student_cert_name 
+LIKE 'Core%' ORDER BY id ASC;
+7. SELECT * FROM student_add_cert WHERE student_cert_name 
+LIKE 'Core%' ORDER BY id DESC;
+
+Aggregate Functions: COUNT(), MIN(), MAX(), AVG(), SUM()
+Get no of records
+- SELECT COUNT(*) FROM students
+- SELECT COUNT(*) FROM employee WHERE department='Software Engineer'
+
+Get minimum value
+SELECT MIN(salary) FROM employee
+SELECT MIN(salary) FROM employee WHERE department='Business Development'
+
+Get maximum value
+SELECT MAX(salary) FROM employee
+SELECT MAX(salary) FROM employee WHERE department='Business Development'
+
+Average
+SELECT AVG(salary) FROM employee
+
+Sum
+SELECT SUM(salary) FROM employee
+
+----------------------
+4. DCL - Data Control Language
+DCL includes commands such as GRANT and REVOKE which mainly deal with the rights, permissions, and other controls of the database system. 
+
+List of  DCL commands: 
+
+GRANT: This command gives users access privileges to the database.
+Syntax: GRANT privileges ON object TO user;
+Example: GRANT ALL ON Users TO 'Amit'@'localhost;
+
+REVOKE: This command withdraws the user’s access privileges given by using the GRANT command.
+Syntax: REVOKE privileges ON object FROM user;
+Example: REVOKE ALL ON Users FROM 'Amit'@'localhost;
+
+5. TCL - Transaction Control Language
+TCL commands deal with the transaction within the database. 
+List of TCL commands: 
+
+COMMIT: Commits a Transaction. make permanent changes to the data
+ROLLBACK: Rollbacks a transaction in case of any error occurs.
+
+Databse 
+ACID Properties - Refer the notes
+---------------X------------------X------------
+CRUD Operations
+---------------
+C stands for Create: Create schema, table, insert data comes under create operations
+R stands for Retrieve: Fetching custom data, single row data with Select query comes under retrieve operation
+U stands for Update: Updating the records and altering tables comes under update operation
+D stands for Delete: Deleting a record, dropping a table or schema comes under delete operation
+
+> These 4 operations are the standard operations
+> Whole study of SQL revolves around them
+
+SQL Data Manipulation Language (DML) statement: Any query that changes the database is a DML statement
+
+Some standard queries:
+
+Operation 1: Creating Schema
+Query: CREATE SCHEMA `school` ;
+
+Operation 2: Create Table
+
+Query:
+
+CREATE TABLE `school`.`students` (
+  `student_id` INT NOT NULL AUTO_INCREMENT,
+  `student_name` VARCHAR(45) NOT NULL,
+  `student_email` VARCHAR(70) NOT NULL,
+  `student_course` VARCHAR(25) NOT NULL,
+  `student_fees` INT NOT NULL,
+  PRIMARY KEY (`student_id`);
+
+Operation 3: Insert 1 student's record in the table students
+Syntax: INSERT INTO <table-name> (col1, col2, col3, .....) VALUES (value1, value2, value3, ........);
+
+Query: INSERT INTO `school`.`students` (`student_name`, `student_email`, `student_course`, `student_fees`) VALUES ('Kaustubh', 'kaustubh@gmail.com', 'Core Java', '5000');
+
+Operation 4: Insert 4 students' record in the table students
+Query: 
+INSERT INTO students (student_name, student_email, student_course, student_fees) VALUES ('Mohit', 'mohit@yahoo.com', 'Adv Java', 10000);
+INSERT INTO students (student_name, student_email, student_course, student_fees) VALUES ('Monika', 'monika@gmail.com', 'Hibernate', 5000);
+INSERT INTO students (student_name, student_email, student_course, student_fees) VALUES ('Manvi', 'manvi@rediff.com', 'Spring', 10000);
+INSERT INTO students (student_name, student_email, student_course, student_fees) VALUES ('Satyam', 'satyam@yahoo.com', 'Python', 12000);
+
+Operation 5: Retrieve/Fetch/Get/Select data of all students 
+Syntax: Select * FROM table-name
+Query: SELECT * FROM students;
+
+Operation 6: Alter table columns properties such as length and type
+Query: 
+	ALTER TABLE `school`.`students` 
+	CHANGE COLUMN `student_email` `student_email` VARCHAR(50) NOT NULL ,
+	CHANGE COLUMN `student_course` `student_course` VARCHAR(30) NOT NULL ,
+	CHANGE COLUMN `student_fees` `student_fees` DOUBLE NOT NULL ;
+
+Operation 7: Update 1 student's record 
+Syntax: UPDATE table SET col1=value1, col2=value2, col3=value3 WHERE primary-key=primary-key-value
+
+Query: UPDATE `school`.`students` SET `student_course` = 'Advance Java', `student_fees` = '10000' WHERE (`student_id` = '1');
+
+If we forget to mention the WHERE clause, MySQL Workbench will throw this error:
+Error Code: 1175. You are using safe update mode and you tried to update a table without a WHERE that uses a KEY column.  To disable safe mode, toggle the option in Preferences -> SQL Editor and reconnect.
+
+Operation 8: Fetching/Retrieving data with Select command
+ 
+Query 8.1: Selecting all records: SELECT * FROM students;
+
+Query 8.2: Selecting single record: SELECT * FROM students WHERE student_id= 4;
+
+Query 8.3: Using equals to (=): SELECT * FROM students WHERE student_course = 'Machine Learning';
+
+Query 8.4: Using greater than (>): SELECT * FROM students WHERE student_fees>5000;
+
+Query 8.5: Using AND operator: SELECT * FROM students WHERE student_fees>5000 AND student_id>2;
+
+Query 8.6: Using OR operator: SELECT * FROM students WHERE student_fees>5000 OR student_id>2;
+
+Query 8.7: Get count: SELECT COUNT(*) FROM students WHERE student_fees>5000 OR student_id>2;
+
+Operation 9: Delete a student's record
+
+Query: DELETE FROM `school`.`students` WHERE `student_id` = '5';
+
+Operation 10:Alter Table:
+
+ALTER TABLE `school`.`students` RENAME TO  `school`.`student_details` ;
+Operation 11: Delete table: DROP TABLE student_details;
+Operation 12: Delete database: DROP DATABASE/SCHEMA student_details;
+-------------------
+Truncate v/s delete v/s drop
+
+Delete
+- It is a Data Manipulation Language Command (DML). 
+- It is used to delete one or more tuples of a table.
+Query: DELETE FROM `school`.`students` WHERE id = 1;
+
+Drop
+- It is a Data Definition Language Command (DDL). 
+- It is used to remove the whole table. 
+Query: DROP TABLE `school`.`students`;
+
+Truncate
+- It is also a Data Definition Language Command (DDL). 
+- It is used to delete data from all the rows of a table in one go. 
+- With  "TRUNCATE" command, we can’t delete a single row as here WHERE clause is not used.
+Query: TRUNCATE TABLE `school`.`students`;
+
+Note – Here we can’t restore the tuples of the table by using the “ROLLBACK” command.
+--------------------------------------------------------------------------------------------------
+SQL Queries
+===========
+Normal CRUD Queries
+--------------------
+Insert: INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...); 
+Example: INSERT INTO employee(fname, lname, salary, department, address) VALUES ('Shikha', 'Jaiswal', 60000, 'Software Engineer', 'Kanpur-UP');
+
+Update: UPDATE table_name SET column1 = value1, column2 = value2, ... WHERE condition;
+Example: UPDATE employee SET salary = 40000, address  = 'Kurnool-Karnataka' WHERE id  = 5;
+
+Delete: DELETE FROM table_name WHERE condition;
+Example: DELETE FROM employee WHERE id = 10;
+
+Select: SELECT column1, column2, ... FROM table_name;
+
+Version1: SELECT * FROM table_name; 
+Example: SELECT * FROM employee;
+
+Version2: SELECT column1, column2, ... FROM table_name; 
+Example: SELECT fname, salary FROM employee;
+
+================================================================
+Restricting Data with WHERE, AND, OR, comparison operators and other operators
+
+WHERE and comparison operators
+1. SELECT fname, salary FROM employee WHERE salary > 40000;
+
+WHERE and AND
+2. SELECT fname, department FROM employee WHERE department='Human Resources' AND salary > 50000;
+
+WHERE and OR
+3. SELECT fname, department FROM employee WHERE department='Human Resources' OR salary > 50000;
+
+WHERE and BETWEEN:SALARY BETWEEN 1500 AND 2500
+4. SELECT fname, department, salary FROM employee WHERE salary BETWEEN 40000 AND 60000;
+
+WHERE and LIKE
+5. SELECT * FROM employee WHERE address LIKE '%MP';
+
+Sorting - ORDER BY
+6. SELECT * FROM employee WHERE address LIKE '%Karnataka' ORDER BY fname DESC;
+7. SELECT * FROM employee WHERE address LIKE '%Karnataka' ORDER BY fname ASC;
+======================================================================
+Single Row functions
+- Case Conversion Functions
+Query: SELECT UPPER (fname), LOWER (department) FROM employee WHERE address LIKE '%Karnataka';
+
+- Character Functions
+Query: SELECT CONCAT (fname, ' ' ,lname) FROM employee;
+
+Aggregate Functions: COUNT(), MIN(), MAX(), AVG(), SUM()
+Get no of records
+- SELECT COUNT(*) FROM employee
+- SELECT COUNT(*) FROM employee WHERE department='Software Engineer'
+
+Get minimum value
+SELECT MIN(salary) FROM employee
+SELECT MIN(salary) FROM employee WHERE department='Business Development'
+
+Get maximum value
+SELECT MAX(salary) FROM employee
+SELECT MAX(salary) FROM employee WHERE department='Business Development'
+
+Average
+SELECT AVG(salary) FROM employee
+
+Sum
+SELECT SUM(salary) FROM employee
+
+

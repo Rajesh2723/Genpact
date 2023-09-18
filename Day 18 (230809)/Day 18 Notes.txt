@@ -1,0 +1,102 @@
+Day 18 Notes
+============
+Configurations
+--------------
+There are 3 types of configurations in Spring:
+1. XML based configuration
+2. Annotation based configuration
+3. Java based configuration
+
+Annotation Based Configuration
+------------------------------
+- Starting from Spring 2.5 we can configure dependency injection using annotations
+- So instead of using XML to describe a bean wiring, we can move bean configuration into the component class itself by using annotations on the relevant class, method, or field declaration.
+- Annotation wiring is not turned on in the Spring container by default.
+- It has to be enabled by specifying <context:annotation-config/> in spring config file.
+- In Annotation Based Configuration we use @AutoWired and @Qualifier annotations.
+------------------------------
+Java Based Configuration
+------------------------
+Java-based configuration in Spring allows us to define and manage beans and their dependencies using Java code instead of XML files. 
+
+It uses following annotations:
+
+1. @Configurable: Marks class for bean definitions.
+2. @Bean: Defines beans via methods.
+
+Pros
+
+1. No XML: Cleaner, maintainable code.
+2. Not @Autowired: We don't need the @Autowired annotation as dependencies are resolved through method calls.
+------------------------------
+Spring AOP
+==========
+Spring AOP (Aspect-Oriented Programming) helps separate cross-cutting concerns from your main business logic. It's like having helpers that step in at specific moments to handle tasks without changing your code:
+
+1. Aspect: Module for cross-cutting tasks.
+2. Join Point: Moment when aspect helps.
+3. Advice: Code that runs at join points.
+4. Pointcut: Set of join points for advice.
+5. Proxy: Object intercepting method calls for aspects.
+
+Enable with `<aop:aspectj-autoproxy>` in XML to automate aspect behavior.
+-----------------------------
+spring_aop
+spring_aop.aspect
+spring_aop.services
+
+Spring JDBC
+===========
+Spring JDBC is a powerful mechanism to connect to the database and execute SQL queries
+
+Java Program<--->Spring JDBC module (JDBC Template)<--->Database
+
+Spring JDBC uses core JDBCS at the lowest levels. It provides a level of abstraction and more features than plain JDBC
+
+Normal JDBC: JDBC is an API to perform operations with the database.
+
+Problems of plain old JDBC:
+1. We need to write a lot of code.
+Redundant code: Connection open, statement, execute, connection close
+2. Exception Handling problem: we had to handle a lot of checked exceptions at every point of code or we had to throw it.
+3. Repeatition of all these codes from one to another database logic is a time consuming task.
+
+Solution - Spring JDBC
+
+Spring JDBC provides a class JDBCTemplate which has all the important methods to perform operations with the database
+
+It will perform all the redundant and tedious tasks such as opening and closing the connection itself.
+
+JDBCTemplate class has a property named as dataSource. We need to inject an object of DataSource Interface in datasource property.
+
+Now as DataSource is an interface, we will need its implementation DriverManagerDataSource.
+
+We will provide following 4 infomation to DriverManagerDataSource object:
+1. Driver Class Name
+2. URL
+3. Username
+4. Password
+
+We will then inject DriverManagerDataSource object in dataSource property of JDBCTemplate
+
+JDBCTemplate can then be used to execute CRUD queries on the database
+
+Methods of JDBCTemplate:
+update()->insert, update, delete queries
+
+execute()->select queries
+
+Steps to create Spring JDBC Project:
+Step 1: Open Eclipse
+Step 2: Create Maven Project
+Step 3: Select Internal-->archetype-->quickstart
+Step 4: Provide groupId, artifact Id, version and package
+Step 5: Add following dependencies in pom.xml: 
+
+- spring core
+- spring context
+- spring jdbc
+- mysql connector
+
+Note: Try to include the same version of all the dependencies 
+-----X-----X-----X-----X-----X-----X-----X-----

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Using value as an element -->
+	<bean class="property.injection.primitive.Student" id="student1">
+		<property name="studentId">
+			<value>11201</value>
+		</property>
+		<property name="studentName">
+			<value>Kaustubh Choudhary</value>
+		</property>
+		<property name="studentAddress">
+			<value>A 23</value>
+		</property>
+	</bean>
+	
+	<!-- Using value as an attribute -->
+	<bean class="property.injection.primitive.Student" id="student2">
+		<property name="studentId" value="11202"/>
+		<property name="studentName" value="Kinjal Choudhary"/>
+		<property name="studentAddress" value="MIG Colony"/>
+	</bean>
+	
+	<!-- Using p schema -->
+	<bean 
+	    class="property.injection.primitive.Student" 
+		id="student3"
+		p:studentId = "11203"
+		p:studentName="Kaashvi Choudhary" 
+		p:studentAddress="Indore"
+	/>
+
+</beans>

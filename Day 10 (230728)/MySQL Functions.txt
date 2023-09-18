@@ -1,0 +1,136 @@
+MySQL Functions
+===============
+Functions in MySQL
+==================
+MySQL has many built-in functions.
+
+There are following functions:
+1. Aggregate Functions
+2. String Functions
+3. Date and time functions
+4. Numeric Functions
+
+Practice Example:
+
+Query 1:
+--------
+CREATE DATABASE testdb;
+
+Query 2:
+--------
+USE testdb;
+
+Query 3:
+--------
+CREATE TABLE employees (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    salary DECIMAL(10, 2),
+    hire_date DATE
+);
+
+Query 4:
+--------
+INSERT INTO employees (first_name, last_name, salary, hire_date)
+VALUES
+    ('Aarav', 'Sharma', 25000.50, '2023-01-15'),
+    ('Aisha', 'Verma', 35000.75, '2022-09-05'),
+    ('Vikram', 'Singh', 18000.25, '2023-04-22');
+
+String data type functions
+--------------------------
+Query 5:
+
+SELECT CONCAT(first_name, ' ', last_name) AS full_name
+FROM employees;
+
+Query 6:
+
+SELECT SUBSTRING(first_name, 2, 3) AS ExtractString; 
+
+Query 7:
+
+SELECT UPPER(first_name) AS upper_first_name
+FROM employees;
+
+Query 8:
+
+SELECT LOWER(first_name) AS lower_first_name
+FROM employees;
+
+Query 9:
+
+SELECT last_name, LENGTH(last_name) FROM employees;
+
+Numeric data type functions
+---------------------------
+Query 10:
+
+-- Round salary to two decimal places
+
+SELECT first_name, last_name, ROUND(salary, 2) AS rounded_salary
+FROM employees;
+
+Query 11:
+
+-- Calculate the ceil value of the salary for each employee
+
+SELECT first_name, last_name, CEIL(salary) AS ceiled_salary
+FROM employees;
+
+Query 12:
+
+-- Calculate the floor value of the salary for each employee
+
+SELECT first_name, last_name, FLOOR(salary) AS floored_salary
+FROM employees;
+
+Query 13: 
+
+-- Calculate the absolute value of the salary for each employee
+
+SELECT first_name, last_name, ABS(salary) AS absolute_salary
+FROM employees;
+
+Query 14:
+
+-- Calculate the salary squared (that is a dream ;-)) for each employee
+SELECT first_name, last_name, POWER(salary, 2) AS salary_squared FROM employees;
+
+Query 15:
+
+NOW()
+-- Get the current date and time
+SELECT NOW() AS current_date_time;
+
+Query 16:
+
+DATE_FORMAT()
+
+-- Format the hire_date to display only the year
+
+SELECT first_name, last_name, DATE_FORMAT(hire_date, '%Y') AS hire_year FROM employees;
+
+Query 17:
+
+DATE_ADD()
+
+-- Add 3 months to the hire_date for each employee
+SELECT first_name, last_name, DATE_ADD(hire_date, INTERVAL 3 MONTH) AS new_hire_date FROM employees;
+
+Query 18:
+
+DATEDIFF
+
+-- Calculate the number of days employed for each employee (until today) SELECT first_name, last_name, DATEDIFF(NOW(), hire_date) AS days_employed
+FROM employees;
+
+Query 19:
+
+EXTRACT
+
+-- Extract the month from the hire_date for each employee
+
+SELECT first_name, last_name, EXTRACT(MONTH FROM hire_date) AS hire_month
+FROM employees;

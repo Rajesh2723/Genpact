@@ -1,0 +1,32 @@
+Spring
+======
+Spring is a Dependency Injection tool used to create loosely coupled applications.
+
+Spring is an Inversion of Control tool used to create loosely coupled applications.
+
+Loosely coupled 
+Tightly coupled 
+Dependency Injection (DI)
+Inversion of Control (IOC)
+
+Spring Core
+===========
+Dependency Injection:
+There are 2 ways of injecting dependencies:
+1. Property/Setter Injection
+2. Constructor Injection
+
+Autowiring
+
+Spring Web MVC
+==============
+- It is a sub module of Spring Framework
+- Its main task is to create Web Application using Spring
+- We can integrate Jdbc and Hibernate with Spring Web MVC
+
+Spring Boot
+===========
+- It is a sub module of Spring Framework
+- It is used of Rapid Application Development
+- Mainly used for implementing Web Services (SOAP/Restful)
+- To create microservices

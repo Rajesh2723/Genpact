@@ -1,0 +1,201 @@
+Day 06 Notes
+============
+Method References
+=================
+Reusing a method for defining the abstract method of functional interface in a lambda expression is known as Method Reference.
+
+Types of method references
+--------------------------
+There are 3 types of method references:
+
+1. Reference to an instance method.
+	containingObject::instanceMethodName  
+	
+2. Reference to a static method.
+	ContainingClass::staticMethodName  
+
+3. Reference to a constructor.
+	What is the task of a constructor - to create an object out of a set of inputs
+
+Generics
+--------
+Dynamic type. All the methods change their parameter and return types according to the type of object that we have mentioned.
+
+Wrapper Classes
+---------------
+Collection Framework does not work with primitive types
+We need class representation of primitive types
+
+Wrapper classes - There are 8 Wrapper classes one each for every primitive type
+1. Byte - byte
+2. Short - short
+3. Integer - int
+4. Long - long
+5. Float - float
+6. Double - double
+7. Boolean - boolean
+8. Character - char 
+
+Java Functional programming
+---------------------------
+- Java introduced functional programming in Java 8
+- Here we can pass a function definition as a function parameter
+ex: filter (item -> item.contains("TV"))
+- This mechanism is only possible with one abstract method interfaces. 
+i.e functional interfaces.
+- Java introduced a new package: java.util.function 
+- This package contains a lot of functional interfaces.
+
+Functional Interfaces
+=====================
+There are 4 major Functional Interfaces:
+1. Function (I)
+2. Predicate(I)
+3. Consumer (I)
+4. Supplier (I)
+
+Function<T, R>
+--------------
+abstract method : R apply(T t);
+
+Create a method that takes in a class and returns another class
+
+This method takes a String and returns Integer length
+
+Integer apply(String str){
+	return str.length();
+}
+
+Predicate<T>
+------------
+abstract method : boolean test(T t);
+
+Create a method that takes in a class and returns another either true/false
+
+This method takes a String and checks whether it is null or not
+
+boolean test(String str){
+	return str==null;
+}
+
+Consumer<T>
+-----------
+abstract method : void accept(T t);
+
+Create a method that takes in a class and performs an operation but does not return anything
+
+This method takes a String name and prints it with a greeting
+
+void accept(String str){
+	System.out.println("Hi " + str);
+}
+
+Supplier<T>
+-----------
+abstract method :  T get();
+
+Create a method that return something
+
+This method returns Tax object
+
+Tax get(){
+	return new Tax();
+}
+
+Interface v/s Abstract class
+----------------------------
+Diff 1:
+-------
+An abstract class is extended while an interface is implemented.
+
+Diff 2:
+-------
+An abstract class can extend another class and implement an interface as well
+
+An interface can only extend another interface
+
+Diff 3:
+-------
+Abstract class can have instance and static variables
+Interface can only have static constants
+
+Collection Framework
+-------------------
+1. API - working of methods
+2. Comparison of classes - which is better when
+3. Data Structure of only those classes that are required (not in deep)
+4. If you want to go deep, I will share material and references
+5. Saturday class 2 hours for discussion
+
+Collection Framework
+====================
+Collection is a group of objects taken as a single entity.
+
+For ex: Employees in a company, students in a class, Fruits in a bag etc 
+
+Collection Framework is a group of classes, interfaces and methods that help in storing, accessing and manipulating objects
+
+All the interfaces/classes are available in java.util package
+
+Collection Framework
+--------------------
+Refer image : 01_coll_frmwrk.png
+
+Key Interfaces and classes:
+Iterable (I)
+	- Collection (I)
+		- List (I)
+			- ArrayList
+			- LinkedList
+			- Vector
+			- Stack
+		- Set (I)
+			- HashSet
+			- TreeSet
+			- LinkedHashSet
+		- Queue (I)
+			- PriorityQueue
+			- Deque (I)
+				- ArrayDeque
+
+Methods of Collection class:
+
+List
+----
+List represents objects that are arranged in a sequence
+
+Features
+--------
+1. Objects are arranged in a sequence.
+2. All lists allow positional access to their elements
+3. Duplicate values can be stored
+4. null values are allowed
+
+Implemented by 
+	- ArrayList
+	- LinkedList
+	- Vector
+	- Stack
+	
+ArrayList
+---------
+ArrayLists use a dynamic object array to store values
+
+Efficiency
+- Traversing is fast
+- implements RandomAccess interface that is used internally by searching alogorithms that keep the searching time constant of the order O(1)
+
+From Stackoverflow - "ArrayList: adding items to end of list - cheap, removing items from end of list - cheap, getting items with an index - cheap, adding/removing anywhere but the end - expensive, using .contains() - expensive."
+
+LinkedList
+----------
+LinkedList use a doubly linked list to store values
+
+- Traversing is slow
+- Addition and removal of an element from the middle is fast
+
+Vector
+-------
+Vector is just like ArrayList with the only difference that all the methods are synchronized.
+Vector methods are thread safe
+-----X-----X-----X-----X-----X-----

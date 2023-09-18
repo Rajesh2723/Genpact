@@ -1,0 +1,23 @@
+Questions
+=========
+Q 1. Create a class to calculate Area of circle with one data member to store the radius and another to store area value. Create method members -
+
+1. init - to input radius from user
+2. calc - to calculate area
+3. display- to display area
+
+Q 2. Create a class MathOperation and create overloaded methods – ‘multiply’ that takes in following arguments and calculate their multiplication -
+1. two integers
+2. three float
+3. one double and one integer
+
+Q 3. Create a class Employee with fields empNo, salary and totalSalary and create following features:
+
+1.	Only parameterized constructor;
+
+2.	totalSalary always represent total of all the salaries of all employees created.
+
+3.	empNo should be auto incremented.
+
+4.	display total employees and totalSalary using class method.
+-----X-----X-----X-----X-----X-----X-----X-----

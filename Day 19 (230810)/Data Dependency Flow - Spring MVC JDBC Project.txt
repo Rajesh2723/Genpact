@@ -1,0 +1,44 @@
+Data Dependency Resolutions
+===========================
+
+To get the list of book from the database, the following are required
+- We should have a database installed
+- It should be up and running
+- It should have the necessary schema, table and data
+- We should be able to connect with it using the driver, url, username and password
+- Our application should be able to connect with the database
+
+Now our Spring MVC application wants to transact with the database
+For this we are using Spring JDBC module
+
+In Spring JDBC there is a central class -> JdbcTemplate
+
+Ctrl + Shift + T
+1. DispatcherServlet
+2. InternalResourceViewResolver
+3. JdbcTemplate
+
+Dependency Chart
+
+1. BookDaoImpl class is dependent on JdbcTemplate class object
+2. JdbcTemplate class is dependent on DataSource class object
+Problem: We cannot create an object of DataSource boz it is an interface
+Solution: Instead of DataSource interface we can provide a sub class of DataSource to JdbcTemplate
+DataSource dataSource = new DataSource();
+DataSource dataSource = new DriverManagerDataSource();
+
+- JdbcTemplate class is dependent on DriverManagerDataSource class object
+3. DriverManagerDataSource is dependent on driver-class, url, username and password
+
+All the above dependencies are resolved in spring configuration file (dispatcher-servlet.xml) with <bean> tags
+
+In the spring configuration file (dispatcher-servlet.xml):
+1. DataSource ds = new DriverManagerDataSource(driver, url, un, pwd)
+2. JdbcTemplate jT = new JdbcTemplate(ds)
+3. BookDao bookDao = new BookDaoImpl(jT)
+4. NavigationController n = new BookDao();
+
+@Autowired 
+BookDao bookDao
+
+This code means that Spring/DI/IOC container will look into spring config file for BookDao or its sub class bean

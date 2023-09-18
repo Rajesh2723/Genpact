@@ -1,0 +1,35 @@
+Request VERB: GET
+API End Point : localhost:8080/books/1 ->
+
+{
+    "id": 1,
+    "name": "Let Us C",
+    "author": "Yashwant Kanitkar",
+    "price": 200,
+    "noOfCopies": 7,
+	"dateOfPublication" : "2020-07-09"
+	"available" : true
+}
+
+Request VERB: POST
+API End Point : localhost:8080/books ->
+Request Body
+{
+    "name": "Let Us C++",
+    "author": "Yashwant Kanitkar",
+    "price": 350,
+    "noOfCopies": 0,
+	"dateOfPublication" : "2022-10-09"
+}
+
+Response Body:
+
+{
+	"id" : 2
+    "name": "Let Us C++",
+    "author": "Yashwant Kanitkar",
+    "price": 350,
+    "noOfCopies": 0,
+	"dateOfPublication" : "2022-10-09",
+	"available" : false
+}

@@ -1,0 +1,15 @@
+MySQL Workbench
+===============
+
+MySQL Workbench is the Graphical User Interface used to access the underlying MySQL Server
+
+MySQL Workbench interacts with MySQL Server with SQL
+
+Such type of GUIs that are used to communicate with the server are known as GUI clients.
+
+Top 5 GUI clients used to work with MySQL DB are:
+1. MySQL Workbench
+2. dbForge Studio
+3. phpMyAdmin
+4. HeidiSQL
+5. SQLyog

@@ -1,0 +1,24 @@
+1. Beware about the spelling msitakes
+2. Beware about uppercase lowercase
+3. Do not put spaces inside " openForm "
+
+Best Practice
+1. The name should be consistent within the whole project
+name = "fullName" String fullName
+
+Not compulsory, but convention
+
+4. All the packages in the project will be the sub packages of the parent package
+
+Spring will scan only those classes and interfaces that are mentioned in: 
+<context:component-scan base-package="genpact.mvc.jdbc" />
+
+http://localhost:9192/GenpactMvcJdbc/register?
+
+fullName=Kaustubh+Choudhary&password=1234567&mobileNo=9988776655&emailId=&gender=male&hobbies=cricket&hobbies=drive&skills=c&skills=java
+
+
+
+
+
+

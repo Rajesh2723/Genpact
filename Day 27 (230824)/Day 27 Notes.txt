@@ -1,0 +1,238 @@
+Day 27 Notes
+============
+
+Web Services
+------------
+Web Services are used to expose the resources/data
+
+exposing the resources
+
+means
+
+giving data in a controlled manner
+
+API
+---
+- API stands for Application Programming Interface
+- Ex: Servlets API, Collection API, JDBC API etc
+- API means anything (class, interface, methods, end points) that we can just use without knowing the internal details.
+
+End point
+---------
+The endpoint is a connection point where resources are exposed. 
+
+URL       + HTTP Method => Combination should be unique
+/movie/1  +   GET (fetch)
+/movie    +   GET (fetch)
+/movie    +   POST (insert new record - no id)
+/movie    +   PUT (modify existing record) - has id
+
+
+RESTful Web Services
+====================
+What is Restful Web Service?
+
+- REST is used to build Web services that are lightweight, maintainable, and scalable in nature. 
+
+- A service which is built on the REST architecture is called a RESTful service. 
+
+- The underlying protocol for REST is HTTP, which is the basic web protocol. 
+
+- REST stands for REpresentational State Transfer
+
+Key Elements
+------------
+The key elements of a RESTful implementation are as follows:
+
+1. Resources
+2. Request
+	- Verb
+	- Headers
+	- Body
+3. Response
+	- Code
+	- Header
+	- Body
+
+
+1. Resources – The first key element is the resource itself. Let assume that a web application on a server has records of several movies. Let's assume the URL of the web application is http://www.server.com. Now in order to access a movie record resource via REST, one can issue the command http://www.server.com/movie/1 - This command tells the web server to please provide the details of the movie whose movie id is 1.
+
+2. Request Verbs - These describe what you want to do with the resource. A browser issues a GET verb to instruct the endpoint it wants to get data. However, there are many other verbs available including things like POST, PUT, and DELETE. So in the case of the example http://www.server.com/movie/1 , the web browser is actually issuing a GET Verb because it wants to get the details of the movie record.
+
+3. Request Headers – These are additional instructions sent with the request. These might define the type of response required or the authorization details.
+
+4. Request Body - Data is sent with the request. Data is normally sent in the request when a POST request is made to the REST web service. In a POST call, the client actually tells the web service that it wants to add a resource to the server. Hence, the request body would have the details of the resource which is required to be added to the server.
+
+5. Response Body – This is the main body of the response. So in our example, if we were to query the web server via the request http://www.server.com/movie/1 , the web server might return an JSON document with all the details of the movie in the Response Body.
+
+6. Response Status codes – These codes are the general codes which are returned along with the response from the web server. An example is the code 200 which is normally returned if there is no error when returning a response to the client.
+
+Refer (https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+
+7. Response Headers
+
+Restful Methods
+
+Let's assume that we have a RESTful web service is defined at the location. http://www.server.com/movie . When the client makes any request to this web service, it can specify any of the normal HTTP verbs of GET, POST, DELETE and PUT. Below is what would happen If the respective verbs were sent by the client.
+
+POST – This would be used to create a new movie using the RESTful web service
+GET - This would be used to get a list of all movie using the RESTful web service
+PUT - This would be used to update all movie using the RESTful web service
+DELETE - This would be used to delete all movie using the RESTful web service
+-----X-----X-----X-----X-----X-----X-----
+Java Web Services
+-----------------
+Java provides it’s own API to create both SOAP as well as REST web services.
+
+1. JAX-WS: 
+
+- JAX-WS stands for Java API for XML Web Services.
+
+- JAX-WS is XML based Java API to build web services server and client application.
+
+2. JAX-RS: 
+
+- JAX-RS stands for Java API for RESTful Web Services.
+
+- JAX-RS is the Java API for creating REST web services. 
+
+- JAX-RS uses annotations to simplify the development and deployment of web services.
+-----X-----X-----X-----X-----X-----X-----
+Monolithic Architecture
+=======================
+Refer Image: 01_monolithic.png
+
+Key points about Monolithic Architecture:
+
+1. Single Unit: Monolithic Architecture refers to a traditional software development approach where the entire application is built as a single, tightly-coupled unit. All components, functions, and features are contained within this single codebase.
+
+2. Simplicity: Monolithic architectures are relatively simpler to develop and deploy since all components are bundled together. This simplicity can be advantageous for smaller projects or when rapid development is required.
+
+3. Communication: Communication between different parts of the application is straightforward, as they are all within the same codebase. This can lead to faster data sharing and processing.
+
+4. Maintenance: In monolithic architectures, maintaining the application involves working on a single codebase, making updates and bug fixes more manageable. However, larger projects can become complex and harder to maintain over time.
+
+5. Scalability Challenges: As the application grows, it might become challenging to scale specific components independently. The entire application needs to be scaled even if only one module requires additional resources.
+
+6. Technology Stack: Since all components are built together, they need to use the same technology stack. This can limit the choice of technologies and frameworks based on the requirements of each component.
+
+7. Deployment: Deploying updates or changes can be trickier because any modification requires redeploying the entire application. This might cause downtime during deployment.
+
+8. Testing: Testing a monolithic application involves testing the entire application, which can be time-consuming and complex, especially when different components are tightly interconnected.
+
+9. Risk of Failure: If a part of the application fails, it can potentially impact the entire system's stability, leading to cascading failures.
+
+10. Development Teams: In larger projects, development teams might find it difficult to collaborate effectively due to the monolithic architecture's size and complexity.
+
+11. Codebase Size: Over time, the size of the codebase can grow substantially, making it harder to navigate and understand, potentially slowing down development.
+
+12. Flexibility: Monolithic architectures might lack the flexibility needed to adopt new technologies or scale specific components according to changing business needs.
+
+13. Security: Security vulnerabilities in one part of the application can potentially affect the entire system, making it essential to maintain robust security practices throughout the codebase.
+
+14. Modularization Challenges: It can be challenging to cleanly modularize code in a monolithic architecture, making it harder to achieve separation of concerns.
+
+15. Transition to Microservices: As applications grow and require more scalability, maintainability, and agility, there might be a need to transition from a monolithic architecture to a microservices architecture, which involves breaking down the monolith into smaller, independently deployable services.
+-----X-----X-----X-----X-----X-----X-----
+Distributed Architecture
+========================
+Key points about Distributed Architecture:
+
+1. Decentralized System: Distributed Architecture involves designing and building a system that consists of multiple autonomous components, often running on separate physical machines or servers. These components collaborate to achieve a common goal.
+
+2. Scalability: Distributed architectures can be scaled more easily by adding more machines or servers to the network. This allows for better handling of increased workloads and improved performance.
+
+3. High Availability: Since components are distributed across different machines, the system can maintain high availability even if some components or machines fail. Redundancy and failover mechanisms can be implemented to ensure continuous operation.
+
+4. Fault Tolerance: Distributed systems can be designed with fault tolerance in mind. If a component fails, the system can continue functioning with minimal disruption, as other components can take over the failed component's responsibilities.
+
+5. Network Communication: Communication between components is essential in a distributed architecture.
+
+6. Latency and Bandwidth: Network latency and bandwidth play a crucial role in distributed systems. Efficient communication protocols and data serialization methods are important for minimizing delays and optimizing data transfer.
+
+7. Data Consistency: Maintaining data consistency across distributed components can be challenging. Distributed databases or data replication techniques are used to ensure that all components have access to the same consistent data.
+
+8. Complexity: Distributed architectures tend to be more complex to design, develop, and maintain compared to monolithic architectures. Ensuring proper coordination and synchronization between components is essential.
+
+9. Load Balancing: Load balancing mechanisms distribute incoming requests across multiple components to ensure even utilization of resources and prevent overloading of specific components.
+
+10. Security: Security considerations are more complex in distributed systems due to the increased number of entry points and communication channels. Implementing proper authentication, authorization, and encryption is crucial.
+
+11. Microservices: Microservices architecture is a specific type of distributed architecture where an application is broken down into smaller, loosely-coupled services that communicate with each other over a network.
+
+12. Event-Driven Architecture: Distributed systems often follow an event-driven approach, where components react to events or messages generated by other components. This allows for loose coupling and flexibility.
+
+13. Monitoring and Management: Monitoring tools are essential for tracking the health and performance of various components in a distributed system. Centralized management platforms help in deploying, configuring, and monitoring components.
+
+16. Development Challenges: Developing and testing distributed systems can be complex due to the need to simulate various failure scenarios, network issues, and edge cases.
+-----X-----X-----X-----X-----X-----X-----
+Service-Oriented Architecture
+=============================
+Here are some key points:
+
+1. Modularity: SOA is an architectural approach that breaks down a complex application into smaller, reusable services.
+
+2. Services: Services are self-contained units of functionality that can be accessed over a network, often through standardized protocols like HTTP.
+
+3. Loose Coupling: Services interact through well-defined interfaces, enabling components to be changed or updated without affecting other parts of the system.
+
+4. Reusability: Services are designed to be reusable across different applications, saving time and effort in development.
+
+5. Interoperability: SOA promotes the ability of different services, even from different technologies, to work together seamlessly.
+
+6. Standardization: SOA uses standard communication protocols and data formats to ensure consistent interactions between services.
+
+7. Flexibility: Changes in one service don't disrupt the entire system, promoting adaptability to evolving requirements.
+
+8. Scalability: Services can be scaled independently based on demand, improving resource utilization.
+
+9. Service Discovery: Services can be discovered and accessed dynamically through directories or registries.
+
+10. Service Composition: Complex applications can be built by combining multiple services, each representing a specific function.
+
+11. Business Alignment: SOA aligns technology with business processes, creating more meaningful and valuable software solutions.
+
+12. Security: Centralized security mechanisms can be applied to control access to services and protect data.
+
+13. Orchestration and Choreography: SOA supports both service orchestration (defining the sequence of service calls) and choreography (defining how services collaborate).
+
+14. Service Lifecycle: Services go through stages including creation, deployment, versioning, and possibly retirement.
+
+15. Middleware and ESB: Middleware components like Enterprise Service Bus (ESB) aid in managing communication and interaction between services.
+
+16. Complexity Management: SOA introduces complexity in terms of service management and governance, requiring proper planning.
+
+17. Microservices Connection: The microservices architecture is a subset of SOA, focusing on building applications as collections of small, independent services.
+
+18. Legacy System Integration: SOA can help integrate and modernize existing legacy systems by encapsulating their functionalities as services.
+
+19. Cloud Computing: SOA principles influenced the development of cloud computing, allowing various services to be accessed remotely.
+
+20. Focus on Business Value: SOA encourages focusing on building services that directly contribute to business goals, promoting efficiency and ROI.
+
+In essence, SOA promotes the creation of modular, reusable, and interoperable services that can be combined to create powerful and flexible software applications.
+-----X-----X-----X-----X-----X-----X-----
+Distributed vs Service-Oriented
+===============================
+
+Let's consider the scenario of an online shopping website that needs to handle a sudden surge in traffic during a big sale event.
+
+Distributed Architecture Solution:
+
+In a distributed architecture, the website is hosted on multiple servers. When the sale event starts and many people visit the website at the same time, the load is spread across these servers. Each server handles a portion of the incoming traffic, which helps prevent the website from becoming slow or crashing. If one server gets overwhelmed, the others can still handle the requests, ensuring that customers can continue shopping without major interruptions. This approach improves the website's performance and keeps it available during high-demand periods.
+
+Service-Oriented Architecture Solution:
+
+In a service-oriented architecture, the website is built using various separate services that work together. For example, there's a service for displaying product information, another for handling customer accounts, and another for processing payments. During the sale event, if the payment processing service is receiving more requests than it can handle, the other services are not affected. The website can still show products and manage customer accounts even if the payment service is busy. This modularity ensures that if one service experiences issues, it doesn't bring down the entire website. Additionally, if needed, more instances of the busy service can be added temporarily to handle the increased load.
+
+In both approaches, the system is designed to handle the increased traffic, but they tackle the challenge differently. Distributed architecture uses multiple servers to distribute the load, while service-oriented architecture uses separate services to handle different parts of the application, ensuring that issues in one area don't disrupt the entire system.
+-----X-----X-----X-----X-----X-----X-----
+Microservices in nutshell
+=========================
+- Microservices, in a nutshell, is an architectural approach where a software application is built as a collection of small, independent services that communicate over a network. 
+
+- Each service focuses on a specific business function and can be developed, deployed, and scaled independently. 
+
+- Microservices promote modularity, flexibility, and the ability to adapt to changes more efficiently.
+
+- They enable teams to work on different services concurrently, fostering quicker development and easier maintenance.

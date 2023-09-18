@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Form</title>
+    <link href="../css/style.css" type="text/css" rel="stylesheet"/>
+    <style>
+        form {
+            width: 50%;
+            margin-top: 20px;
+        }
+        input {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="menu">
+        <li><a href="01_basic_tags.html">Basic tags</a></li>
+        <li><a href="02_lists.html">Lists</a></li>
+        <li><a href="03_tables.html">Tables</a></li>
+        <li><a id="active" href="04_form.html">Form</a></li>
+    </ul>
+
+    <p>
+        <a href="request?mobile=9926535458&email=k@gmail.com">Send contact details</a>
+    </p>
+
+    <form action="registration" method="get">
+
+        <fieldset>
+                <legend>Credentials</legend>
+                <input type="text" name="username" disabled placeholder="Enter username" value="kaus1234"/><br/>
+                <input type="password" name="password" placeholder="Enter password" /><br/>
+        </fieldset>
+
+        <fieldset>
+            <legend>Contact Details</legend>
+            <input type="email" name="email" placeholder="Enter email"> <br/>
+
+            <input type="number" name="mobileno" placeholder="Enter mobileno"> <br/>
+        </fieldset>
+
+        <fieldset>
+            <legend>Personal Details</legend>
+
+            <input type="checkbox" name="hobbies" value="driving">Driving
+            <input type="checkbox" name="hobbies" checked value="cooking">Cooking<br/>
+            <input type="checkbox" name="hobbies" value="book">Reading
+            <input type="checkbox" name="hobbies" value="biking">Biking<br/>
+
+
+            <input type="radio" name="gender" value="male" >Male
+
+            <input type="radio" name="gender" value="female" checked>Female
+
+            <input type="radio" name="gender" value="transgender">Transgender<br/>
+
+            <input type="file" name="fileUpload">Upload File <br/>
+
+            <!-- If we want to keep a field hidden -->
+            <input type="hidden" name="hidden_data"><br/>
+
+            <input type="date" name="birthdate" placeholder="__/__/____"><br/>
+
+            <textarea name="message" rows="4" cols="50"></textarea>
+
+            <select name="country" multiple>
+                <option value="">Select country</option>
+                <option value="us">United States</option>
+                <option value="ca">Canada</option>
+                <option value="uk">United Kingdom</option>
+                <option value="in" selected>India</option>
+            </select> <br/>
+        </fieldset>
+        <input type="submit" value="Submit">
+        <input type="reset" value="Reset">
+
+    </form>
+    
+</body>
+</html>

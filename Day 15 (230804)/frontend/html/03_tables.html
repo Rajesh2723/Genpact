@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML table</title>
+    <link href="../css/style.css" type="text/css" rel="stylesheet"/>
+    <style>
+        table {
+            width: 50%;
+            margin: auto;
+        }
+
+        th, td {
+            padding:10px;
+            font-size: 25px;
+        }
+
+        caption {
+            font-size: 30px;
+            font-weight: bold;
+            text-decoration: underline;
+            margin-bottom: 10px;
+        }
+
+        /* Applying the same style to table , th and td */
+        table, th, td {
+            /* border-width: 2px;
+            border-style: solid;
+            border-color: black; */
+
+            /* Shorthand property */
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+
+        .center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <ul id="menu">
+        <li><a href="01_basic_tags.html">Basic tags</a></li>
+        <li><a href="02_lists.html">Lists</a></li>
+        <li><a id="active" href="03_tables.html">Tables</a></li>
+        <li><a href="04_form.html">Form</a></li>
+    </ul>
+    <table>
+        <caption>Books Details</caption>
+        <tr>
+            <th>S. No</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Author</th>
+        </tr>
+        <tr>
+            <td class="center">1.</td>
+            <td>Let Us C</td>
+            <td class="center">200</td>
+            <td>Yashwent</td>
+        </tr>
+        <tr>
+            <td class="center">2.</td>
+            <td>Let Us Cpp</td>
+            <td class="center">300</td>
+            <td>Ramesh Das</td>
+        </tr>
+        <tr>
+            <td class="center">3.</td>
+            <td>Java - TCR</td>
+            <td class="center">700</td>
+            <td>Herbert Schildt</td>
+        </tr>
+    </table>
+
+    <a href="hi">Hi</a>
+    
+</body>
+</html>

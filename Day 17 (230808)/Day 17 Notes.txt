@@ -1,0 +1,125 @@
+Day 17 Notes
+============
+Maven
+=====
+Maven is a build tool
+
+It helps us manage the dependencies.
+
+Dependencies are the libraries that our project needs.
+
+pom.xml
+-------
+- pom stands for Project Object Model
+- xml stands for Xtensible Markup Language
+
+There are 2 types of tags in xml:
+1. Paired tag : <test> Content </test>
+2. Unpaired tag : <test />
+
+In pom.xml we mention the libraries that we wish to use in our project.
+
+These libraries are mentioned inside <dependencies> tag
+
+Each library has it own <dependency> tag
+
+<dependencies>
+	<dependency>
+		library name
+	</dependency>
+</dependencies>
+
+Maven tool will activate once you save the file
+
+The libraries will be downloaded to :
+C:\Users\<username>\.m2\repository\ folder on our local system
+
+In the project, we have to make sure:
+
+1. The library that we have mentioned in pom.xml is visible under Maven Dependencies List
+
+2. Make sure the color of JAR icon is white.
+If it is not white we can not use it
+
+Maven Update
+------------
+Suppose we mentioned the library in pom.xml but it didn't download.
+
+Right click on Project -> Maven -> Update Project
+
+Do not confuse Maven with Web Application
+
+Maven is used to build a Java Application
+This Java application can be of any type:
+1. Desktop Application
+2. Web Application
+3. Enterprise application
+4. Micro applications
+5. etc
+
+Server will be used only when we create a Web/Enterprise application
+
+Inorder to create Maven Desktop app:
+
+We choose -> Catalog: Internal -> archetype: quickstart option
+
+Inorder to create Maven Web app:
+
+We choose -> Catalog: Internal -> archetype: webapp option
+
+Every type of application has somewhat different structure and different files
+
+Spring Framework
+-----------------
+Project:
+Step1: Create a Maven Project
+Step2: Include following dependencies in pom.xml
+
+For Spring basics, we need following libraries:
+1. Spring Core
+2. Spring Bean
+3. Spring Context
+
+Important terms
+===============
+Tight coupling
+--------------
+If the changes in 1 module effects the dependent module, it is known as Tight Coupling
+
+Loose Coupling
+--------------
+If the changes in 1 module does not effect the dependent module, it is known as Loose Coupling
+
+Dependency Injection
+--------------------
+Supplying the dependency to the dependent class at runtime is known as Dependency Injection (DI)
+
+Inversion Of Control
+--------------------
+The responsibilty of injecting the dependency shifts from the Programmer to Spring, this is known as Inversion of Control (IoC)
+
+Every application that we create is separated in layers
+
+In Spring DI and IOC is done by Spring Container
+
+Spring Container is also known as:
+1. DI Container
+2. IOC Container
+3. Spring Container
+
+Spring IOC container is represented by ApplicationContext interface and its implementation classes:
+
+1. ClasspathXMLApplicationContext : To read XML data from XML file
+
+2. FileSystemXMLApplicationContext : To read XML data from non-xml file
+
+3. AnnotationConfigApplicationContext : To read annotation data
+
+We have to supply the fully qualified name of the dependency bean with its data
+
+The Spring IOC container instantiates the objects, maintains them in the memory and provides them to the application as and when required.
+
+The instantiation is domne internally with constructor and setter methods.
+
+The main task of Spring IOC container is to manage the lifecycle of the beans
+

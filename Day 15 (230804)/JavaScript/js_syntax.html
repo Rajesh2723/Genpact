@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Syntax</title>
+</head>
+<body>
+
+<p id="ex1">This is a paragraph</p>
+
+<!-- Inline JS -->
+<button onclick="document.getElementById('ex1').innerHTML=Date()">
+    Change the content
+</button>
+
+<button onclick="document.getElementById('ex1').innerHTML='This is a paragraph'">
+    Back to Original
+</button>
+
+<hr/>
+
+
+<button onclick="document.getElementById('bulb').src='pic_bulboff.gif'">
+    Switch Off
+</button>
+
+<img id="bulb" src="./pic_bulbon.gif" />
+
+<button onclick="document.getElementById('bulb').src='pic_bulbon.gif'">
+    Switch On
+</button>
+
+<hr/>
+
+<p id="ex3">This is normal txt</p>
+
+<button onclick="document.getElementById('ex3').style.fontSize='25px'">
+   Make text big
+</button>
+
+<button onclick="document.getElementById('ex3').style.fontSize='16px'">
+    Make text normal
+</button>
+
+<hr/>
+
+<p id="ex4">This paragraph is displayed</p>
+
+<button onclick="document.getElementById('ex4').style.display='none'">
+   Hide the element
+</button>
+
+<button onclick="document.getElementById('ex4').style.display='block'">
+    Unhide the element
+</button>
+
+<hr/>
+<p id="ex5">This is paragraph 5</p>
+
+<button onclick="changeToBlueBg()">Change to blue background</button>
+<button onclick="changeToWhiteBg()">Change to white background</button>
+
+<hr/>
+
+
+<script src="script.js"></script>
+<p id="ex6">This is paragraph 6</p>
+<button onclick="changeStyle()">Change Style</button>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<script>
+    function changeToBlueBg(){
+        var x = document.getElementById('ex5');
+        x.style.backgroundColor = 'dodgerBlue';
+        x.style.color = 'white';
+    }
+
+    function changeToWhiteBg(){
+        var x = document.getElementById('ex5');
+        x.style.backgroundColor = 'white';
+        x.style.color = 'red';
+    }
+
+</script>
+</body>
+</html>

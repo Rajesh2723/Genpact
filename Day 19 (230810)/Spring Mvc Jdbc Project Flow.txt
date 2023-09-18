@@ -1,0 +1,297 @@
+11th October
+============
+
+Steps to get a table without entries in mvc_jdbc schema:
+1. Drop the books table
+2. Copy the create table query from sql file
+3. Change the table name to books in the query
+4. Run the query in Workbench
+
+Spring MVC-JDBC project
+=======================
+1. What we created is a Spring Web MVC Project
+2. Project Structure
+	Configuration files
+		We have 2 configuration files:
+		1. Deployment Descriptor - web.xml file
+		2. Spring Configuration file - dispatcher-servlet.xml
+		
+		- web.xml - Deployment Descriptor
+			It contains the details of the project and it is read by Tomcat Server when the application is deployed on the Server.
+			It contains the URL mapping of FrontController
+		- Front Controller - In Spring Web MVC, the Front Controller is the central entity that manages requests,    
+		  responses and view+model integration
+			This is the request/url mapping of DispatcherServlet
+			@WebServlet("/")
+			DispatcherServlet
+		- dispatcher-servlet.xml
+			It is the spring configuration file
+			It will contain the bean definitions 
+			Its name should be name-of-servlet-in web.xml - servlet
+			web.xml and dispatcher-servlet.xml MUST be kept inside WEB-INF folder
+				- <context:component-scan base-package="first.swm.project" />
+					It reads/scans all the @ annotations in the project.
+					The annotaions even if they are used are by default disabled
+					To enable them we use the above tag
+					
+					to include the above tag, we should include
+					xmlns:context="http://www.springframework.org/schema/context"
+					
+					http://www.springframework.org/schema/context 
+					http://www.springframework.org/schema/context/spring-context.xsd
+				- ViewResolver is a component that helps Front Controller to locate the view files and integrate data with view files
+		
+	Source Code
+		src/main/java
+			packages
+				controllers
+					It contains the controllers
+						- BookController
+						- NavigationController
+				dao
+					- BookDao (I) that lists all the DB operations
+					- BookDaoImpl that implements BookDao
+				entities
+					- Book
+	
+	Web Content (html, css, jsp, js, image files etc)
+		src/main/webapp
+			WEB-INF
+				views
+					- html
+					- jsp files
+==============================
+The whole game is about 6 things:
+
+1. Request URL
+2. Data coming from client to server
+3. Handler Controller and Method
+4. Data Processing
+5. Data sent to the client
+6. View Returned
+==============================
+Request 1: http://localhost:8080/01FirstSwmProject/
+This request will be handled by: DispatcherServlet
+
+NavigationController will handle all the requests that are of type: http://localhost:8080/01FirstSwmProject/
+BookController will handle all the requests that are of type: http://localhost:8080/01FirstSwmProject/book/
+
+Request 1
+=========
+1. Request URL: /
+2. Data coming from client to server: NO
+3. Handler Controller and Method: DispatcherServlet -> NavigationController -> openBookDashBoardPage(){}
+4. Data Processing: We are requesting the list of books from database
+5. Data sent to the client: List<Book> listOfBooks
+	There are 3 ways of sending data to the client
+		1. Model (I) - setAttribute(String key, Object value);
+		2. ModelAndView (C)
+		3. ModelMap (C)	
+5. View Returned: book_dashboard
+
+Data flow:
+1. Data will go from Client to the Handler Method
+2. Data will go from Handler Method to the Client 
+	model.addAttribute("listOfBooks", listOfBooks);
+3. Client is receiving data
+	request.getAttribute("listOfBooks");
+
+dashboard.jsp
+<table>
+	<tr>headings<tr>
+	<tr>dynamic-it depends upon the number of records in db<tr>
+	<tr>add button<tr>
+</table>
+
+Request 2
+=========
+1. Request URL: http://localhost:8080/01FirstSwmProject/openAddBookPage
+				http://localhost:8080/01FirstSwmProject/openAddBookPage
+                http://localhost:8080/01FirstSwmProject/openAddBookPage
+2. Data coming from client to server: NO
+3. Handler Controller and Method: DispatcherServlet -> NavigationController -> openAddBookPage(){}
+4. Data Processing: NO
+5. Data sent to the client: NO
+6. View Returned: book_add.jsp
+
+Request 3
+=========
+1. Request URL: http://localhost:8080/01FirstSwmProject/book/add
+2. Handler Controller and Method: DispatcherServlet -> BookController -> addBookRequest(){}
+3. Data coming from client to server: YES
+	- To send an image from client to server, post method is used
+	- To send an image from client to server, get method cannot be used
+
+	- How to receive data from the client
+		
+		@RequestParam("book_name") String bookName
+		
+		-> It is similar to 
+		
+		String bookName = request.getParameter("book_name");
+		
+		All the data is received as String type at client side.
+		
+		@RequestParam has the ability to change String data into basic data types
+		
+		Ex 1: @RequestParam("book_price") double bookPrice
+		Ex 2: @RequestParam("book_cover") MultipartFile bookCover 
+
+4. Data Processing: 
+		- We have to save the data in db
+		
+		- if book is added successfully
+			- get the updated list of books from the db
+			
+		- else if the book is not added
+			- do not get the list of updated books
+5. Data sent to the client: 
+		- if book is added successfully
+			- send the updated list of books to the client
+			- success message
+			
+		- else if the book is not added
+			- do not send the list of updated books
+			- failure message
+
+6. View Returned: 
+		- if book is added successfully
+			- open book_dashboard.jsp
+			
+		- else if the book is not added
+			- add_book.jsp
+=============================================
+Request 4
+=========
+1. Request URL: http://localhost:8080/01FirstSwmProject/book/delete/21
+2. Handler Controller and Method: DispatcherServlet -> BookController -> deleteBookRequest(){}
+3. Data coming from client to server: Yes 
+
+	-> 21 it is coming in the URL as a path variable
+
+	->  @PathVariable("bookId") int bookId 
+		
+		is similar to 
+		
+		int bookId = Integer.parseInt(request.getParameter("bookId"));
+
+4. Data Processing: 
+	Book will be deleted from the DB
+5. Data sent to the client: message - success/failure
+6. View Returned: book_dashboard.jsp
+================================================
+Request 5
+=========
+1. Request URL: http://localhost:8080/01FirstSwmProject/openUpdateBookPage/1
+2. Handler Controller and Method: DispatcherServlet -> NavigationController -> openUpdateBookPage(){}
+3. Data coming from client to server: Yes 
+
+	-> Book Id: 25 it is coming in the URL as a path variable
+
+	->  @PathVariable("bookId") int bookId 
+		
+		is similar to 
+		
+		int bookId = Integer.parseInt(request.getParameter("bookId"));
+
+4. Data Processing: 
+		Getting the details of the book to update from the database
+
+5. Data sent to the client: book details that we have to update
+
+6. View Returned: book_update.jsp
+Data will be set in the form fields
+================================================
+Request 6
+=========
+1. Request URL: http://localhost:8080/01FirstSwmProject/book/update/1?book_price=250.0&no_of_copies=0
+2. Handler Controller and Method: DispatcherServlet -> BookController -> updateBookRequest(){}
+3. Data coming from client to server: Yes 
+
+	-> Book Id: 25 it is coming in the URL as a path variable
+	-> Book Price & Book Copies: coming from a form
+
+	->  @PathVariable("bookId") int bookId 
+		@RequestParam("book_price")
+		@RequestParam("no_of_copies")
+
+4. Data Processing: 
+		Updating the book in the DB
+		
+		if data is updated successfully
+			get the updated list of books from table
+		
+		if data is not updated successfully
+	
+5. Data sent to the client: We use Model interface to send data to view
+
+6. View Returned: return the name of the view - ex: "book_dashboard"
+
+ModelAndView - It could be used to send both the data (model) and view together
+	- addObject(String key, Object value) ->  addObject("booksList", listOfBooks)
+	- setViewName(String viewName);
+Data will be set in the form fields
+================================================
+Request 7
+=========
+1. Request URL: http://localhost:8080/01FirstSwmProject/openBookDashBoardPage
+2. Handler Controller and Method: DispatcherServlet -> NavigationController -> openBookDashBoardPage(){}
+3. Data coming from client to server: NO
+4. Data Processing: 
+			get the list of books from table
+5. Data sent to the client: The list of books 
+6. View Returned: return the name of the view - ex: "book_dashboard"
+------------------------------------------------
+Spring Core
+-----------
+
+@Autowired
+	- Marks a constructor, field, setter method, or config method as to be autowired by Spring's dependency injection facilities. 
+
+Spring Web MVC
+--------------
+
+@Controller 
+	- Indicates that an annotated class is a "Controller"
+
+@RequestMapping 
+	- Annotation for mapping web requests onto methods in request-handling classes
+	- This annotation can be used both at the class and at the method level
+
+@RequestParam
+	- Used to fetch data from a request
+	- It can trnsform the String data into basic data types
+	- It is written as a method parameter
+	
+@PathVariable
+	- Used to fetch data from template url
+	
+Interfaces, Classes and Methods
+
+Model (I)
+	- to send data to the client using key-value pairs
+ModelAndView (C)
+	- to send data to the client using key-value pairs
+	- send the name of the view to open
+MultipartFile (I)
+	- It is used to receive and work on reveived binary file
+	
+Layers in our application
+1. View Layer - book_add.jsp, book_dashboard.jsp, book_update.jsp
+2. Controller layer - NavigationController, BookController and their methods
+3. Model Layer - Book, BookDao, BookDaoImpl, RowMapperImpl
+	Implemented the DAO (Database Access Object) pattern - Book, BookDao, BookDaoImpl
+	One object - BookDao
+	
+Spring JDBC
+-----------
+1. JdbcTemplate (C)
+2. DataSource (I)
+3. DriverManagerDataSource (C)
+4. RowMapper (I)
+5. RowMapperImpl (C)
+
+Methods of JdbcTemplate class
+- public int update(String sql, @Nullable Object... args)
+- public <T> T queryForObject(String sql, RowMapper<T> rowMapper, @Nullable Object... args)
+- public <T> List<T> query(String sql, RowMapper<T> rowMapper)

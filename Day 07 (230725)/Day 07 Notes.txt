@@ -1,0 +1,306 @@
+Day 07 Notes
+============
+Sets
+----
+- Sets do not allow duplicates
+
+Set's implementations are:
+1. HashSet
+2. LinkedHashSet
+3. TreeSet
+
+HashSet
+-------
+- Follows the properties of a Set
+- HashSet do not preserve the insertion order
+- HashSet allows null
+- HashSet uses HashMap data structure to store its elements
+- HashMap internally uses a technique called Hashing.
+
+Linked->Insertion order is preserved
+Hash->Hashing technique is used-> to make retrieval/searching faster
+Set->Unique elements
+
+LinkedHashSet
+-------------
+LinkedHashSet extends the HashSet class.
+
+- Follows all the properties of a Set and HashSet
+- LinkedHashSet preserves the insertion order.
+- The elements in a LinkedHashSet are stored using LinkedHashMap and doubly-linked list 
+
+It brings Insertion order in Sets (Unique)
+
+TreeSet
+-------
+- Insertion order is not preserved
+- Only unique elements
+- TreeSet does not allow null
+- TreeSet sorts the elements according to their [natural sorting order]
+0-9 for numbers
+a-z for strings
+- TreeSet stores elements in Tree data structure
+- The class must implement Comparable interface so that their objects can be stored in TreeSet
+
+If we want sorting in a set we use TreeSet
+If we don't want sorting but faster retrieval/manipulation we use HashSet
+If we want sequencing we use LinkedHashSet
+
+NullPointerException
+String name = null;
+name.charAt(1); // NullPointerException
+
+Sorting
+-------
+The mechanism for sorting is subtraction
+So, we have 2 numbers 10 and 20, 
+if 10-20 < 0, 10 is smaller than 20
+if 10-20 > 0, 10 is bigger than 20
+if 10-20 == 0, 10 and 20 are equal 
+Similarly for comparing 2 words, we subtract the ASCII value of alphabets one by one
+Example: In hi and hello, h, e and i have ASCII values: 104, 101 and 105, so
+h – h => 104-104 = 0, the first letters are equal
+i – e => 105 – 101 = 4, i is bigger than e (or we can say i comes after e)
+So hi comes after hello
+Answer: hello, hi
+This comparison is the basis of Sorting in Java
+
+Comparable
+----------
+- Comparable is a functional interface 
+- It contains a method named int compareTo (Object). 
+- The class whose objects we need to sort must implement the comparable interface and provide the implementation of compareTo method
+- Here we can sort class objects based on any one data member
+
+compareTo
+---------
+- compareTo must be defined in such a way to compare any one single property of two objects 
+- It should return
+	- positive integer, if the current object’s data member is greater than the specified object’s data member
+	- negative integer, if the current object’s data member is less than the specified object’s data member
+	- zero, if the current object’s data member is equal to the specified object’s data member
+
+Comparator
+----------
+- Comparator is a functional interface
+- It contains the method: compare (Object obj1, Object obj2)
+- Here we can sort class objects based on any data member not just one, unlike comparable interface
+
+compare () 
+----------
+In compare() both the objects can be passed as parameters. 
+
+Working is same as comapreTo 
+
+Queue (I)
+---------
+- It follows the FIFO or the First-In-First-Out principle.
+- It is an ordered list of objects
+- PriorityQueue is the direct implementation of Queue interface
+
+PriorityQueue
+-------------
+- It uses an Object array to store elements
+- A PriorityQueue is used when the objects are supposed to be processed based on the priority.
+
+For ex: Printing papers, Calendar scheduling
+
+Features 
+--------
+ - PriorityQueue doesn’t permit null.
+ - We can create a PriorityQueue of only those Objects whose class implement the Comparable interface
+
+Method Support
+--------------
+- It defines the methods that facilitate addition at the end of queue and deletion from the front
+
+- offer() : Inserts the specified element at the tail
+- poll() : Retrieves and removes the head.
+- peek() :	Retrieves, but does not remove, the head
+
+DeQueue
+-------
+- It is the child interface of Queue. 
+- It is a linear collection that supports element insertion and removal at both ends. 
+- The name deque is short for "double ended queue"
+- Deque can be used as both Stack (LIFO) and Queue (FIFO)
+
+ArrayDeque
+----------
+- Direct implementation of Deque interface
+
+Stack->LIFO
+Queue->FIFO
+
+ArrayDeque is used for both LIFO and FIFO
+
+ArrayDeque is faster than Stack and Queue when it comes to insertion and deletion at both ends
+
+- Insertion order is preserved
+- Duplicates are allowed
+- null is not allowed
+- It contains the methods that are used to add/remove elements efficiently from head (first) and tail (last)
+- offerFirst, offerLast, removeFirst, removeLast, peek, poll 
+
+Map Framework
+-------------
+Map Framework is a separate Framework to deal with Key-Value pairs
+
+Map
+---
+Map is the parent interface of Map Framework.
+
+HashMap
+-------
+ - The most used implementation of Map interface
+ - Contains key value pairs
+ - key and value can be of any data type
+ - null key is allowed but only once
+ - null values are allowed
+ - we can fetch a value using key
+ - keys form a hash set
+ - values form a collections
+ - The entries are not sorted, nor is there insertion order preserved
+
+LinkedHashMap
+-------------
+- LinkedHashMap extends HashMap
+- It is the same as HashMap with an additional feature 
+  that it maintains insertion order according to keys 
+
+Hashtable
+---------
+- Hashtable is similar to HashMap with the only difference that all its methods are synchronized, i.e. thread safe.
+
+TreeMap
+-------
+- The map is sorted according to the natural ordering of its keys, 
+or by a Comparator provided at map creation time
+
+Streams API
+===========
+- Streams API is used to filter and sort Collections
+- Stream API was introduced in Java 8
+- It heavily depends on 
+	- Generics
+	- Functional Interfaces
+	- Lambda Expressions
+	- Method references
+- Streams API work on Arrays as well as any Collection classes
+
+The whole operation of sorting and filtering can be divided into 3 steps:
+
+1. Creating a Stream
+2. Calling the intermediate functions
+3. Calling a terminal function
+-------
+1. Creating a Stream
+	- Is compulsory
+	- To get a stream on
+		- collection classes use strList.stream()
+		- array use Stream.of(arr)
+
+2. Calling the intermediate functions
+	- is optional
+	- we can have multiple intermediate functions chained together
+	- will not even start working if there is no terminal function
+	- There are 8 intermediate operations:
+		1.	filter()
+		2.	map()
+		3.	flatMap()
+		4.	distinct()
+		5.	sorted()
+		6.	peek()
+		7.	limit()
+		8.	skip()
+
+3. Calling a terminal function
+	- is compulsory
+	- we can have only 1 terminal function
+	- it makes the intermediate functions operate on the data
+	- It is also known as aggregate function
+	- There are 13 terminal operations 
+		1.	toArray()
+		2.	collect()
+		3.	count()
+		4.	reduce()
+		5.	forEach()
+		6.	forEachOrdered()
+		7.	min()
+		8.	max()
+		9.	anyMatch()
+		10.	allMatch()
+		11.	noneMatch()
+		12.	findAny()
+		13.	findFirst()
+
+Stream
+-------	
+- Stream<T> is an Interface
+- It is central to the mechanism of Streams API
+- It is present in java.util.stream package
+
+Working
+-------
+When we call stream() on any collection or Stream.of() on an array, a new Stream instance is created with the elements of the collection/array. This new stream is capable of internal iteration
+
+For ex: 
+List<Integer> l = Arrays.asList(1,2,3,4,5);
+Stream<Integer> s = l.stream();
+
+s = [1,2,3,4,5]
+
+Now the intermediate methods and terminal methods can work on 1 element at the same time. This is known as parallel processing
+
+filter
+------
+- filter is used to filter the collections and arrays
+- We have to pass a test condition for filtration
+- It is an intermediate function
+
+forEach
+-------
+- If we want to perform some operation to each element of a collect we use the forEach method 
+- forEach takes in Consumer
+- It is a terminal method
+
+collect
+-------
+- Stream.collect() is one of the Java 8's Stream API‘s terminal methods. 
+- It helps to repackage elements to some data structures
+- The strategy for this operation is provided via the 
+Collector interface implementation.
+
+Static Import
+-------------
+If we want to use a static method say collect(Collectors.toList())
+We can do:
+
+import static java.util.stream.Collectors.toList;
+collect(toList())
+
+Collectors class
+----------------
+Collectors.toList()
+
+- The toList collector can be used for collecting all Stream elements into a List instance. 
+
+Collectors.toSet()
+------------------
+- The toSet collector can be used for collecting all Stream elements into a Set instance.
+
+In both the above - The important thing to remember is that we can't assume any particular List/Set implementation with this method.
+
+Collectors.toCollection()
+-------------------------
+- When using the toSet and toList collectors, we can't make any assumptions of their implementations. 
+- If we want to use a custom implementation, we'll need to use the toCollection collector with a provided collection of our choice.
+ex: collect(toCollection(LinkedList::new));
+
+Arrays Parallel Sort
+====================
+- Java 8 introduced a new method called as parallelSort() in java.util.Arrays Class. 
+- It uses Parallel Sorting of array elements
+
+Syntax: Arrays.parallelSort(numbers);
+-----X-----X-----X-----X-----X-----X-----

@@ -1,0 +1,11 @@
+Q 01: Lambda Expressions:
+
+Create a functional interface SimpleInterest with an 
+abstract method calculateSi that takes in three parameters of type double 
+and returns a double.
+
+Create a Main execution class and implement this functional interface:
+
+1. With an implementation class
+2. Anonymous class
+3. Lambda expression

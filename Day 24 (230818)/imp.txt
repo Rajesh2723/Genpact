@@ -1,0 +1,14 @@
+commons io - only for file upload/download
+version of all spring dependencies must be same
+remove Common dependency from 
+sprint-servlet.xml 
+
+Not AdminDao but adminDao
+Not CustomerDao but customerDao
+All the html/css/js files should be in lowercase and if made by 2 words should be joined by _
+
+Put client side validations on all the forms
+
+Password autogenerate
+
+Go to admin dashboard

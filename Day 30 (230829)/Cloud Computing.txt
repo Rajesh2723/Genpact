@@ -1,0 +1,245 @@
+Cloud Computing
+===============
+What is Cloud Computing?
+------------------------
+Cloud computing is the on-demand availability of computer system resources, especially data storage and computing power, without direct active management by the user. 
+
+Ex: 
+
+Google Drive : It is a cloud-based storage service that enables users to store and access files online.
+
+Adobe Creative Cloud : It is a collection of creative desktop and mobile tools.
+
+History of Cloud Computing
+--------------------------
+- In the 1900s, cloud referred solely to data centers that was limited for the use of inhouse engineers
+- In the 2000s, the application of cloud computing began to take shape with the establishment of Amazon Web Services.
+- Amazon Web Services (AWS) was officially launched in 2006
+- In 2006 the beta version of Google Docs was released
+- In 2010, Microsoft launched Microsoft Azure
+- IBM introduced the IBM SmartCloud framework in 2011.
+- Oracle announced the Oracle Cloud in 2012.
+- Since the global pandemic of 2020, cloud technology has surged in popularity due to the level of data security it offers and the flexibility of working options it provides for all employees, notably remote workers.
+
+Why is Cloud Computing popular?
+Characteristics of Cloud Computing
+Benefits of Cloud Computing
+---------------------------
+The benefits/characteristics of cloud:
+
+1. Scalability: Cloud lets you easily adjust how much computing power you use. It grows or shrinks with your needs, so you don't waste resources.
+
+2. Cost Efficiency: Cloud is like a utility bill — you pay only for what you use, saving money on buying and maintaining physical hardware.
+
+3. Flexibility and Agility: Cloud quickly adapts to changes. You can add new things and respond to opportunities faster.
+
+4. Accessibility: Cloud is online, so you can work from anywhere, using any device. It's like having your stuff with you wherever you go.
+
+5. Reliability and Availability: Cloud services are super reliable, with backup plans. This means less downtime and more confidence in your systems.
+
+6. Global Reach: Cloud is everywhere. It helps businesses serve customers around the world without needing physical locations everywhere.
+
+7. Innovation: Cloud brings cool new tech like AI and big data. You can use these advanced tools without being a tech expert.
+
+8. Ease of Management: Cloud services are easy to control. You can do tasks like adding new tools or monitoring things without a ton of tech knowledge.
+
+9. Disaster Recovery and Data Backup: Cloud has safety nets. Your data is stored in multiple places, so even if something goes wrong, you won't lose important stuff.
+
+10. Environmental Impact: Cloud is eco-friendly. It shares resources, using less energy and being kinder to the planet.
+
+11. Reduced IT Maintenance: Cloud services do most of the boring upkeep tasks for you, giving your IT team more time to work on important projects.
+
+12. Easier Software Deployment: Cloud makes it simple to put new software out there. Updates happen smoothly and quickly for everyone using it.
+
+Cloud Computing Architecture
+----------------------------
+The architecture has 2 main aspects:
+1. Frontend
+2. Backend
+
+Refer Image: 06_cloud_infra.png
+
+Frontend
+--------
+- Front End is used by the client-side. 
+- It contains the interfaces that are essential for accessing the platforms of cloud computing.
+- For example : Web browser, Private Window etc
+
+Back End
+--------
+- Back End has the complete responsibility of monitoring all the programs responsible for running the applications on the Front End. 
+
+- It is mainly used by the service provider. 
+
+- It has to manage all the resources which are necessary for providing Cloud Computing Services. 
+
+- Back End involves massive amounts of data storage, security operations, virtual machines, servers, and many more.
+
+Cloud Computing Architecture is a mixture of Service Oriented Architecture (SOA) and Event-Driven Architecture (EDA). 
+
+The modules of Cloud Computing Architecture are mentioned below and they are as follows:
+
+1. Client Infrastructure
+
+2. Application Service
+
+3. Runtime
+
+4. Storage
+
+5. Infrastructure
+
+6. Management
+
+7. Security
+-------------------------
+Types of Clouds
+===============
+There are four main types of cloud deployment models: 
+1. Public cloud
+2. Private cloud
+3. Hybrid cloud
+4. Community cloud
+
+Public Cloud
+------------
+- The public cloud is defined as computing services offered by third-party providers over the public Internet
+
+- These are available to anyone who wants to use or purchase them. 
+
+- They may be free or sold on-demand, allowing customers to pay only per usage for the CPU cycles, storage, or bandwidth they consume.
+
+Ex: AWS, MicroSoft Azure, Google Cloud
+
+Private Cloud
+-------------
+- Private clouds are dedicated to a single organization. 
+
+- They can be hosted on-premises (within the organization's own data center) or externally by a cloud provider. 
+
+- Private clouds offer greater control, customization, and security as resources are not shared with other users. 
+
+- They are often chosen by businesses that have specific security or compliance requirements.
+
+Ex: Amazon Virtual Private Cloud (VPC), VMware & IBM
+
+Hybrid Cloud
+------------
+- Hybrid clouds combine elements of both public and private clouds. 
+
+- Organizations use a hybrid cloud to balance their needs for scalability and cost-effectiveness with their requirements for security and control. 
+
+- This allows workloads to move between private and public clouds based on demand, compliance needs, and other factors.
+
+Ex: AWS Outposts, Microsoft Azure Arc, Google Anthos
+
+Community Clouds
+----------------
+A community cloud is a specific type of cloud computing deployment model that is designed to serve the needs of multiple organizations or entities with common interests, goals, or compliance requirements. 
+
+In a community cloud, a group of organizations share computing resources, infrastructure, and services while maintaining some level of isolation from the public.
+
+Key characteristics
+-------------------
+A community cloud is a specific type of cloud computing deployment model that is designed to serve the needs of multiple organizations or entities with common interests, goals, or compliance requirements. In a community cloud, a group of organizations share computing resources, infrastructure, and services while maintaining some level of isolation from the public.
+
+Key characteristics of a community cloud include:
+
+Certainly, here are the key points about community clouds:
+
+- Community clouds are a type of cloud computing deployment model.
+- They serve multiple organizations with shared interests or compliance requirements.
+- Organizations share infrastructure, resources, and services.
+- There is a level of isolation from the public.
+- Community clouds offer customization options.
+- Costs are shared among participating organizations.
+- Collaboration and resource sharing are encouraged.
+- Managed by third-party providers or a consortium of organizations.
+- Beneficial for industries with strict compliance needs.
+- Balances control, security, and collaboration aspects.
+
+Community clouds are particularly beneficial for industries or sectors that require strict compliance with regulations, such as healthcare, finance, and government. By pooling resources and expertise, organizations within a community can achieve economies of scale while addressing their unique needs.
+-----X-----X-----X-----X-----X-----X-----X-----
+Cloud Computing Services
+========================
+Cloud computing services are categorized into three main models: 
+
+open source(free) - piracy - competition(won)
+
+1. Software as a Service (SaaS)
+2. Platform as a Service (PaaS)
+3. Infrastructure as a Service (IaaS).
+
+SaaS (Software as a Service)
+----------------------------
+- SaaS delivers software applications over the internet.
+
+- Users access software through a web browser, eliminating the need for local installation.
+
+- Updates and maintenance are managed by the provider.
+
+- Example: Adobe Creative Cloud 
+
+The Creative Cloud All Apps plan has 20+ creative apps, including Adobe Photoshop, Illustrator, Premiere Pro, After Effects, InDesign and Acrobat Pro.
+
+PaaS (Platform as a Service)
+----------------------------
+- PaaS provides a platform for developers to build, deploy, and manage applications.
+
+- Developers can focus on coding without managing underlying infrastructure.
+
+- Offers development tools, database management, and application hosting.
+
+- Examples: Google App Engine, Microsoft Azure App Service.
+
+IaaS (Infrastructure as a Service)
+----------------------------------
+- IaaS offers virtualized computing resources over the internet.
+
+- Users can rent virtual machines, storage, and networking components.
+
+- Users have control over operating systems and applications.
+
+- Examples: Amazon EC2, Microsoft Azure Virtual Machines.
+
+Amazon Web Services
+-------------------
+Certainly, here are some important points about Amazon Web Services (AWS):
+
+1. Leading Cloud Provider: AWS is one of the largest and most popular cloud computing platforms globally, offering a wide range of services and resources.
+
+2. Services Portfolio: AWS provides a vast array of cloud services, including computing power, storage, databases, machine learning, analytics, networking, security, and more.
+
+3. Global Data Center Presence: AWS operates in multiple geographic regions around the world, allowing users to deploy resources close to their target audience for improved performance.
+
+4. Pay-as-You-Go Pricing: AWS follows a flexible pricing model where users pay for the resources they use, enabling cost optimization and scalability.
+
+5. Elastic Compute Cloud (EC2): EC2 provides virtual servers in the cloud, allowing users to quickly scale up or down based on demand.
+
+6. Simple Storage Service (S3): S3 offers scalable and durable object storage for various data types, making it a foundational service for storing and retrieving data.
+
+7. Lambda: AWS Lambda enables serverless computing, allowing developers to run code in response to events without managing servers.
+
+8. Elastic Beanstalk: Elastic Beanstalk simplifies application deployment by automatically handling infrastructure provisioning and monitoring.
+
+9. Amazon RDS: Amazon Relational Database Service provides managed database solutions, supporting various database engines like MySQL, PostgreSQL, and more.
+
+10. Amazon DynamoDB: A fully managed NoSQL database service designed for high scalability and low-latency performance.
+
+11. AWS Identity and Access Management (IAM): IAM allows users to control access to AWS resources, enhancing security through granular permissions.
+
+12. Amazon VPC: Virtual Private Cloud enables users to create isolated network environments and connect them to on-premises networks securely.
+
+13. Auto Scaling: Auto Scaling automatically adjusts the number of instances to handle changes in traffic, ensuring optimal performance and cost efficiency.
+
+14. AI and Machine Learning Services: AWS provides tools for machine learning, natural language processing, and computer vision, including Amazon SageMaker and AWS Deep Learning AMIs.
+
+15. Security and Compliance: AWS adheres to strict security practices, certifications, and compliance standards to ensure data protection and regulatory compliance.
+
+16. Hybrid and Multicloud Solutions: AWS offers services like AWS Outposts and AWS Direct Connect to enable seamless integration between on-premises infrastructure and the cloud.
+
+18. Well-Architected Framework: AWS provides guidelines for building secure, high-performing, resilient, and efficient infrastructure through its Well-Architected Framework.
+
+https://ap-south-1.console.aws.amazon.com/console/home?nc2=h_ct&region=ap-south-1&src=header-signin#
+
+https://us-east-1.console.aws.amazon.com/console/home?nc2=h_ct&region=us-east-1&src=header-signin#

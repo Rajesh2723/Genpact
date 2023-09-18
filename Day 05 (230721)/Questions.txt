@@ -1,0 +1,41 @@
+Q01 : Create Interface Taxable with members salesTax=7% and incomeTax=10.5%.
+
+Create abstract method calcTax().
+
+a. Create class Employee(empId,name,salary) and implement Taxable to calculate incomeTax on yearly salary.
+
+b. Create class Product(pid,price,quantity) and implement Taxable to calculate salesTax on unit price of product.
+
+c. Create class for main method(Say XYZ), accept employee information and a product information from user and print income tax and sales tax respectively.
+
+Q02: Create a method validateVoter(age) which throws an exception if age is less than 18. The method will delegate the exception handling to caller method
+
+In main method handle the exception
+
+Q03: Create a custom Exception: AgeNotValid and make it compulsory for main method to handle it
+
+Q04: Create three classes : 
+Faculty (facultyid, salary)
+
+FullTimeFaculty (basic, allowance) inherits class Faculty.
+
+PartTimeFaculty (hour, rate) inherits class Faculty
+
+Create a method for accepting input in FullTimeFaculty and PartTimeFaculty, but salary should not be accepted. Salary is calculated on the basis of (basic+allowance) for FullTimeFaculty and (hour*rate) for PartTimeFaculty. 
+
+Also create method in above classes to display faculty data.
+
+Create another class(say XYZ) for main method and store 2 fulltime and 2 parttime faculty information. Also print their details.
+
+Q 05: Lambda Expressions:
+
+Create a functional interface SimpleInterest with an abstract method calculateSi that takes in three parameters of type double and returns a double.
+
+Create a Main execution class and implement this functional interface:
+
+1. With an implementation class
+
+2. Anonymous class
+
+3. Lambda expression
+-----X-----X-----X-----X-----X-----X-----

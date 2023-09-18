@@ -1,0 +1,20 @@
+Spring Boot Project on AWS
+==========================
+1. Launch an EC2 instance
+2. Connect Server using ssh command
+ssh -i <key-file> <instance_IP_Or_DNS_name>
+
+ssh -i demo-spring.pem ec2-user@ec2-13-232-25-24.ap-south-1.compute.amazonaws.com
+
+3. Install Java on EC2
+
+4. Copy Jar onto server
+scp -i <key-file> <jar-file-name> <instance_IP_Or_DNS_name>:~/spring
+
+scp -i demo-spring.pem SbAwsDemo-0.0.1-SNAPSHOT.jar ec2-user@ec2-13-232-25-24.ap-south-1.compute.amazonaws.com:~/spring
+
+5. Start spring boot app
+java -jar <jar-file-name>
+
+6. Try to access application
+

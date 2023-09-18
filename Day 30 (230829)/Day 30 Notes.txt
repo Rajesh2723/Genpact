@@ -1,0 +1,158 @@
+Day 30 Notes
+============
+Git
+===
+Version Control System(VCS)
+---------------------------
+- A version control system (VCS), also known as a source control or revision control system, is a software tool that helps developers and teams manage changes to their code, documents, and other types of files over time. 
+
+- It provides a structured way to track, organize, and coordinate modifications made by multiple contributors to a shared codebase or project.
+
+Features of a VCS
+-----------------
+1. History Tracking:
+
+- VCS creates a comprehensive timeline of edits made to files, showing who, when, and what changes were made.
+
+- This historical view helps pinpoint issues, understand project evolution, and maintain a clear audit trail.
+
+2. Team Collaboration:
+
+- VCS facilitates efficient teamwork by permitting simultaneous contributions. 
+
+- Developers can create separate branches to work on features independently, later merging changes to ensure a coherent final product. 
+
+- Code reviews become streamlined, enhancing code quality.
+
+3. Risk Mitigation: 
+
+- VCS acts as a safety net. 
+
+- Teams can experiment with new ideas without fear of breaking the project irreparably. 
+
+- If problems arise, previous working versions can be easily restored, protecting against errors and data loss.
+
+Types of Version Control Systems
+-------------------------------
+There are two main types of Version Control Systems:
+1. Centralized Version Control Systems (CVCS)
+2. Distributed Version Control Systems (DVCS)
+
+CVCS
+----
+- In CVCS, a central server hosts the entire repository.
+
+- Multiple developers check out and commit changes directly to this central repository. 
+
+- This type of system relies on a single point of control and has the advantage of ensuring that everyone has the latest version of the code. 
+
+- However, it can become a bottleneck in terms of performance and availability if the central server experiences issues.
+
+Ex: Subversion (SVN)
+
+DVCS
+----
+- DVCS, also known as decentralized version control systems, offer a more distributed approach. 
+
+- Every developer has a complete copy of the repository, including the full history of changes. 
+
+- Developers can work independently and commit changes locally. 
+
+- Later, they can synchronize their changes with others by pushing and pulling changes between repositories. 
+
+- This approach offers better flexibility and redundancy, as there's no single point of failure.
+
+Example: Git
+-----X-----X-----X-----X-----X-----X-----
+What is Git?
+============
+- Git is a distributed version control system designed for tracking changes in source code during software development.
+
+- It allows multiple developers to collaborate on a project, keeping track of changes, and maintaining a history of those changes.
+
+- It was developed by Linus Torvalds in 2005
+
+- Git has become the most widely used version control systems.
+
+How does Git work?
+==================
+- Git stores data as a series of snapshots. Each snapshot represents the state of the entire project at a certain point in time.
+
+- It uses a data structure called a "commit" that contains a pointer to the snapshot, author's information, timestamp, and a reference to the previous commit, forming a linked history.
+
+- Instead of just tracking changes, Git tracks the content itself. It employs hashing to ensure data integrity, and identical files are stored as references to the same content.
+
+Branches
+========
+- Branches are used to isolate development work without affecting the main project.
+
+- The default branch is usually called "master" or "main". Developers create new branches for features or fixes.
+
+- Branches allow multiple features to be developed concurrently, and changes can be merged back into the main branch when ready.
+
+Commits
+=======
+- A commit is a record of changes made to the repository.
+
+- Developers make changes, stage them (add to the staging area), and then commit those changes.
+
+- Each commit is identified by a unique hash and contains information about the changes, the author, and a reference to the previous commit.
+
+Git Repository
+--------------
+A Git repository is a centrailized location where the project is stored for collaboration and that works with git.
+Popular Git repositories:
+1. GitHub
+2. GitLab
+3. Bitbucket
+
+GitHub
+------
+- GitHub is a web-based platform that provides hosting for version control repositories primarily using the Git version control system. 
+
+- It serves as a collaborative platform for developers and teams to manage their code, track changes, collaborate on projects, and engage in discussions. 
+
+Git and Github Workflow
+-----------------------
+Sure, I'd be happy to explain the flow of Git using the terms you provided:
+
+1. Working Directory: This is the directory on your local machine where you have your project files. It contains all the files you're actively working on.
+
+2. Staging Area (Index): The staging area is where you prepare your changes before committing them. You use the `git add` command to move changes from the working directory to the staging area.
+
+3. Local Repository: The local repository is where Git stores the history of your project and all its versions. It includes all the committed changes, branches, tags, and other Git-related information. It's located in the `.git` directory within your project's root directory.
+
+4. Remote Repository: The remote repository is hosted on a remote server (like GitHub, GitLab, or Bitbucket) and serves as a centralized location where the code is shared among team members. Multiple developers can collaborate by pushing and pulling changes to and from this remote repository.
+
+Now, let's go through the Git workflow using the terms you mentioned:
+
+- Add: When you make changes to your files in the working directory, you use the `git add` command to stage those changes in the staging area. This means you're preparing these changes to be committed.
+
+- Commit: After you've added changes to the staging area, you use the `git commit` command to create a commit. A commit is a snapshot of the changes you've staged, along with a commit message that describes the changes. Commits are stored in the local repository's history.
+
+- Push: When you want to share your local commits with others or update the remote repository with your changes, you use the `git push` command. This sends your committed changes from your local repository to the remote repository.
+
+- Clone: To start working on an existing repository that someone else has created (on a remote server), you use the `git clone` command. Cloning creates a copy of the remote repository on your local machine, including its history and all the files.
+
+- Checkout: You use the `git checkout` command to switch between different branches or commits in your local repository. This lets you work on different features or explore different points in your project's history.
+
+- Pull: To incorporate changes from the remote repository into your local repository, you use the `git pull` command. This fetches the latest changes from the remote repository and merges them into your current branch.
+
+In summary, the Git workflow involves making changes in your working directory, staging them in the staging area, committing them to your local repository, pushing changes to a remote repository, and pulling changes from a remote repository. This allows for collaborative development, version control, and efficient management of code changes.
+
+Environment Setup
+-----------------
+We need 2 things to work on Git:
+
+1. Git Client on our computer 
+	- Download it from https://git-scm.com/
+	- Install it. Its an easy next->next installation. Keep all the defaults
+
+2. Remote Git Repository - Github
+	- Create an account on Github
+	Step1: Register on Github
+
+Github URL: https://github.com/
+email:kaustubhchoudhary@yahoo.com
+password: 
+username: kaustubh_choudhary

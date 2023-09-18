@@ -1,0 +1,25 @@
+Agenda
+------
+1 hour
+------
+1. Assessment - MCQs (30 mins)
+2. MCQs discussion (15 mins)
+
+30 mins
+-------
+3. Remaining trainees assessment
+4. Data types
+
+1 hour
+------
+5. Functions in MySQL Expressions
+6. Using Functions
+7. String Functions
+8. Date and time functions
+9. Numeric Functions
+10. Spacial Function
+
+1 hour
+------
+11. Joins (remaining)
+12. Normalization

@@ -1,0 +1,283 @@
+SQL (Structured Query Language)
+===============================
+What is SQL?
+-> SQL stands for Structured Query Language
+-> It is the official language to communicate with the database
+-> Simply put, to work with any database we need to write SQL Instructions
+-> SQL instructions are known as SQL Queries
+-> SQL lets us access and manipulate databases
+
+What Can SQL do?
+----------------
+SQL can
+> retrieve data from a database
+> insert, update, delete records in/from a database
+> SQL can create new databases, new tables & alter them
+
+CRUD Operation
+--------------
+Create - database, tables, records, views, indexes etc
+Retrieve - information (records, internal details)
+Update - table definition, records
+Delete - record, table, database 
+
+SQL Commands
+-------------
+SQL uses certain commands like Create, Drop, Insert, etc. to carry out the required tasks.
+ 
+These SQL commands are mainly categorized into following 5 categories as: 
+
+1. DDL - Data Definition Language
+2. DML - Data Manipulation Language
+3. DQL - Data Query Language
+4. DCL - Data Control Language
+5. TCL - Transaction Control Language
+-------------------------------------
+1. DDL - Data Definition Language
+
+List of DDL commands: CREATE, DROP, TRUNCATE, ALTER
+
+CREATE: This command is used to create/manipulate the database or its objects (like table, index, function, views, store procedure, and triggers).
+
+Query 1: Create a database that will hold all the tables of a software
+
+CREATE SCHEMA school;
+
+Query 2: Create a table that actually holds the data in rows and columns
+
+CREATE TABLE students (
+  _id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(45) NULL,
+  email VARCHAR(45) NULL,
+  course VARCHAR(45) NOT NULL,
+  fees VARCHAR(45) NOT NULL,
+  enrollment_date DATE NOT NULL,
+  PRIMARY KEY (_id),
+  UNIQUE INDEX _id_UNIQUE (_id ASC) VISIBLE,
+  UNIQUE INDEX email_UNIQUE (email ASC) VISIBLE);
+
+Showing How a Table Was Created
+-------------------------------
+Query: SHOW CREATE TABLE students;
+Result: The create table query for current table
+
+Query 3: Change the name, data type and length of some columns with alter command. Alter is used to alter the structure of the database.
+
+ALTER TABLE students 
+CHANGE COLUMN _id student_id INT NOT NULL,
+CHANGE COLUMN name student_name VARCHAR(30) NOT NULL ,
+CHANGE COLUMN email student_email VARCHAR(30) NOT NULL ,
+CHANGE COLUMN course student_course VARCHAR(20) NULL ,
+CHANGE COLUMN fees course_fees DOUBLE NULL ,
+CHANGE COLUMN enrollment_date course_enrollment_date DATE NULL ;
+
+DROP: This command is used to delete objects from the db
+Syntax: DROP TABLE table_name;
+Syntax: DROP DATABASE schema_name;
+
+TRUNCATE: This is used to remove all records from a table
+Ex: TRUNCATE TABLE <table-name>
+
+We will do the above later at the end
+
+2. DML - Data Manipulation Language
+
+The SQL commands that deals with the manipulation of data
+
+List of DML commands: 
+
+INSERT : It is used to insert data into a table.
+
+Syntax1: INSERT INTO table_name (column1, column2, column3, ...) VALUES (value1, value2, value3, ...); 
+
+Query 4: INSERT INTO students (student_id, student_name, student_email, student_course, course_fees, course_enrollment_date) VALUES ('101', 'Harsh', 'harsh@gmail.com', 'Core Java', '5000', '2023-05-29');
+
+Query 5: Insert query without column names
+
+INSERT INTO students VALUES (102, 'Madhavi', 'madhavi@yahoo.com', 'Core Python', 18000, '2023-06-01');
+
+Query 6: Insert multiple records at once
+
+INSERT INTO students VALUES 
+(103, 'Yash', 'yash@hotmail.com', 'Advanced Java', 12000, '2022-12-31'),
+(104, 'Mithun', 'mithun@hotmail.com', 'Core Java', 5000, '2023-06-30'),
+(105, 'Raj', 'raj@gmail.com', 'Advanced Java', 8000, '2022-12-31'),
+(106, 'Shekhar', 'shekhar@yahoo.com', 'Core Python', 5000, '2023-01-01'), 
+(107, 'Sapna', 'sapna@gmail.com', 'Advanced PHP', 10000, '2023-06-07');
+
+UPDATE: It is used to update existing data within a table.
+Syntax: UPDATE table_name SET column1 = value1, column2 = value2, ... WHERE condition;
+
+Query 7: UPDATE school.students SET student_course = 'Java - Spring', course_fees = 12000 WHERE student_id = 101;
+
+DELETE : It is used to delete records from a database table.
+
+Syntax: DELETE FROM table_name WHERE condition;
+
+Query 8: DELETE FROM students WHERE student_id = 103;
+
+3. DQL - Data Query Language
+
+DQL statements are used fetch data from one table or multiple tables
+
+SELECT
+------
+It is used to retrieve data from the database.
+
+SELECT <column-list> FROM <table-name> WHERE <condition>
+
+Syntax 1: Fetch specific columns from table
+SELECT column1, column2, ... FROM table_name;
+
+Query 9: SELECT student_name, student_course FROM students;	
+
+Syntax 2: To select all columns at once
+SELECT * FROM table_name;
+
+Query 10: SELECT * FROM students;
+
+Syntax3: To fetch columns based on a condition
+SELECT column1, column2, ... FROM table_name WHERE condition;
+
+Query 11: SELECT student_name, student_course FROM students WHERE student_course LIKE ('%Java%') ;
+
+Restricting Data with WHERE, AND, OR, comparison and other operators
+-----------------------------------------------
+WHERE
+-----
+Query 12: SELECT student_name, student_course, course_fees FROM students WHERE course_fees > 10000;
+
+WHERE & AND
+-----------
+Query 13: SELECT student_name, student_course, course_fees FROM students WHERE student_course LIKE ('%Java%') AND course_fees > 10000;
+
+WHERE & OR
+----------
+Query 14: SELECT student_name, student_course, course_fees FROM students WHERE student_course LIKE ('%Python%') OR course_fees > 10000;
+
+WHERE & BETWEEN
+---------------
+Admissions BETWEEN 1st Jan 2023 and 30th June 2023 in ascending order of joining
+
+Query 15: SELECT student_name, student_course, course_enrollment_date FROM students WHERE course_enrollment_date BETWEEN '2023-01-01' AND '2023-06-30' ORDER BY course_enrollment_date ASC;
+
+** '2023-01-01' AND '2023-06-30' are inclusive
+
+WHERE & LIKE
+------------
+Query 16: SELECT * FROM students WHERE student_email LIKE '%gmail%';
+
+Sorting - ORDER BY
+------------------
+Query 17: SELECT * FROM students ORDER BY student_id DESC;
+
+Query 18: Java Students arranged in descending order of their fees
+
+SELECT * FROM students WHERE student_course LIKE '%JAVA%' ORDER BY course_fees DESC;
+
+Aggregate Functions 
+-------------------
+Aggregate functions return the result of a query as 1 final answer. For ex: the total no of records, the total sum, min/max, avg value of all
+
+There are 5 aggregate functions:
+COUNT(), MIN(), MAX(), AVG(), SUM()
+
+Query 19: Get total no of records
+- SELECT COUNT(*) FROM students
+
+Query 20: Count the no of students doing Core courses
+- SELECT COUNT(*) FROM students WHERE student_course LIKE '%Core%';
+
+Query 21: Get minimum fees
+SELECT MIN(course_fees) FROM students
+
+Query 22: Get maximum id
+SELECT MAX(student_id) FROM students;
+
+Query 23: Calculate total fees of all students
+SELECT SUM(course_fees) FROM students;
+
+Query 24: Calculate average fees of all students
+SELECT AVG(course_fees) FROM students;
+----------------------
+4. DCL - Data Control Language
+
+DCL includes commands such as GRANT and REVOKE which mainly deal with the rights, permissions, and other controls of the database system. 
+
+List of  DCL commands: 
+
+GRANT: This command gives users access privileges to the database.
+
+Syntax: GRANT privileges ON object TO user;
+Example: GRANT ALL ON Users TO 'Amit'@'localhost;
+
+REVOKE: This command withdraws the user’s access privileges given by using the GRANT command.
+Syntax: REVOKE privileges ON object FROM user;
+Example: REVOKE ALL ON Users FROM 'Amit'@'localhost;
+
+5. TCL - Transaction Control Language
+TCL commands deal with the transaction within the database. 
+List of TCL commands: 
+
+COMMIT: Commits a Transaction. make permanent changes to the data
+ROLLBACK: Rollbacks a transaction in case of any error occurs.
+----------------------------
+Sub Queries
+===========
+A Subquery or Inner query or a Nested query is a query within another SQL query and embedded within the WHERE clause.
+
+A subquery is used to return data that will be used in the main query as a condition to further restrict the data to be retrieved
+
+SELECT * FROM students WHERE fees = (SELECT MIN(fees) FROM students);
+
+SELECT * FROM students WHERE marks = (SELECT MAX(student_marks) FROM students);
+-----X-----X-----X-----X-----X-----X-----X-----
+SQL Joins
+=========
+What are Joins?
+
+Joins in SQL are commands are commands which are used to combine rows from two or more tables based on a related column between those tables.
+
+Query 1: CREATE SCHEMA `sql_joins` ;
+Query 2: Create table - customers
+
+CREATE TABLE `customers` (
+  `customer_id` int NOT NULL,
+  `customer_name` varchar(30) NOT NULL,
+  `customer_email` varchar(30) NOT NULL,
+  PRIMARY KEY (`customer_id`));
+  
+Query 3: Create table Orders related to customers table
+
+CREATE TABLE `orders` (
+  `order_id` int NOT NULL,
+  `order_date` date NOT NULL,
+  `order_amount` double DEFAULT NULL,
+  `customer_id` int DEFAULT NULL,
+  PRIMARY KEY (`order_id`),
+  CONSTRAINT `customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`)
+);
+
+Query 4: Insert data in customers table
+
+INSERT INTO `customers` 
+VALUES (1,'Vinod','vinod@gmail.com'),
+(2,'Ajay','ajay@rediff.com'),
+(3,'Jayesh','jay@yahoo.com'),
+(5,'Hiten','hiten@gmail.com');
+
+Query 5: Insert data into orders table
+
+INSERT INTO `orders` 
+VALUES (1,'2022-05-05',890,1),
+(2,'2022-05-06',765,2),
+(3,'2022-06-05',200,1),
+(4,'2021-05-05',389,3);
+
+Types of Joins
+--------------
+There are following 4 types of Joins:
+1. Inner Join
+2. Left Join
+3. Right Join
+4. Full/Cross Join

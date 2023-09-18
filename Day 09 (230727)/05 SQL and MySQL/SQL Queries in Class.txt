@@ -1,0 +1,106 @@
+SQL Queries in Class
+====================
+RDBMS Infrastructure
+--------------------
+MySQL Server: Is the real physical data storage software that follows/supports RDBMS
+MySQL Service: We have to start MySQL Server as a Service to communicate/transact with it
+
+Who will communiucate with MySQL Server
+---------------------------------------s
+1. Any GUI tool - MySQL Workbench, MySQL Shell, phpMyAdmin, SQL Yog
+2. Any application - Java Application
+
+An application connects with MySQL Server
+An application does not connect with MySQL GUI
+
+How to connect?
+---------------
+- GUIs/Applications connect with MySQL Server through Drivers
+- GUIS have built in driver setups. For applications we have to install, configure driver manually 
+
+How to communicate/give-take data/transact?
+- An application/GUI both communicate/give-take/transact with MySQL Server with SQL
+- SQL (Structured Query Language)
+
+DDLs
+
+Query1: CREATE SCHEMA school;
+
+Query2: 
+
+CREATE TABLE `school`.`students` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `city` VARCHAR(45) NOT NULL,
+  `state` VARCHAR(45) NOT NULL,
+  `cert_name` VARCHAR(45) NOT NULL,
+  `cert_price` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`));
+
+Query3: 
+
+ALTER TABLE `school`.`students` 
+ADD COLUMN `student_fees` DOUBLE NOT NULL AFTER `cert_price`,
+CHANGE COLUMN `name` `student_name` VARCHAR(45) NOT NULL ,
+CHANGE COLUMN `city` `student_city` VARCHAR(45) NOT NULL ,
+CHANGE COLUMN `state` `student_state` VARCHAR(45) NOT NULL ,
+CHANGE COLUMN `cert_price` `cert_price` DOUBLE NOT NULL ;
+
+Query 4: Drop the table and the schema
+Syntax: DROP TABLE students;
+Syntax: DROP DATABASE school;
+
+DMLs
+====
+Query 5: Insert data => INSERT INTO students (student_name, student_city, student_state, cert_name, cert_price, student_fees) VALUES ('Mithun','Indore', 'MP', 'OCJP', 22000, 5000)
+
+Query 6: Update data => UPDATE students SET student_fees = 4000 WHERE id = 1;
+
+Query 7: Delete data => Delete students WHERE id = 5;
+
+DQLs
+====
+Query 8: Retrieving all the columns of all the records => SELECT * FROM students;
+
+Query 9: Retrieving a specific record => SELECT * FROM students WHERE id = 1;
+
+Query 10: Retrieving multiple columns => SELECT student_name, student_fees FROM students;
+
+Query 11: Retrieving records with condition => SELECT student_name, student_fees FROM students WHERE student_fees >= 5000;
+
+Query 12: Retrieving records with combination of condition 
+
+Q1 => SELECT student_name, student_fees FROM students WHERE student_state = 'UP' && student_fees >= 4500;
+Q2 => SELECT student_name, student_fees FROM students WHERE student_state = 'UP' || student_fees >= 4500;
+
+Aggregate Functions => COUNT(), SUM(), AVG(), MIN(), MAX()
+
+WHERE can be used in all below
+
+Query 13: SELECT COUNT(*) FROM students
+
+Query 14: SELECT MIN(student_fees) FROM students;
+
+Query 15: SELECT MAX(cert_price) FROM students;
+
+Query 16: SELECT SUM(student_fees) FROM students WHERE id <= 3; 
+
+Query 17: SELECT AVG(student_fees) FROM students WHERE id <= 3;  
+--------------------------
+JOINs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

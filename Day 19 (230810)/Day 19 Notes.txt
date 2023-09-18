@@ -1,0 +1,148 @@
+Day 19 Notes
+============
+Debugging
+---------
+1. Include the dependencies in pom.xml
+there version should be same and compatible
+
+2. Check the dependencies under Maven dependencies
+
+3. If the jar icons are blacked out (it won't work, you wont be able to import the classes), you have to remove <scope> tag
+
+4. If the dependencies are mentioned in pom.xml but are not in Maven dependencies list right click on project and take the option: Maven -> Update Project
+
+5. Build path problem
+There are many classes that our projects need
+These classes have to be included in the build path for successful running of our project
+-----X-----X-----X-----X-----X-----X-----
+Spring JDBC
+===========
+DAO design pattern
+------------------
+1. It stands for Data Access Object
+2. It is a design pattern
+3. It helps to keep all database related task separate
+4. It can be thought of as the database layer
+
+Steps to create a DAO layer:
+1. Create a separate package for db related files
+2. Create entities - ex: Book, Flight, User, Admin
+3. Create interface that lists all the operations on entities
+4. Create an implementation class that defines all the methods
+--------------------------
+Question: Create a Spring JDBC project for the entity in your project. 
+
+Spring MVC
+==========
+The first step is to configure Tomcat
+
+Tomcat
+------
+- As JDK is the implementation of JSE
+- Tomcat is an implementation of JEE
+- Tomcat provides the classes/interfaces to create Web and Enterprise Application 
+
+- Tomcat by default runs on port 8080
+- If there is any other software using port 8080 Tomcat wont run.
+- Tomcat uses 2 ports:
+	- Admin Port 
+		- used for administration purpose
+		- By default, it is 8085
+	- HTTP /1.1
+		- All the request & response is handled here
+		- By default it is 8080
+		
+		Error - Failed to start Tomcat, Port already in use
+		
+		Solution: Change the port to : 1010, 8081, 8083, 9192 
+		
+Best Practice: When you are working on your code, stop the Server 
+
+Spring MVC is the module of Spring Framework used to create Web Applications
+
+Web Applications have a 2 tier architecture connecting client and servers
+
+The client sends a request and server gives the response.
+
+All the requests and responses are managed by Spring MVC
+
+We can integrate other modules with Spring MVC such as:
+- Spring JDBC
+- Spring ORM
+- Spring Data JPA
+
+MVC
+---
+- MVC stands for Model View Controller
+- Model means data/database
+- View means Frontend
+- Controller means business logic
+- Our application should be separated into at least 3 layers - database layer, presentation layer and business logic layer
+
+Servlet is used to create Controller part
+JSP is used to create View part
+JDBC is used to create Model part
+
+Spring MVC Project
+==================
+Step1: Download, install and configure Tomcat 9
+Step2: Create a Maven Project
+Step3: Select Catalog: Internal, archetype: webapp
+
+	group id: genpact.mvc.jdbc
+	Artifact Id: GenpactMvcJdbc
+	package:  genpact.mvc.jdbc
+
+Step4: If src/main/java is not present, create folder "java" in src/main
+
+Step5: Project Setup:
+	- Configure Server
+	- Configure Runtime
+	- Configure Java Compiler
+	- Configure Build Path
+	
+Step6: Include the dependency: spring web mvc in pom.xml
+Step7: Configure DispatcherServlet in web.xml
+Step8: Create spring configuration file by the name-servlet.xml
+Step9: Specify the tag context component scan with base package
+Step10:Configure InternalResourceViewResolver
+Step11: Create a "views" folder in WEB-INF folder
+Step12: Place index.jsp in views folder
+Step13: Create a class in src/main/java folder and annotate it with @Controller 
+Step14: Create a handler method annotated with @Get/@Post Mapping
+--------------------------------
+Request-Response
+
+View Files - WEB-INF/ views => index.jsp
+
+JSP
+---
+JSP stands for Java Server Pages
+It is used to embed Java code inside HTML
+
+<html>
+	<p>     
+		<% 
+			String name = "Kaustubh";
+			out.print(name.toUpperCase());
+		%>
+	</p>
+</html>
+		
+1->Run on Server
+
+Server deploys the project and run the 1st request
+
+Request 1: http://localhost:9192/GenpactMvcJdbc/
+
+http => This request follows the HTTP protocol
+
+localhost:9192 => IP and Port of the Tomcat Server
+
+GenpactMvcJdbc => The name of the application that will handle the request
+
+/ => Request for welcome file aka first file of the application
+
+Every request has to be handled => / (empty request)
+
+In Spring MVC all incoming requests are handled by DispatcherServlet

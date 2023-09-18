@@ -1,0 +1,30 @@
+MySQL Server
+============
+What is MySQL?
+
+- Every application needs to persist data. 
+- Inorder to do so, we use database softwares. 
+- MySQL is one such database.
+- It is used to persist data in rows and columns
+- MySQL database is a relational database.
+- MySQL software is Open Source.
+- The MySQL Database Server is very fast, reliable, scalable, and easy to use.
+- MySQL Server works in client/server or embedded systems.
+
+What is MySQL Server?
+
+1. MySQL Server is the physical memory space and system where actually the data is stored (persisted) and managed
+
+2. Simply put, it is the software that holds the data
+
+3. If we want to use it, it must be running as a service (MySQL Service)
+
+4. MySQL Service is started automatically when the System is switched on
+
+5. Every software runs on an IP and port
+   IP: is the address of any machine
+   Port: is the place where a software runs
+
+6. If MySQL Server is on our own PC, it can be accessed with IP: 127.0.0.1, i.e. localhost
+
+7. MySQL Server by default runs on Port: 3306

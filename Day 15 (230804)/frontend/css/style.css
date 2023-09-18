@@ -1,0 +1,39 @@
+/* External Stylesheet */
+
+body {
+    background-color: antiquewhite;
+}
+
+#active {
+    background-color: green;
+    font-size: 18px;
+}
+
+/* Styling for menu */
+ul#menu {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+ }
+
+ /* The li that are inside ul */
+ ul#menu li {
+     float:left;
+ }
+
+/* the anchor tag inside li */
+li a {
+     display : block;
+     text-decoration: none;
+     background-color: dodgerblue;
+     color: white;
+     border: 1px solid darkblue;
+     border-radius: 5px;
+     padding: 5px;
+     margin-right: 10px;
+ }
+
+ a:hover {
+     background-color: crimson;
+ }

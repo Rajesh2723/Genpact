@@ -1,0 +1,175 @@
+Day 03 Notes
+============
+Method
+------
+1. Method without return statement without parameter : void display(){}
+
+2. Method without return statement but with parameter: void display(String type){}
+
+3. Method with return statement: double calculateTotalSalary(double deductions){}
+
+4. Method with return statement with parameter: double calculateTotalSalary(double deductions, double additions){}  
+
+Variables
+---------
+There are 3 types of variables:
+1. Local variables
+2. Instance variables
+3. Static Variables
+
+Local Variables
+---------------
+The variables defined inside a method or constructor are called local variables.
+
+In the constructor:
+Employee(int e, String n, double s){
+	
+}			
+e, n, s are local variables
+
+In the method: 
+void display(String type) {
+
+}
+
+type is a local variable
+
+In the method: 
+
+double calculateSalary (double additions){
+	
+	double total = basicSalary + additions;
+	return total;
+}
+
+total and additions ar local variables.
+
+- Local variables must be initialized before using, but paramters are not initialized.
+- Parameters will get their values during method call
+- The scope of Local variables is limited to its method/constructor
+
+Instance Variables
+------------------
+- Variables declared outside any method or constructor are instance variables.
+- They are created for the use of instance.
+- For every instance a separate copy of instance variables are craeted in memory
+- Instance variables are initialized by constructors
+
+Instance Variable Hiding
+------------------------
+- If local variables and instance variables have the same name within a method/constructor, local variables will hide instance variables
+
+Ex: 
+class Employee {
+	// empId is instance variable
+	int empId;
+	
+	// empId is local variable
+	Employee(int empId){
+		// local variable hides instance variable
+		empId = empId; 
+	}
+}
+
+this
+----
+- Inorder to distinguish between local and instance variables, we use this keyword
+
+- this represents the calling object
+
+Ex:
+
+Employee(int empId){
+	//this.empId is now instance variable
+	this.empId = empId; 
+}
+
+Static variables
+----------------
+- Variables declared outside any method or constructor and preceded by keyword static are static variables.
+- They are created for the use of class.
+- Only a single copy of static variable is created in memory
+- This single copy can be shared by all instances and class
+
+Ex: companyName
+
+static v/s final v/s private
+----------------------------
+static variable : Only one copy will be created and we can change the value of the variable
+
+final static : Only one copy will be created and we can not change the value of the variable but we can use it outside the class
+
+private final static : Only one copy will be created and we can not change the value of the variable and we can not use it outside the class
+
+Encapsulation
+-------------
+Putting/Bundling all the data members, constructors and member methods inside a class is known as Encapsulation
+
+Data Hiding/Protection
+----------------------
+To secure data members, we restrict their access with access modifiers. This is known as Data Hiding/Protection
+
+Setter and Getter
+-----------------
+Setter - Modify object properties
+---------------------------------
+Constructor is used to create an object
+Employee e1 = new Employee("Yash", 20000);
+
+Setter method is used to modify the value of a property
+e1.setSalary(30000);
+
+The salary will change from 20000 to 30000
+
+Getter - Access object properties
+---------------------------------
+Usually the data members are private. Hence they cannot be accessed outside their own class. 
+
+If we want to access them outside their own class, we create getter methods.
+
+double salary = e1.getSalary();
+
+Static Method
+=============
+Methods are declared static when
+- we don't want to create an object of a class to call it
+- it has to work on static data
+- it defines a fucntionality that is not specific to one object
+
+Relationships in Java
+=====================
+There are 2 types of relationships in Java:
+1. Association
+2. Inheritance
+
+Association
+------------
+There are 2 types of associations:
+1. Composition
+2. Aggregation
+
+Composition (part-of)
+---------------------
+Composition is when one class owns other classes and other classes can not meaningfully exist, when the owner is destroyed.
+
+ex: engine is a part-of Car. If the car is destroyed, engine will also be destroyed.
+
+Aggregation (has-a)
+-------------------
+In Aggregation, including objects can exist without being part of the main object. 
+
+For ex: Student HAS-A Certificate
+For ex: Student HAS-A Address
+
+Anonymous Object
+==================
+An Object that does not have a name is known as anonymous object.
+
+Ex: new Certificate("OCJA", 35000);
+
+If we want to use an object name repeatedly we will assign a name to an object.
+
+Certificate cert1 = new Certificate("OCJP", 25000);
+
+If we want to use an object only once, we can use anonymous object.
+-----X-----X-----X-----X-----X-----X-----X-----

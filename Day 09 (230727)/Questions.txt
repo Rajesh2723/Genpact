@@ -1,0 +1,86 @@
+Questions
+=========
+Problem Statement 1:
+--------------------
+Training on Java is going on. 
+
+There are 2 batches: Core Java Batch and Advanced Java Batch, both have 5 students each. 
+
+Now these batches have to be merged for Data Structures batch. 
+
+Some students don’t want to continue, so we have to remove them.  
+
+There are 2 students with same name, duplicate values must be preserved. 
+
+Finally the batch is over and we have to clear the data.
+
+Problem Statement 2:
+-------------------- 
+We have to keep a record of employees for a company. 
+
+The employees have an empId, department, salary and date of joining. 
+
+There is continuous shuffling of employees departments, so we have to change data accordingly. 
+
+Also, employees leave and new ones join the company. 
+
+It is festival time and company has decided festival bonus based on years of service. 
+
+Employees with 3+ years will receive 50% and employees with less than 3 years will receive 25% of their salaries in incentives. 
+
+So we have to calculate their total salaries.
+
+Problem Statement 3:
+--------------------
+Streams API
+Create a class Book with fields:
+1. id
+2. name
+3. price
+4. copies
+5. Author
+6. rating
+7. genres
+
+Create a class Author
+1. name
+2. launchCity
+
+Create an ArrayList with data
+
+ArrayList<Book> books = new ArrayList<Book>();
+
+books.add(new Book(1, '2am', 200, 3, new Author('Ramsay Brothers', 'Mumbai'), 'Horror'));
+
+books.add(new Book(2, '5 point someone', 250, 5, new Author('Chetan Bhagat', 'Ahmedabad'), 'Drama'));
+
+books.add(new Book(3, 'The 5 am club', 300, 1, new Author('Robin Sharma', 'London'), 'Motivation'));
+
+books.add(new Book(4, 'Two States', 200, 5, new Author('Chetan Bhagat', 'Ahmedabad'), 'Romantic'));
+
+books.add(new Book(5, 'Insidious', 500, 2, new Author('Ramsay Brothers', 'Ahmedabad'), 'Horror'));
+
+books.add(new Book(6, 'Monk who sold Ferrari', 520, 2, new Author('Robin Sharma', 'Delhi'), 'Motivation'));
+
+books.add(new Book(7, 'Let Us C', 275, 10, new Author('Yashwent Kanitkar', 'Pune'), 'Technical'));
+
+1. Fetch a list of all book of genre - horror
+2. Apply a discount of 10% on the books that are above the price 300
+3. Fetch a SET of the names of all books.
+4. Create a List of all books written by Chetan Bhagat
+5. Find the final price of all the books (price*copies)
+Use the method sum(). For this you have to research.
+6. Create a list of authors. Bonus
+
+
+
+
+
+
+
+
+
+
+
+
+

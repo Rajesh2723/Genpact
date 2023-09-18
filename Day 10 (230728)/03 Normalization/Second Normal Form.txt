@@ -1,0 +1,82 @@
+Second Normal Form
+------------------
+What is the Second Normal Form in DBMS?
+
+In simpler words, a relation is said to be in 2NF when it exists in 1NF, while the relation’s every non-prime attribute depends on every candidate key as a whole.
+
+However, you must note that it puts no restriction on the dependency of non-primes on their non-prime attributes. The Third Normal Form addresses it instead.
+
+Uses of Second Normal Form in DBMS
+
+The concept of 2nd Normal Form in DBMS depends on full functional dependency. We apply 2NF on the relations that have composite keys or the relations that have a primary key consisting of two attributes or more. Thus, the relations having a primary key of a single attribute automatically get to their 2NF. Any relation that doesn’t exist in the 2NF may eventually suffer from further update anomalies.
+
+Rules Followed in 2nd Normal Form in DBMS
+
+For a relation to be in the 2NF, it must be:
+
+    in 1NF;
+    should not consist of partial dependency.
+
+In simpler words,
+
+If a relation is in 1NF and all the attributes of the non-primary keys are fully dependent on primary keys, then this relation is known to be in the 2NF or the Second Normal Form.
+
+Note: When a candidate key’s subset determines the non-prime attributes, then we can call it a partial dependency.
+
+How to Normalise 1NF to 2NF?
+
+We remove the partial dependencies to normalize the given 1NF relations to the 2NF relations. In case there is a partial dependency, we will remove that attribute from the relation that is partially dependent. We basically do so by placing it in a new relation with a copy of its determinant. Let us take a look at a few examples to understand how.
+
+Example #1
+
+Look at the table given below:
+Stud_ID 	SUBJECT_NO 	SUBJECT_FEE
+111 	       S1       	1000
+222 	       S2       	1500
+111 	       S4       	2000
+444 	       S3       	1000
+444 	       S1       	1000
+222 	       S5       	2000
+
+In this table, you can note that many subjects come with the same subject fee. Three things are happening here:
+
+The SUBJECT_FEE won’t be able to determine the values of CAND_NO or SUBJECT_NO alone;
+
+The SUBJECT_FEE along with CAND_NO won’t be able to determine the values of SUBJECT_NO;
+
+The SUBJECT_FEE along with SUBJECT_NO won’t be able to determine the values of CAND_NO;
+
+Thus,
+
+We can conclude that the attribute SUBJECT_FEE is a non-prime one since it doesn’t belong to the candidate key here {SUBJECT_NO, CAND_ID} ;
+
+But, on the other hand, the SUBJECT_NO – > SUBJECT_FEE, meaning the SUBJECT_FEE depends directly on the SUBJECT_NO, and it forms the candidate key’s proper subset. Here, the SUBJECT_FEE is a non-prime attribute, and it depends directly on the candidate key’s proper subset. Thus, it forms a partial dependency.
+
+Conclusion: The relation mentioned here does not exist in 2NF.
+
+Let us now convert it into 2NF. To do this, we will split this very table into two, where:
+
+Table 1: CAND_NO, SUBJECT_NO and Table 2: SUBJECT_NO, SUBJECT_FEE
+
+Table 1
+
+CAND_NO 	SUBJECT_NO
+111 	       S1
+222 	       S2
+111 	       S4
+444 	       S3
+444 	       S1
+222 	       S5
+
+Table 2
+
+SUBJECT_NO 	SUBJECT_FEE
+S1 	1000
+S2 	1500
+S3 	1000
+S4 	2000
+S5 	2000
+
+Now, the tables are in their Second Normal Form.
+
+Note: The Second Normal Form tries to reduce any redundant data from getting stored in the system’s memory. For instance, if we take an example of about 100 candidates taking the S1 subject, then we don’t have to store their fees as 1000 as a record for all the 100 candidates. Rather, we can store them all at once in the second table as the subject fee for S1 is 1000.

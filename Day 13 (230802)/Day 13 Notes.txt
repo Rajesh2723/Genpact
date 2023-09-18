@@ -1,0 +1,328 @@
+Day 13 Notes
+============
+Fetch all records
+Query: SELECT * FROM employee
+
+RowSet
+------
+RowSet is a Java object that represents a set of database rows. It allows working with data in a disconnected manner.
+
+Types of RowSet
+---------------
+There are following 5 types of RowSets:
+
+1. CachedRowSet: Disconnected RowSet with data stored in memory.
+
+2. WebRowSet: CachedRowSet with XML serialization support for web transport.
+
+3. FilteredRowSet: RowSet with the ability to filter rows before retrieval.
+
+4. JdbcRowSet: Connected RowSet with serialization and scrollability features.
+
+5. JoinRowSet: Connected RowSet with SQL JOIN support.
+
+Callable Statement
+------------------
+This interface is used to call stored procedures or user-defined functions in a database.
+
+Query: 
+
+create schema training;
+
+use training;
+
+CREATE TABLE trainees (
+  student_id int NOT NULL AUTO_INCREMENT,
+  student_name varchar(30) NOT NULL,
+  student_fees double NOT NULL,
+  student_course varchar(15) NOT NULL,
+  PRIMARY KEY (student_id)
+)
+
+INSERT INTO trainees VALUES 
+(1,'Jay',10000,'Java'),
+(2,'Yash',12000,'Java'),
+(3,'Ram',8000,'PHP'),
+(4,'Megha',10000,'Python'),
+(5,'Sapna',11000,'Java'),
+(6,'Madhav',9000,'PHP'),
+(7,'Harsh',6000,'PHP'),
+(8,'Jitesh',7000,'Java');
+
+CREATE PROCEDURE `getNoOfPhpStudents`(OUT noOfStudents int)
+BEGIN
+SELECT COUNT(*) INTO noOfStudents FROM students WHERE student_course = 'PHP';
+END
+
+CREATE PROCEDURE `getNoOfStudentsWithFees`(INOUT no int)
+BEGIN
+SELECT COUNT(*) INTO no FROM students WHERE student_fees>= no;
+END
+
+CREATE PROCEDURE `getStudentsNames`(IN course varchar(5), IN fees double)
+BEGIN
+SELECT student_name FROM students WHERE student_course = course AND student_fees >= fees;
+END
+
+There are 3 types of p[arameters in StoredProcedure:
+1. IN parameters -> to pass the data
+2. OUT parameters -> to return the data
+3. INOUT parameters -> to pass as well as to return the data
+-----------------------------------
+SDLC
+====
+- SDLC stands for Software Development Lifecycle
+- SDLC is a structured approach to software development that involves phased planning, development, and documentation to ensure the creation of high-quality software applications.
+
+Types of SDLC
+-------------
+Based on the type of project, time constraints and monetary benefits there are different SDLC models prevalent in the industry.
+
+Some of these models are:
+1. Waterfall Model
+2. Agile Model
+3. Big Bang Model
+4. Fish Model
+5. Hybrid Model
+6. Incremental Model
+7. Iterative Model
+8. JAD Model
+9. Prototype Model
+10. RAD Model
+11. Spiral Model
+12. V Model
+-----------------------------
+Waterfall Model
+---------------
+The Waterfall Model consists of the following stages:
+
+1. Requirements Analysis
+2. System Design
+3. Implementation
+4. Testing
+5. Deployment
+6. Maintenance
+
+Refer Image : 01_waterfall.png
+
+Pros of Waterfall Model
+
+1. Clarity and Predictability: Well-defined phases with clear objectives make it easy to understand and predict project progress.
+2. Stable Documentation: Detailed documentation is produced at each stage, aiding in future maintenance and knowledge transfer.
+3. Sequential Structure: Linear flow simplifies management and allows for a systematic approach to development.
+
+Cons of Waterfall Model:
+
+1. Rigidity: Lack of flexibility can lead to difficulties in accommodating changes during later stages.
+2. Late Feedback: Limited stakeholder involvement until testing phase may result in issues being identified late.
+3. Long Development Cycles: Sequential nature can lead to longer development times, delaying the delivery of the final product.
+-----------------------------
+Agile Model
+-----------
+Agile model is an iterative and flexible approach to software development. It emphasizes collaboration, adaptability, and incremental progress, enabling teams to deliver high-quality products efficiently and respond to changing requirements.
+
+Refer Image : 02_agile.png
+
+The Agile Model consists of the following stages:
+
+1. Product Backlog Creation
+2. Sprint Planning
+3. Sprint Execution
+4. Daily Stand-up Meetings
+5. Sprint Review
+6. Sprint Retrospective
+
+Sprint
+------
+- Sprints are time-boxed, focused periods in Agile development, typically lasting 1-4 weeks. 
+
+- During each sprint, a cross-functional team completes a set of planned tasks, producing a potentially shippable product increment. 
+
+- Sprints enhance transparency, regular feedback, and adaptability in project development.
+
+Pros of Agile Model:
+
+1. Flexibility: Adaptable to changing requirements and priorities throughout the project.
+2. Frequent Feedback: Regular interactions with stakeholders enable quick adjustments and continuous improvement.
+3. Iterative Development: Incremental progress ensures working software is delivered early and often.
+
+Cons of Agile Model:
+
+1. Lack of Documentation: Emphasis on working software may lead to insufficient documentation and knowledge retention.
+2. Complexity Management: Frequent changes can introduce complexity, requiring skilled management and technical expertise.
+3. Dependency on Collaboration: Effective teamwork and communication are crucial, making team dynamics vital to success.
+-----------------------------
+Big Bang Model
+--------------
+The Big Bang Model does not have distinct stages like other software development methodologies. 
+
+It is characterized by its informal and unstructured approach.
+
+It is used to develop small projects that needs to deliver fast.
+
+Refer Image : 03_big_bang.png
+
+Pros of Big Bang Model:
+
+1. Rapid Start: Allows for quick initiation of development without extensive planning.
+2. Simplicity: Well-suited for small projects with straightforward requirements and limited complexities.
+3. Creative Freedom: Developers can explore innovative solutions without strict guidelines.
+
+Cons of Big Bang Model:
+
+1. High Risk: Lack of formal structure and testing may lead to unidentified issues in the final product.
+2. Limited Control: Absence of defined stages can result in poor project management and tracking.
+3. Scalability Challenges: Not suitable for larger projects or those requiring meticulous planning and documentation.
+-----------------------------
+Fish SDLC Model
+---------------
+- Fish model is one of the software development methodologies in which both verification (Review) and validation (Testing) are done parallelly by the separate team in each phase of the model. 
+- The structure of this model looks like a fish, hence the name shows fish model. 
+- It is a time consuming and expensive model.
+
+Refer Image : 04_fish_sdlc.png
+
+There are 7 phases in Fish Model and they are,  
+
+1. Requirements gathering & Planning
+2. Analysis
+3. Design
+4. Development / Coding
+5. Testing
+6. Deployment
+7. Maintenance
+
+Pros of Fish Model:
+
+1. Every stage of this model is tested by a separate team for completeness and correctness of application, so it provides a high-quality software product.
+2. It provides full documentation of the application.
+3. It is mostly used for secured and complex projects.
+
+Cons of Fish Model:
+
+1. In the model, the review & testing starts from the project initiation node to the maintenance phase, due to this reason the fish model is a costly methodology for development.
+
+2. Similarly, it is a time-consuming process to develop the product.
+    
+3. This model is not preferred for a small project.
+-----------------------------
+Hybrid Model
+------------
+Waterfall is rigid, so software development teams for a longer time wanted to integrate client feedback, incremental development with Waterfall model.
+
+This gave rise to combination of SDLC models known as Hybrid Models. 
+
+Some of these Hybrid Models are:
+1. Iterative Model 
+2. Incremental Model
+3. Spiral Model
+4. V Model
+-----------------------------
+Iterative Model
+---------------
+The Iterative Model involves repeating cycles of requirements gathering, design, implementation, testing, and review. 
+
+Each iteration refines the software based on feedback, leading to gradual improvement.
+
+Refer Image : 05_iterative_model.jpg
+
+Pros of Iterative Model:
+
+1. Continuous Improvement: Allows for incremental development and refinement of the software through repeated cycles.
+2. Flexible and Adaptive: Enables adjustments based on feedback, accommodating changes and evolving requirements.
+3. Early Delivery: Working components are available sooner, providing value to users before the final product is complete.
+
+Cons of Iterative Model:
+
+1. Complex Management: Managing multiple iterations can be challenging, requiring effective coordination and tracking.
+2. Uncertain Timelines: Iterations may extend the project timeline, making it harder to predict the final completion date.
+3. Potential Scope Creep: Frequent changes can lead to scope expansion, affecting project scope and objectives.
+-----------------------------
+Incremental Model
+-----------------
+The Incremental Model divides software development into segments, delivering functional components in stages. Each iteration adds new features, building upon the previous increment, resulting in step-by-step development.
+
+Refer Image : 06_incremental.png
+
+Pros of Incremental Model:
+
+1. Early Value: Delivers usable components early, providing immediate benefits to stakeholders.
+2. Flexible Development: Adapts well to changing requirements, accommodating adjustments throughout the process.
+3. Reduced Risk: Each increment is thoroughly tested, minimizing overall project risk.
+
+Cons of Incremental Model:
+
+1. Complex Integration: Integrating new increments can be challenging, potentially leading to compatibility issues.
+2. Inadequate Planning: Poor initial planning may result in incomplete or inefficient increments.
+3. Delayed Core Features: Essential features might be deferred to later increments, impacting the core functionality's availability.
+-----------------------------
+Spiral Model
+------------
+- The Spiral Model emphasizes on iterative cycles of planning, risk analysis, engineering, and evaluation.
+- Each spiral iteration progresses through stages of concept, design, build, and test.
+- Risks are identified and addressed throughout the process, enhancing adaptability and reducing uncertainties.
+- Suitable for complex projects with evolving requirements and potential risks.
+
+Refer Image : 07_spiral_model.png
+
+Pros of Spiral Model:
+
+1. Risk Management: Effective identification and mitigation of project risks throughout the development process.
+2. Flexibility: Allows for iterative development and accommodates changes in requirements and design.
+
+Cons of Spiral Model:
+
+1. Complexity: Involves multiple phases and interactions, potentially leading to increased complexity.
+2. Resource Intensive: Requires more effort in terms of time, cost, and skilled personnel due to its iterative nature.
+-----------------------------
+V Model
+-------
+- The V Model emphasizes on a systematic approach to testing and validation.
+- Each development phase is paired with a corresponding testing phase.
+- Ensures requirements are validated and system is verified at each step.
+- Enhances reliability, quality assurance, and alignment between development and testing.
+
+Refer Image : 08_V_model.png
+
+Pros of V Model:
+
+1. Clear Alignment: Ensures a clear and direct correlation between development and testing stages, enhancing traceability and reducing ambiguities.
+2. Early Defect Detection: Encourages early identification and rectification of defects due to the parallel testing approach.
+
+Cons of V Model:
+
+1. Rigidity: Can be inflexible when dealing with changes or evolving requirements, as testing is closely tied to specific development phases.
+2. Limited Iteration: Lacks the iterative nature of Agile methods, which can hinder adaptation to changing project needs.
+
+-----------------------------
+JAD Model
+---------
+- Joint Application Development (JAD) Model is a collaborative approach.
+- Cross-functional workshops involve users, stakeholders, and developers.
+- Aims to gather requirements, design, and plan in intensive sessions.
+- Accelerates decision-making, enhances communication, and reduces misunderstandings.
+- Promotes shared ownership and alignment, improving project outcomes and user satisfaction.
+
+Refer Image: 09_jad_model.png
+
+-----------------------------
+RAD Model
+---------
+- Rapid Application Development (RAD) Model focuses on fast development cycles.
+- Emphasizes iterative prototyping and quick feedback loops.
+- Cross-functional teams collaborate to expedite development.
+- Accelerates project completion, particularly for time-sensitive applications.
+- Suited for projects with well-defined requirements and modular structures, enabling swift and efficient delivery.
+
+Refer Image : 10_rad_model.png
+-----------------------------
+Prototype Model
+---------------
+- Prototype Model is an iterative development approach.
+- Initial prototype is created based on user requirements.
+- Provides a tangible representation for users to interact with and refine.
+- Feedback from users guides further iterations, refining features and design.
+- Facilitates clearer requirement understanding, enhancing final product alignment with user needs.
+
+Refer Image : 11_prototype_model
+-----X-----X-----X-----X-----X-----X-----

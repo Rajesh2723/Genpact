@@ -1,0 +1,317 @@
+Day 04 Notes
+============
+Inheritance (is-a)
+==================
+Inheritance is a mechanism in Java where a class object acquires all the properties and behaviors of its parent class object.
+
+Ex: Employee IS-A Person
+Ex: Student IS-A Person
+Ex: Maruti IS-A Car
+Ex: WagonR IS-A Maruti
+
+Employee is the child class. 
+A child class is also known as derived class, sub class
+
+Person is the Parent class
+A parent class is also known as base class, super class
+
+Example:
+Parent class -> Figure
+Child class -> Rectangle extends Figure
+Child class -> Triangle extends Figure
+Grand Child Class -> Cuboid extends Reactangle
+
+Types of Inheritance
+--------------------
+There are 3 types of inheritance:
+1. Single Inheritance
+2. Multilevel Inheritance
+3. Hierarchical Inheritance
+
+Refer figure: 01_inh_types.png
+
+Single Inheritance
+------------------
+class Figure {
+	
+}
+
+class Rectangle extends Figure {
+
+}
+
+Multilevel Inheritance
+----------------------
+class Cuboid extends Rectangle {
+
+}
+
+Hierarchichal Inheritance
+-------------------------
+class Triangle extends Figure {
+
+}
+
+Inheritance Properties
+----------------------
+- The child class inherits variables & methods of parent class
+- The child class do not inherit constructors of parent class
+- The parent class cannot access any member of child classes
+
+Constructor during Inheritance
+==============================
+Whenever a constructor in child class is created it will automatically call the default constructor of parent class whether we write it or not
+
+super keyoword
+==============
+super is used to call parent class constructor, methods and variables
+
+super(args-list) : constructor
+super.method() : method
+super.variable : variable
+
+Method Overriding
+=================
+Upcasting
+---------
+A reference variable of a superclass can be assigned a reference to any subclass object
+
+For example:
+
+class Figure {}
+
+class Rectangle extends Figure {}
+
+Figure f = new Figure();
+Rectangle r = new Rectangle();
+f = r;
+
+This is known as Upcasting
+
+Downcasting
+-----------
+A sub class cannot be assigned a super class reference directly.
+However it can be done with downcasting.
+
+Figure f = new Figure();
+Rectangle r = new Rectangle();
+r = (Rectangle)f;
+
+This is known as Downcasting
+
+Method Overriding
+------------------
+When a method in a subclass has the same name and same number/types of parameter as a method in its super-class, then the method in the subclass is said to override the method in the super-class.
+
+Parent class reference can call the overriden method if it is storing child class object.
+
+Polymorphism
+============
+Polymorphism means same name different functions
+
+There are 2 types of Polymorphism:
+1. Compile Time Polymorphism
+2. Run Time Polymorphism
+
+Compile Time Polymorphism
+-------------------------
+- In Java, Compile Time Polymorphism is achieved through method/constructor overloading. 
+- Here the call to the appropriate method is resolved at compile time
+- It is also known as
+	- Static binding
+	- Early binding
+	- Static Polymorphism
+
+Run Time Polymorphism
+-------------------------
+- In Java, Run Time Polymorphism is achieved through method overriding. 
+- Here the call to the appropriate method is resolved at run time
+- It is also known as
+	- Dynamic binding
+	- Late binding
+	- Dynamic Polymorphism
+
+final keyword
+=============
+final can be used with:
+1. Class - to stop inheritance
+2. Method - to stop overriding
+3. Variable - to stop re-assignment
+
+Object
+======
+Object class is the root of the Java class hierarchy.
+Every class has Object as a superclass automatically.
+
+Fully Qualified Name
+---------------------
+name of the package + name of the class
+
+Packages
+========
+A package is used to encapsulate/group similar types of classes, interfaces and sub-packages. 
+
+A Package is nothing but a physical folder structure where code is structured according to usage. 
+
+It is a good practice to arrange code in packages and sub-packages
+
+Rule
+=====
+The package statement must be the 1st statement within a class/interface.
+
+import
+======
+When we want to use any class in our class, we have to import it
+
+If the classes are within the same package we don't have to import them
+
+System/String class are also within package: java.lang
+
+java.lang is imported implicitly
+All other classes we have to import
+
+
+JAR File
+========
+JAR stands for Java ARchive. 
+
+It is a zip file containing packages, sub-packages and compiled source code (.class files).
+
+See Image: 02_jar_package.png
+
+Modifiers in Java
+=================
+There are 2 types of modifiers in Java:
+1.	Access Modifiers
+2.	Non-access Modifiers
+
+Access Modifiers
+================
+Access modifiers are used to control the visibility of a class, variable, method or constructor. 
+
+There are 4 access modifiers in Java:
+
+1.	<default/package-private> - No Keyword
+	Accessible only in the same package
+
+2.	public
+	Accessible everywhere, but we have to import the classes
+	
+3.	private
+	Accessible only within the same class
+
+4.	protected
+	Accessible within the same package and for all child classes (even if they are in other package)
+	
+Image : 03_access_modifiers.png
+
+Non Access Modifiers
+====================
+Non-access modifiers do not change the accessibility of classes, variables or methods, but they do provide them special properties. 
+There are a total of 8 non-access modifiers in Java:
+1.	final
+2.	static
+3.	abstract
+4.	native
+5.	strictfp
+6.	volatile
+7.	transient
+8.	synchronized
+
+Garbage Collection
+==================
+Garbage collection in Java is the process by which Java programs perform automatic memory management. 
+
+Eventually, some objects will no longer be needed. The garbage collector finds these unused objects and deletes them to free up memory.
+
+The main objective of Garbage Collector is to free heap memory by destroying unreachable objects. 
+
+The garbage collector always runs in the background. 
+
+It is an automatic process.
+
+Student s = new Student("Yash");
+s = new Student("Rahul");
+
+new Student("Yash") is now unreferenced. It will automatically be collected by Garbage Collector
+
+
+private/ final/static methods cannot be overridden
+
+Abstraction
+===========
+Hiding the implementation is known as abstraction
+
+There are 2 ways to achieve abstraction:
+
+1. Abstract class
+2. Interfaces
+
+2 terms that we should know:
+
+1. Concrete
+	- A method with a definition is a concrete method
+	- A class in which all methods are concrete is a concrete class
+2. Abstract
+	- A method without a definition is an abstract method
+	- A class in which even 1 method is abstract is an abstract class
+	
+Concrete means non-abstract and abstract means non-concrete
+
+Abstract Class
+==============
+A class that wants its child class to 
+- Reuse its functionality
+- at the same time compulsorily define atleast 1 method is an Abstract class
+
+Features
+========
+- An abstract class cannot be instantiated
+- An abstract class can contain both abstract and concrete methods or one of them or none of them
+- An abstract class can have everything that a normal class has
+	- Instance variables
+	- Static variables
+	- methods
+	- constructors
+	- etc
+- The child MUST provide the implementation of all abstract methods in parent class
+- If the child class chooses not to define parent class abstract method, then that child class too should be declared abstract 
+
+When to use Abstract classes
+----------------------------
+When we want to reuse the properties and behavior of a parent class.
+When the parent class do not want to define a method on its own
+When we want to implement RTP
+
+Interfaces
+==========
+An interface is a blueprint of a class.
+An interface defined the behavior of a class.
+
+The journey of interfaces version by version:
+
+Till Java SE 7 and before versions, an interface can have only two kinds of things.:
+
+1.	Public Static Constant
+	Constants for use of Interface
+2.	Abstract Methods
+	Some functionality that Interface wants child classes to define
+
+From  Java SE 8, 2 more things were added:
+
+3.	Default methods 
+	Some functionality that Interface provides to its child classes.
+	The child class can override it optionally
+
+4.	Static methods
+	Some functionality for the use of Interface itself
+	Child classes can neither use nor override it
+
+From Java SE 9, 2 more changes occurred:
+
+5.	Private methods
+	For the internal use of default methods
+	
+6.	Private Static methods
+	For the internal use of static methods
+-----X-----X-----X-----X-----X-----X-----X-----

@@ -1,0 +1,217 @@
+Windows Commands
+================
+Windows - File Management
+=========================
+1. `dir`: List files and directories.
+2. `copy`: Copy files.
+3. `move`: Move or rename files and directories.
+4. `del`: Delete files.
+5. `type`: Display file contents.
+
+Windows - Directories
+=====================
+1. `cd`: Change directory.
+2. `chdir`: Change directory (alternative to `cd`).
+3. `mkdir`: Create directories.
+4. `rmdir`: Remove empty directories.
+5. `tree`: Display directory structure as a tree.
+
+Windows - File Permission
+=========================
+1. `icacls`: Change file and folder permissions.
+2. `takeown`: Take ownership of files or directories.
+3. `attrib`: Change file attributes (e.g., hidden, read-only).
+4. `cacls`: Change file and folder permissions (legacy command).
+5. `net share`: Manage shared resources.
+
+Windows - Environment
+=====================
+1. `set`: Display environment variables.
+2. `setx`: Set an environment variable.
+3. `echo %VARIABLE%`: Display the value of an environment variable.
+4. `setlocal`: Start a local scope for environment changes.
+5. `endlocal`: End a local scope and restore previous environment.
+
+Windows - Basic Utilities
+=========================
+1. `type`: Display file contents.
+2. `find`: Search for text in files.
+3. `sort`: Sort lines of text files.
+4. `findstr`: Search for text patterns in files.
+5. `more`: Display file contents one screen at a time.
+
+Windows - Pipes & Filters
+=========================
+1. `|`: Pipe output of one command as input to another.
+2. `find`: Search for text and filter output.
+3. `sort`: Sort lines of text files.
+4. `more`: Display output one screen at a time.
+5. `clip`: Copy output to the clipboard.
+
+Windows - Processes
+===================
+1. `tasklist`: Display information about running processes.
+2. `taskkill`: Terminate a process.
+3. `start`: Start a program or process.
+4. `wmic`: Command-line interface to WMI (Windows Management Instrumentation).
+5. `taskmgr`: Open the Windows Task Manager.
+-----X-----X-----X-----X-----X-----X-----X-----
+Exercises
+=========
+
+Exercise 1 - File Management
+============================
+1. List files and directories in the current directory:
+   
+   dir
+   
+2. Copy a file named "source.txt" to "destination.txt":
+   
+   copy source.txt destination.txt
+
+3. Move the file "destination.txt" to a directory named "backup":
+   
+   move destination.txt backup\
+   
+
+4. Delete a file named "obsolete.txt":
+   
+   del obsolete.txt
+   
+5. Display contents of "sample.txt":
+   
+   type sample.txt
+
+Exercise 2 - Directories
+========================
+1. Navigate to the C:\Windows directory:
+   
+   cd C:\Windows
+   
+2. Display contents of the C:\Windows directory:
+   
+   dir
+   
+3. Create a directory named "work" on the desktop:
+   
+   mkdir C:\Users\YourUsername\Desktop\work
+   
+
+4. Navigate into the "work" directory:
+   
+   cd C:\Users\YourUsername\Desktop\work
+   
+5. Create a subdirectory named "projects" and navigate into it:
+   
+   mkdir projects
+   cd projects
+   
+Exercise 3 - File Permission
+============================
+1. List permissions of files:
+   
+   dir /q
+   
+2. Give read and write permissions to owner of "source.txt":
+   
+   icacls data.txt /grant %username%:RW
+
+3. Change owner of "data.txt" to user "John":
+   
+   takeown /F data.txt /U domain\John
+
+4. Remove write permission for group and others from "data.txt":
+   
+   icacls data.txt /inheritance:r /remove:g "Authenticated Users" "Users"
+
+5. Create a shared folder named "ShareFolder":
+   
+   net share ShareFolder=C:\Path\To\Folder
+
+Exercise 4 - Environment
+========================
+1. Display value of `PATH` environment variable:
+   
+   echo %PATH%
+   
+2. Set an environment variable named "MY_VARIABLE":
+   
+   set MY_VARIABLE="Hello, Windows!" (no space around=)
+   
+3. Display value of "MY_VARIABLE" environment variable:
+   
+   echo %MY_VARIABLE%
+   
+4. Print all environment variables:
+   
+   set
+
+5. Remove "MY_VARIABLE" environment variable:
+   
+   set MY_VARIABLE=
+
+Exercise 5 - Basic Utilities
+============================
+=> Clear the terminal : cls
+=> Exit the terminal : exit
+=> Break out of some process : Ctrl + C
+
+=> Display contents of file "sample.txt":
+   
+   type system.log  
+
+=> Search for "error" in "system.log":
+   
+   find "error" system.log
+   
+3. Sort lines in "system.log" in ascending order:
+   
+   sort system.log
+   
+4. Count lines in "system.log":
+   
+   find /c /v "" system.log
+   
+Exercise 6 - Pipes & Filters
+============================
+1. List files and filter output using `dir` and `find`:
+   
+   dir | find "important"
+   
+2. Display contents of "system.log" and find lines containing "error":
+   
+   type system.log | find "error"
+   
+3. Sort scores in "scores.txt" and display top 5:
+   
+   sort /r scores.txt | more
+   
+4. Print even numbers from 1 to 10 using `echo` and `find`:
+   
+   echo 1 2 3 4 5 6 7 8 9 10 | findstr /r "\<[02468]\>"
+   
+
+5. Display contents of "data.txt" and replace "old" with "new" using `findstr`:
+   
+   type data.txt | findstr "old" > modified_data.txt
+   
+Exercise 7 - Processes
+======================
+1. Display list of running processes:
+   
+   tasklist
+
+2. Open Windows Task Manager:
+   
+   taskmgr
+   
+3. Terminate a process with specific process ID:
+   
+   taskkill /F /PID PROCESS_ID
+      
+5. Start Notepad using the `start` command, and then list running processes:
+   
+   start notepad
+   tasklist
+   
+6. Start VS Code : code .

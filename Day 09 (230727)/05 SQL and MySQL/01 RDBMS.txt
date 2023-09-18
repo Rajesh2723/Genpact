@@ -1,0 +1,66 @@
+RDBMS
+=====
+What is the use of database?
+To persist data
+
+Important terms in learning MySQL:
+1. What is an RDBMS?
+2. What is a Schema? What is a schematic representation of data?
+3. What is a Table?
+4. What does a row/tuple represent?
+5. What does columns represent?
+
+Answer1: RDBMS stands for Relational Database Management System
+
+A database management system (DBMS) that incorporates the relational-data model, normally including a Structured Query Language (SQL) application programming interface. It is a DBMS in which the database is organized and accessed according to the relationships between data items. In a relational database, relationships between data items are expressed by means of tables. 
+
+Answer2: A database schema is the skeleton structure that represents the logical view of the entire database. It defines how the data is organized and how the relations among them are associated. It formulates all the constraints that are to be applied on the data.
+
+A database schema defines its entities and the relationship among them. It contains a descriptive detail of the database, which can be depicted by means of schema diagrams. It’s the database designers who design the schema to help programmers understand the database and make it useful.
+
+Answer3: Tables are database objects that contain all the data in a database. In tables, data is logically organized in a row-and-column format similar to a spreadsheet. 
+
+Answer4: Each row represents a unique record
+
+Answer5: Each column represents a field in the record.
+
+Simply put:
+
+Table-> Collection of rows and columns -> Collection of records
+rows-> 1 row -> 1 record
+columns-> 1 column -> 1 property
+
+Example: 
+Schema: school
+Table1: students - id, name, address, contact_no
+id, name, address, contact
+1.  Mohit Indore 9988776655
+
+Table2: courses - id, name, fees
+
+ id, name, fees
+ 1   java  10000
+ 2   .net  12000
+
+Table3: staff - id, name, designation, salary
+
+Table4: expenditures - id, type, frequency, amount
+
+Table5: Join table to match students with courses: 
+students_courses:
+
+studentId-courseId
+    1    -   1
+    1    -   2
+
+Conclusion: Student 1 is enrolled in 2 courses
+
+RDBMS vendors
+=============
+- Oracle
+- MySQL
+- MS Access
+- MongoDB
+- DB2
+- PostGreSQL
+- SQLite

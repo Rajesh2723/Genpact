@@ -1,0 +1,115 @@
+Day 28 Notes
+============
+Unix/Linux
+==========
+Basic Commands
+--------------
+List of Windows Command Prompt (DOS) commands to perform different tasks:
+
+=> Navigate to a Directory: 
+
+Start by opening the Command Prompt. Use the `cd` command to navigate to a directory on your computer, for example, navigate to your Documents folder:
+   
+   from c: to d: => d:
+   
+   use cd command to navigate to any directory
+   
+   cd folder-name
+
+=> Create a Directory: Create a new directory called "Folder1" using the `mkdir` command:
+   
+   mkdir folder1
+
+=> List Directory Contents: Use the `dir` command to list the contents of the current directory. Ensure that the "Folder1" directory is listed.
+   
+   dir
+   
+   move inside folder 1 => cd folder1
+
+=> Create Text Files: Create two text files named "file1.txt" and "file2.txt" using the `echo` command:
+
+   echo This is the content of file 1. > file1.txt
+   echo This is the content of file 2. > file2.txt
+   
+=> Display File Contents: Use the `type` command to display the contents of "file1.txt":
+   
+   type file1.txt
+
+=> Create a new folder : folder2 inside folder1
+
+=> Copy Files: Use the `copy` command to make a copy of "file1.txt" into the "folder2" directory:
+   
+   copy file1.txt folder2\
+
+=> Rename file
+
+   move file2.txt file3.txt
+
+=> Move Files: Use the `move` command to move "file3.txt" into the "folder2" directory:
+   
+   move file3.txt folder2\
+
+=> List Directory Contents Again: Use the `dir` command to confirm that the files were copied and moved correctly to the "Folder1" directory:
+   
+   dir
+   
+   to see the content of folder2=> dir folder2
+
+=> Clean Up: Finally, delete the "Folder1" directory and its contents using the `rmdir` command:
+
+    rmdir /s /q Folder1
+
+System config
+-------------
+=> Display IP Configuration: Use the `ipconfig` command to display information about your computer's network interfaces:
+
+   ipconfig   
+
+=> Display System Information: Use the `systeminfo` command to display detailed system information:
+    
+    systeminfo
+	
+=> Ping a Host: Choose a host (e.g., "www.google.com") and use the `ping` command to send a few ICMP echo requests to it:
+
+    ping www.google.com
+    
+=> Display Running Processes: Use the `tasklist` command to display a list of running processes:
+    
+    tasklist
+    
+Task, Process Id and Port
+=========================
+1. Check whether port 8080 is running:
+
+=> netstat -ano | findstr "8080"
+
+Probable result:
+
+TCP  0.0.0.0:8080  0.0.0.0:0  LISTENING  484
+.
+TCP  127.0.0.1:55146  127.0.0.1:8080  ESTABLISHED 10956
+.
+
+484 and 10956 are Process IDs (PID)
+
+2. Find out the name of the process running on these ports/pids
+
+=> tasklist /FI "PID eq 484"
+=> tasklist /FI "PID eq 10956"
+
+Probable result:
+
+Image Name   PID
+javaw.exe    484
+eclipse.exe  10956
+
+We can see that PID 484 corresponds to javaw.exe process.
+
+Tomcat is a Java-based web server and it runs Java applications using the `javaw.exe` process.
+
+When you run a Java application like Tomcat, it starts a `javaw.exe` process in the background to manage and execute the Java code. This is a common behavior for Java-based applications on Windows.
+
+3. Kill the process
+
+=> taskkill /F /PID <PID>
+=> taskkill /F /PID 484

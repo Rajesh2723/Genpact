@@ -1,0 +1,88 @@
+Day 22 Notes
+============
+Page Redirection
+----------------
+In Spring MVC, page redirection is a common technique used to navigate users from one URL to another. 
+This can be achieved using various approaches and annotations. 
+
+1. RedirectView Class
+- The RedirectView class in Spring MVC allows us to create a redirection view. 
+- We can use this class to specify the target URL to which the user should be redirected.
+
+2. Redirect Prefix: 
+- In Spring MVC, you can use the redirect: prefix in the view name to indicate that the request should be redirected to a different URL. 
+- For example, redirect:newPage would redirect the user to the "newPage" URL.
+
+3. RedirectAttributes: 
+- When performing a redirect, you might want to pass data between the current request and the redirected request. 
+RedirectAttributes can be used to add attributes that will be automatically transferred to the redirected URL as query parameters.
+---------------------------------
+Spring Form
+===========
+A Spring Form simplifies HTML form handling in Spring-based apps, binding data, validation, and rendering using form tags.
+
+Steps to use Spring Forms
+--------------------------
+Step1: Include Spring Web dependency in the project (e.g., using Maven).
+
+Step2: Include Spring form tag library in the HTML/JSP Page
+Ex: <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>.
+
+Step3: Use the <form:form> tag to create the HTML form, binding it to your model attribute.
+
+Step4: Use the following elements for related type of data
+
+Text Box
+--------
+<label for="title">Title:</label>
+<form:input path="title"/><br/>
+
+Imp:
+
+<form:input>: This tag renders an HTML text input field.
+
+for="title" and path="title", here title is the data member of class Book. 
+
+** The name must be exactly same for auto binding to happen
+
+Password
+--------
+<label for="password">Title:</label>
+<form:password path="password"/><br/>
+
+<form:password>: This tag renders an HTML password field.
+
+for="password" and path="password", here password is the data member of class Book(if any). 
+
+** The name must be exactly same for auto binding to happen
+
+TextArea
+--------
+<label for="description">Description:</label>
+<form:textarea path="description" rows="4" cols="50"/><br/>
+
+<form:textarea>: This tag renders an HTML TextArea
+Again description is the data member of class book
+
+Checkbox
+--------
+<label for="available">Is Available:</label>
+<form:checkbox path="available"/><br/>
+
+<form:checkbox/> : It is used to show 1 checkbox
+
+
+When we pass the data from the handler method to the Spring form, it will be binded with the inputs with path attribute. Here the getter methods of each property will be called automatically. So it is mandatory to create getters for all the fields to be updated
+
+After changing data and clicking on Submit button, automatically the setter methods will be called and all the data will be set in the object
+
+
+
+
+
+
+
+
+
+
+

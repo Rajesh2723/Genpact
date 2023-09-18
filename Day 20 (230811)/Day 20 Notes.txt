@@ -1,0 +1,251 @@
+Day 20 Notes
+============
+Run on Server
+- Our source code is bundled into WAR (Web ARchive) file
+- This WAR file contains .class and static files
+- This WAR file is moved to a folder watched by Tomcat
+- The application is executed by Tomcat
+- Tomcat opens the brower and runs the 1st request
+
+
+Requests
+========
+Request1: http://localhost:9192/GenpactMvcJdbc/
+
+/ handled by DispatcherServlet
+
+In Java, the main technology to create web applications is Servlets.
+
+All the requests coming to our Spring MVC code will first come to DispatcherServlet class
+
+DispatcherServlet will delegate/dispatch the request to the appropriate request handler (class+method)
+
+Handler class
+
+@Controller
+HomeController{}
+
+Only those classes will be annotated with @Controller that will handle a request
+
+A class itself does not do anything. It is hust encapsulation (putting data memebers and methods together)
+
+Handler Method
+
+@GetMapping(value = {"/"})
+public String home() {
+	System.out.println("Hello World");
+	return "index";
+}
+
+There are 2 types of requests:
+1. Get: 
+- The 1st request will always be get request
+- Whenever we click on a link, it will be get request
+
+If you do not mention the request type annotation you will receive 404 exception
+
+2. Post
+- We can choose post request only when data is taken from a form.
+
+Handler mappings
+-----------------
+@GetMapping
+- @GetMapping is an interface and it contains many members
+- The data member value is of type String[].
+- In value, we specify the URL which will be handled by the method
+- What it means is we can map multiple URLs to the home method.
+
+Syntax: (value = "/"), (value = {"/", "/index", "/hi"})
+
+If we want to send a page to the Server, the handler method will return the name of the file, in our case => return "index";
+
+The handler method returns the page name to the DispatcherServlet.
+
+The DispatcherServlet consults the InterResourceViewResolver to find the location and file type of the view (index.jsp) and then embedds the data and retuns plain html file to client as response
+
+DispatcherServlet is like the front face of our Spring MVC application.
+
+- It coordinates with all the other modules
+	- Handler Mapping (classes and methods)
+	- View Resolver
+- All requests are received by it
+- All responses are sent by it
+
+Request URL + Handler class + Handler Method + Type of Request + The final outcome of the method 
+
+Request URL -> "/", i.e. value = "/"
+Handler class -> HomeController
+Handler Method -> home()
+Type of Request -> Get, i.e @GetMapping
+Final outcome => return view name only, i.e. return "index"
+
+Request2: http://localhost:9192/GenpactMvcJdbc/openForm
+
+Request3: http://localhost:9192/GenpactMvcJdbc/register
+
+
+method -> registration()
+request type => post
+request url => register
+return the same form name
+
+
+Data Exchange
+=============
+Data is exchanged in 2 directions:
+1. From view (form.jsp) to handler methods (register())
+2. From handler method (register()) to views (form.jsp)
+
+From view to handler methods
+============================
+1. Sending data from <form></form>
+----------------------------------
+The "name" attribute is used to send data from the form elements to the Server
+
+2. Send data from <a></a>
+-------------------------
+http://localhost:9192/GenpactMvcJdbc/
+
+handleDataOnClick?profession=CorporateTrainer&subject=Java
+
+Receiving data at Server
+------------------------
+1. Using @RequestParam as a method parameter
+Syntax: @RequestParam("name-key") <declare a variable>
+Ex: @RequestParam("fullName") String f
+
+Entity class
+------------
+1. Now all the packages will be the sub packages of the parent package (genpact.mvc.jdbc)
+
+2. Entity package: genpact.mvc.jdbc.entities
+
+From handler methods to view
+============================
+1. Model interface
+------------------
+Step1: Specify Model model as the method parameter
+Step2: Use addAttribute(String key, Object data) method
+
+for ex: 
+registration(.... , Model model) {
+	model.addAttribute("fullName", fullName);
+}
+
+Receive the data
+
+<%
+	String fName = request.getAttribute("fullName");
+%>
+
+Note: Model interface can be used to send only data
+
+2. ModelAndView class
+
+Note: ModelAndView class is used to send both data and view name
+
+Ex: ModelAndView mView = new ModelAndView();
+mView.setViewName("trainer");
+mView.addObject("profession", profession);
+
+Receive the data with request.getAttribute();
+
+JSP tags
+--------
+There are 3 types of tags:
+1. Declaration tag
+Syntax: <%! %>
+Usage: To define variables and methods
+
+2. Scriptlet tag
+Syntax: <% %>
+Usage: To write the logic
+
+3. Expression tag
+Syntax: <%= %>
+Usage: To print something
+Imp: 
+- Only 1 statement is allowed
+- We cant use statement terminator (;)
+
+3. @ModelAttribute	
+---------------------------------------------
+How to include Static Resources in Spring MVC?
+
+Step 1: Create a "resources" folder inside the "webapp/WEB-INF" directory
+
+Step 2: Create folders to hold different types of files (you can name them anything: however standards should be followed) inside resources folder such as:
+> css
+> js 
+> images
+
+Step 3: Place respectives files in css, js, images folder. Here we put
+> style.css inside css
+> script.js inside js
+> img_1.jpg inside images
+
+Step 4: We need to use certain configurations inside our spring config file. Include
+a. namespace
+xmlns:mvc="http://www.springframework.org/schema/mvc"
+
+and
+
+http://www.springframework.org/schema/mvc
+
+http://www.springframework.org/schema/mvc/spring-mvc.xsd 
+
+b. Tag
+
+<mvc:resources mapping="/resources/**" location="WEB-INF/resources/" />
+
+> the location attribute specifies the location of resources folder relative to webapp directory, here resources is inside WEB-INF.
+
+> mapping attribute specifies the url we will use to refer to resources directory
+
+c. Annotation enabler
+<mvc:annotation-driven/>
+
+Step 5: Use TagLib library in jsp file to include these resources
+a. Include dependencies:
+
+<dependency>
+	<groupId>javax.servlet.jsp.jstl</groupId>
+	<artifactId>jstl-api</artifactId>
+	<version>1.2</version>
+</dependency>
+<dependency>
+	<groupId>taglibs</groupId>
+	<artifactId>standard</artifactId>
+	<version>1.1.2</version>
+</dependency>
+
+b. Include the following tag in the page where we wish to include the resources:
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+Step 6: Use the following lines to include static resources:
+<link href="<c:url value='/resources/css/style.css'/>" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="<c:url value='/resources/js/script.js'/>"></script>
+<img src='<c:url value="/resources/images/pic_1.jpg"/>' alt="my image"/>
+
+
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,22 @@
+CREATE TABLE `spring_jdbc`.`books` (
+  `bookId` INT NOT NULL AUTO_INCREMENT,
+  `bookName` VARCHAR(15) NOT NULL,
+  `bookPrice` DECIMAL(6,2) NOT NULL,
+  `noOfCopies` INT NOT NULL,
+  `inStock` BIT(1) NOT NULL,
+  `dateOfPublication` DATE NOT NULL,
+  PRIMARY KEY (`bookId`),
+  UNIQUE INDEX `bookId_UNIQUE` (`bookId` ASC) VISIBLE);
+  
+  
+ INSERT INTO books (bookName, bookPrice, noOfCopies, inStock, dateOfPublication) VALUES (?,?,?,?,?)
+ 
+ UPDATE books SET bookName = ?, bookPrice = ?, noOfCopies = ?, inStock = ?, dateOfPublication = ? WHERE bookId = ?
+
+ DELETE FROM books WHERE bookId = ?
+ 
+ SELECT * FROM books WHERE bookId = ?
+ 
+ SELECT * FROM books
+
+

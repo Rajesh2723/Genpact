@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function brown() {
+	document.bgColor="brown";
+}
+
+function grey() {
+	document.bgColor="grey";
+}
+
+function skyblue() {
+	document.bgColor="skyblue";
+}
+
+function green() {
+	document.bgColor="green";
+}
+</script>
+<style>
+input
+{
+	width:150px;
+}
+div
+{
+	margin-top:200px;
+}
+</style>
+</head>
+
+<body>
+<center>
+<div>
+<input type="button" value="Single Click" onclick="brown()" /><br/>
+<input type="button" value="Double Click" ondblclick="grey()" /><br/>
+<input type="button" value="Mouse Down" onmousedown="skyblue()" /><br/>
+<input type="button" value="Mouse Out" onmouseout="brown()" /><br/>
+<input type="button" value="Mouse Over" onmouseover="grey()" /><br/>
+<input type="button" value="Mouse Up" onmouseup="skyblue()" /><br/>
+
+<input style="width:200px" type="button" value="Mouse Over/Down/Up/Out" onMouseOver="grey()" onMouseDown="skyblue()" onMouseUp="green()" onMouseOut="brown()" /><br/>
+</div>
+</center>
+</body>
+</html>

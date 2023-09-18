@@ -1,0 +1,390 @@
+Day 26 Notes
+============
+Web Services
+------------
+What is a Web Service?
+
+Service = Business functionality to be exported to remote clnts via standard protocols(HTTP/s)
+
+Data given to client via web from the server
+Bus data given by AICTSL to Redbus via web
+
+Server -- service provider
+Client -- service accessor
+
+The Server & Client exchanging services over the Web are known as Web Services
+
+Advantages of Web Services
+--------------------------
+Web services have several advantages:
+
+1. Connect Different Systems: They allow different software and systems to easily talk to each other, even if they are built using different technologies.
+
+2. Flexibility: Components can be updated or replaced without affecting the whole system.
+
+3. Scalability: Services can handle more work by adding more instances, supporting growing demands.
+
+4. Standardization: They use common protocols for consistent communication, making integration smoother.
+
+5. Global Access: Services can be accessed over the internet from anywhere.
+
+6. Business Integration: They help combine different business applications to work together effectively.
+
+7. Easier Maintenance: Components can be modified individually, simplifying upkeep.
+
+8. Interoperability: Systems from different places can work together seamlessly.
+
+9. Platform Independence: Services can be developed on different platforms while remaining compatible.
+
+Data Format
+-----------
+There are mostly 2 types of formats used to transfer data:
+1. XML Format
+2. JSON Format
+
+XML Format
+----------
+XML stands for eXtensible Markup Language
+
+Request
+-------
+<GetBookInfoRequest>
+   <BookID>12345</BookID>
+</GetBookInfoRequest>
+
+Response
+--------
+<GetBookInfoResponse>
+    <Book>
+        <BookID>12345</BookID>
+        <Title>Introduction to XML</Title>
+        <Author>John Smith</Author>
+        <PublicationYear>2022</PublicationYear>
+    </Book>
+</GetBookInfoResponse>
+
+JSON Format
+-----------
+JSON stands JavaScript Object Notation
+
+Request
+-------
+{
+    "GetBookInfoRequest":{
+        "BookID": "12345"
+    }
+}
+
+Response
+--------
+{
+    "GetBookInfoResponse": {
+        "Book": {
+            "BookID": "12345",
+            "Title": "Introduction to XML",
+            "Author": "John Smith",
+            "PublicationYear": "2022"
+        }
+    }
+}
+
+Types of Web Services
+---------------------
+There are following two main types of web services:
+
+1. SOAP Web Services (Simple Object Access Protocol): 
+
+- These services use the XML-based SOAP protocol for communication. 
+
+- They are often used in enterprise-level applications for complex and secure interactions. 
+
+- SOAP web services define a strict structure for requests and responses, making them more formal but potentially more heavyweight.
+
+2. RESTful Web Services (REpresentational State Transfer):
+
+Ex: Water is same, but state (solid, liquid, gas) may differ 
+
+Data may be same, but the format may change
+
+In Java, data is stored in Objects
+
+To transfer, we change its state to either XML or JSON
+
+class Student {
+	int id;
+}
+
+Student s = new Student();
+s.setId(101);
+
+s -> it contains data
+
+Send this data to some client -> I cant send s
+
+Change the representation of object s
+
+JSON representation of s
+
+student : {
+	"id" : 101
+}
+
+XML representation of s
+
+<student>
+	<id>101</id>
+</student>
+
+REST -> When we change the representational state of our objects
+
+Serialization
+=============
+Converting object state into other data formats for data transfer
+
+s (object) -> json/xml => Serialization
+
+Deserialization
+===============
+Converting data formats into object state
+
+json/xml -> s (object) => Deserialization
+
+Without serialization and deserialization, we cannot exchange data
+
+Serialization & Deserialization Cycle
+=====================================
+Taking a reference of our example: 01_Web_Services.png
+
+Data from the HTML form to the Server via browser
+
+https://www.redbus.in/bus-tickets/indore-to-bhopal?fromCityName=Indore&fromCityId=313&srcCountry=IND&toCityName=Bhopal
+
+At redbus server this will happen
+
+Bus bus = new Bus("Indore", "Bhopal", "IND", 313);
+
+This object will be serialized
+
+bus : {
+	"from" : "Indore",
+	.
+	.
+	.
+
+}
+
+The above data will reach AICTSL servers:
+
+The AICTSL servers will convert the above json back to an object -> deserialization
+
+Bus bus = new Bus();
+bus.setFrom("Indore");
+.
+.
+
+
+- REST is an architectural style that uses standard HTTP methods (GET, POST, PUT, DELETE) and formats like JSON or XML for data exchange. 
+
+- RESTful services are known for their simplicity, lightweight nature, and wide adoption in web and mobile applications.
+
+---------------------------------
+Target
+
+Web Services
+
+1. Creating a client that needs data and which will send some data for saving
+
+We have only our browser as the client
+
+HTML -> Send requests in 2 ways:
+1. Clicking the link : GET request can be made
+2. Using form: GET and POST
+
+RESTful Web Services -> GET, POST, PUT, DELETE etc
+
+Postman
+=======
+For Client side, we have tools that behave like a client (proxy clients).
+
+Postman is one such tool.
+
+Postman is an API testing tool
+
+It can send different types of requests and receive the responses. We can test our webs services with Postman
+
+STS
+===
+STS stands for Spring Tool Suite
+It is used to develop Spring Applications
+It is an IDE integrated into eclipse
+
+Spring Boot
+===========
+Spring Boot is a module of Spring used for Rapid Application development
+
+It minimizes the configurations, it contains embedded server and readymade enterprise grade project structures
+
+We can create following types of applications in Spring Framework(with or without Spring Boot):
+
+1. Desktop apps
+2. Web apps
+3. Enterprise apps
+4. Web Services 
+
+With Spring Boot there will be rapid development of above applications
+
+Nowadays -> Spring Boot is majorly used for creating Web Services based applications
+
+Spring Data JPA
+---------------
+JPA
+---
+JPA stands for Java Persistence API
+Storing data permanently in db
+
+JDBC v/s JPA
+============
+JDBC is the main/core technology in Java to transact with database.
+
+We have to do a lot of things manually.
+- load the driver
+- make the connection
+- write the query
+- bind the data
+- execute
+- get/check the result
+
+Time investment is more, manually means error prone
+Due to human lapse, we can have bad code 
+
+To reduce the above cons frameworks are created.
+One such framework is Hibernate
+
+Hibernate is an ORM tool
+
+ORM stands for Object Relational Mapping
+
+Java     - Objects
+Database - Tables
+
+Java 
+
+class Student {
+	int id;
+	String name;
+	double percentage;
+}
+
+Student s = new Student (101, "Jay", 85);
+
+Database
+
+table student
+
+columns - id(int)  name(varchar)   percentage(double)
+			101        Jay                85
+
+In our Java code, if we tell that we want:
+1. student table for class Student
+2. id, name, percentage fields for data members id, name, percentage
+
+The above can be done with Hibernate
+
+save(s) -> save is from Hibernate
+Insert the data of s into table student
+
+The query will be prepared automatically
+The data will be bind
+The query will be executed
+We will get the result
+
+Object -> Relational Database
+
+Hibernate attaches an object with the relational database through mapping, i.e Object Relational Mapping
+
+The rules under which Hibernate was developed are known as JPA
+
+Now JPA has its own library
+
+We can connect Spring with any database tool
+
+Spring + JPA => Spring Data JPA
+
+In Spring Data JPA these are the main interfaces:
+1. JpaRepository
+2. PagingAndSortingRepository
+3. CrudRepository
+---------------------------------
+Server Side
+-----------
+STS
+Spring Boot
+Spring Data JPA
+MySQL Workbench & Server
+
+Client Side
+-----------
+Postman
+
+Data Exchange
+-------------
+REST
+JSON
+
+web
+
+jpa
+
+driver
+
+
+
+
+
+
+
+
+Hibernate ORM
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2. Create a Server, that will respond tp requests
+
+
+
+
+
+Spring Boot
+
+Spring Data JPA
+
+
+
+
+
+
+

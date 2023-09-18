@@ -1,0 +1,295 @@
+Step1: Register on Github
+
+Github URL: https://github.com/
+email:kaustubhchoudhary@yahoo.com
+password: ************
+username: kaustubh_choudhary
+
+Step2: Create a repository
+Repository: SbForGit
+Access: Public
+Default Branch name: main
+
+Result Repository Created:
+https://github.com/kaustubhchoudhary/SbGitExample.git
+
+Step3: Create a SpringBoot project on our laptop by the name: SbGitExample
+
+Step4: Open cmd inside project root folder on our laptop
+
+Step5: Set up the username, email address
+
+git config --global user.name "Kaustubh Choudhary"
+
+Configure email address
+
+git config --global user.email "kaustubhchoudhary@yahoo.com"
+
+See the list of configuration details
+
+command : git config --list
+
+Initialise Git
+--------------
+Step6: Run the command: git init
+
+As a result a hidden folder .git will be created
+
+Step7: See the status with the command: git status
+
+You will notice red coloured files, it means git system doesnt know about these files
+
+Step8: Tell Git you want it to track the changes in all these files
+
+Run the command: git add .
+
+Do "git status" again to see greenery.
+
+Now Git will track changes done to these files
+
+Step9: These files are only in our local machine, first they have to be added to the staging area.
+
+Run the command: git commit -m "<message>"
+
+Example: git commit -m "Initial Commit"
+
+As a result all the files and folders that contain data will be added to the staging area on our local machine only
+
+Step10: Match the branch name in local repository and that in remote repository.
+
+The modern name of main branch is "main"
+
+Step11: Change the local branch name from master to main
+
+git branch -m main
+
+Step12: Link our remote repository to the local one
+
+12.1: Open your repository on Github
+12.2: Copy the address from address bar
+12.3: Run the command: git remote add origin <address-from-address-bar>
+example: 
+git remote add origin https://github.com/kaustubhchoudhary/SbForGit.git
+
+Step13: To see the remote repository (remote origin)
+git remote -v
+
+Result:
+origin  https://github.com/kaustubhchoudhary/SbForGit.git (fetch)
+origin  https://github.com/kaustubhchoudhary/SbForGit.git (push)
+
+As a result local repository and remote repository are connected
+
+Step14: Now its time to push the project from local machine onto the remote machine
+
+Run the command: git push -u origin main
+
+Example: git push -u origin main
+
+Step15: Go to the Github web site and see the uploaded/pushed project
+----------------------------------X--------------------
+Step16: Add some new files and change code inside existing files in your project on local machine
+
+Add code in main file
+
+Create a controller in controller package and test REST Api
+
+Execute the command: git status
+
+and then: git diff
+
+See the changed files
+See the new untracked files and folders
+
+Step17: Tell Git to track the new folders and files 
+Command: git add .
+
+Do: "git status" again, you will see no untracked files and folders now
+
+Step18: Commit the changes to staging area
+command: git commit -m "1. Created a controller. 2. Create a handler."
+
+Step19: Push the changes to remote repository.
+
+You can use either of the 2 commands:
+1. git push -u -f origin main
+2. git push -u -f https://github.com/kaustubhchoudhary/SbGitExample.git main
+
+*Push sends only the changes, so it is very efficient network use.
+
+Step20: Check status again
+
+And the process continues.............
+----------------------------X-------------------------
+Collaboration
+-------------
+1. On Github, Go to project repository and click Invite
+2. Add members with email ids, give them the necessary permissions
+(here: kaustubhchoudhary@rediffmail.com, kostubhchoudhary@gmail.com)
+
+3. The invitation will be sent to all the members
+4. The members have to accept the invitation
+
+**Remove the project from STS
+**Close the cmd, open new one
+
+Clone
+-----
+5. The members should clone the repository in their local machines
+Command: git clone https://github.com/kaustubhchoudhary/SbGitExample.git
+
+Cloning means that full project is now downloaded on individual machines
+
+Your clone has the complete history stored in the hidden .git directory.
+
+See commit history
+-------------------
+command => git log
+
+Probable result (in brief)
+---------------
+commit f87f755440562dd4a9230a7fb67d7c1c1dfc85b0 (origin/main, origin/HEAD)
+Author: kaustubhchoudhary <kaustubhchoudhary@yahoo.com>
+Date:   Mon Aug 28 17:03:06 2023 +0530
+
+1. Created a controller and a handler method to handle the initial request. 2. Set up the server port to 8081.
+
+See descriptive commit
+----------------------
+git show <hashcode>
+git show f87f755440562dd4a9230a7fb67d7c1c1dfc85b0
+
+** Open the latest cloned project in STS
+
+Difference between clone and branch: https://github.com/orgs/community/discussions/22286
+
+Branching
+----------
+If we want to work on a feature, bug removal, enhancement of code than instead of cloning the whole repository, we create a branch .
+
+Git branches are effectively a pointer to a snapshot of your changes. When you want to add a new feature or fix a bug—no matter how big or how small—you spawn a new branch to encapsulate your changes. This makes it harder for unstable code to get merged into the main code base, and it gives you the chance to clean up your future's history before merging it into the main branch. 
+
+By developing them in branches, it’s not only possible to work on both of them in parallel, but it also keeps the main branch free from questionable code.
+
+https://www.atlassian.com/git/tutorials/using-branches
+
+There are 2 ways of creating a branch
+1. With "branch" command
+2. With "checkout" command
+
+Branch command
+--------------
+The "git branch" command lets you create, list, rename, and delete branches.
+
+To see the current list of branches
+
+Command: git branch
+
+Create Branch
+-------------
+There are 2 ways of creating a branch in local repo:
+1. git branch
+2. git checkout
+
+git branch
+----------
+See the current list of branches
+Command: git branch
+
+Create a new branch
+Command: git branch develop (could be anything, ex: flight, voter, cutomer_add, intern_crud, mcq_add)
+
+To again see the current list of branches
+
+Command: git branch
+
+The list will contain develop and main, with main having a * meaning it is the active branch
+
+Switch from main to develop
+command : git checkout develop
+
+The above branch is made on local machine, we have to sync local and remote
+
+Command: git push origin develop
+
+Refresh Github account, develop branch can be seen
+-----------------X-----------------------------------
+2. Checkout command
+
+Checkout
+
+command: git checkout -b develop2
+command: git branch
+command: git push origin develop2
+
+Checkout command will create a new branch and switch to it immediately
+
+Refresh Github account, develop2 can be seen
+
+Delete branches
+---------------
+**1st delete from remote, then from local
+
+To delete from remote
+Command: git push origin --delete branch-name
+
+To delete from local
+Command: git branch -d branch-name
+------------------
+Branches
+--------
+Switch to develop branch
+-> Check active branch: git branch
+-> Switch to develop branch : git checkout develop
+1. Make some changes in HomeController & application.properties
+2. Set up application name.
+3. Set up test cases.
+
+-> Notice (develop) written with project name
+-> Notice > (arrow) written with changed project files
+
+-> git status
+-> git add .
+-> git commit "1. Added a handler method to receive request text.
+
+Push changes to remote
+----------------------
+git push origin develop
+
+Go to the remote repository and click on develop and see the changes
+
+On main we still see old code
+
+Merge
+-----
+To merge the changes to main:
+
+-> Switch to main branch : git checkout main
+-> check branch : git branch
+-> merge: git merge develop
+
+Push the local main to remote main
+-> Switch to main
+-> git push origin main
+
+Pull request
+------------
+Inorder to pull latest changes
+-> 1st switch to branch where you want to pull the changes
+git checkout main
+
+-> Pull changes
+command: git pull origin main
+
+Now your code will also be in sync with remote main
+
+Pull develop too
+----------------
+command : git fetch origin develop
+command : git checkout -b develop origin/develop
+-----X-----X-----X-----X-----X-----X-----X-----
+Forking
+-------
+Making your own personal copy of a repository that is part of a different organization or person's account is Forking.
+
+After forking you can experiment with the code which is totally detached from the original request

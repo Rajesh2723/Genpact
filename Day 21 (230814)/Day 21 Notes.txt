@@ -1,0 +1,18 @@
+Day 21 Notes
+============
+Page Redirection
+----------------
+In Spring MVC, page redirection is a common technique used to navigate users from one URL to another. 
+This can be achieved using various approaches and annotations. 
+
+1. RedirectView Class
+- The RedirectView class in Spring MVC allows us to create a redirection view. 
+- We can use this class to specify the target URL to which the user should be redirected.
+
+2. Redirect Prefix: 
+- In Spring MVC, you can use the redirect: prefix in the view name to indicate that the request should be redirected to a different URL. 
+- For example, redirect:/newPage would redirect the user to the "newPage" URL.
+
+3. RedirectAttributes: 
+- When performing a redirect, you might want to pass data between the current request and the redirected request. 
+RedirectAttributes can be used to add attributes that will be automatically transferred to the redirected URL as query parameters.

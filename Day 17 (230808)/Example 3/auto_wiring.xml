@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		 http://www.springframework.org/schema/beans/spring-beans.xsd 
+		 http://www.springframework.org/schema/context
+		 http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<context:annotation-config />
+
+	<bean class="auto.wiring.annotation.Address"
+		p:houseAddress="Indore" />
+
+	<!-- If there are more than 1 bean, use @Qualifier with @Autowired -->
+	<!-- <bean class="auto.wiring.annotation.Address" p:houseAddress="E-3/248 
+		Arera Colony Bhopal" name="empAddress2" /> -->
+	<bean class="auto.wiring.annotation.Employee" name="employee" />
+
+</beans>

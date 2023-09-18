@@ -1,0 +1,42 @@
+@GetMapping(value = "/register")
+public String registration(
+		@RequestParam("fullName") String fullName,
+		@RequestParam("password") String password,
+		@RequestParam("mobileNo") String mobileNo,
+		@RequestParam("emailId") String emailId,
+		@RequestParam("gender") String gender,
+		@RequestParam("hobbies") String[] hobbies,
+		@RequestParam("skills") String[] skills,
+		Model model
+		) {
+	//import org.springframework.ui.Model;
+	System.out.println("Inside registration method");
+	
+	System.out.println("\n " + fullName + ", " + password);
+	System.out.println("\n " + mobileNo + ", " + emailId);
+	System.out.println("\n " + gender) ;
+	System.out.println("\n " + Arrays.toString(hobbies)) ;
+	System.out.println("\n " + Arrays.toString(skills)) ;
+	
+	model.addAttribute("fullName", fullName);
+	model.addAttribute("password", password);
+	model.addAttribute("mobileNo", mobileNo);
+	model.addAttribute("emailId", emailId);
+	model.addAttribute("gender", gender);
+	model.addAttribute("hobbies", hobbies);
+	model.addAttribute("skills", skills);
+	
+	// send some more data
+	String[] hobbiesData = {"Badminton", "Cricket", "Reels"};
+	String[] skillsData = {"Hibernate", "Spring Boot"};
+	User user = new User("Aakash", "1234", "4044674", 
+			"a@gmail.com","m", hobbiesData, skillsData) ;
+	
+	model.addAttribute("userData", user);
+	
+	List<String> cities = List.of("Indore", "Bhopal", "Gwalior");
+	model.addAttribute("citiesList", cities);
+	
+	
+	return "welcome";
+}

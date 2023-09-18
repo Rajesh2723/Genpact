@@ -1,0 +1,56 @@
+Create a console based application.
+
+When we run the project a menu should display:
+
+1. Login
+2. Register
+
+Select option: 1
+
+Enter username: kaustubh
+Enter password: 1234
+[data must be checked in database]
+
+if(data not present) 
+1. Login 
+2. Register
+
+Select option: 2
+
+Enter username: kaustubh
+Enter password: 1234
+[data must be entered in database]
+
+Registered successfully
+
+1. Login 
+2. Register
+
+Select option: 1
+
+Enter username: kaustubh
+Enter password: 1234
+[data must be checked in database]
+
+if data present
+
+0. Go to the main menu (exit)
+1. Add Book details
+2. View all books
+
+Select Option : 1
+
+Enter book name: Let Us C
+Enter book price : 200
+Enter book author : Yashwent Kanitkar
+[data added successfully in database]
+
+0. Go to the main menu (exit)
+1. Add Book details
+2. View all books
+
+Select Option : 2
+
+Let Us C    200 Yashwent Kanitkar
+Java - TCR  700 Herbert Schildt
+Data Struc. 500 Steven Holzner

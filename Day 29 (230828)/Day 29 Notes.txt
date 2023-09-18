@@ -1,0 +1,245 @@
+Day 29 Notes
+============
+Unix/Linux
+==========
+Operating System / Kernel
+-------------------------
+The computer programs that allocate the system resources and coordinate all the details of the computer's internals is called the operating system or the kernel.
+
+Shell
+-----
+Users communicate with the kernel through a program known as the shell. 
+
+The shell is a command line interpreter; it translates commands entered by the user and converts them into a language that is understood by the kernel.
+
+Unix
+----
+The Unix operating system is a set of programs that act as a link between the computer and the user.
+
+- Unix was originally developed in 1969 by a group of AT&T employees Ken Thompson, Dennis Ritchie, Douglas McIlroy, and Joe Ossanna at Bell Labs.
+
+- There are various Unix variants available in the market. Solaris Unix, AIX, HP Unix and BSD are a few examples. 
+
+- Linux is also a flavor of Unix which is freely available.
+
+Unix Architecture
+-----------------
+Refer Image : 01_unix_architecture.jpg
+
+These are the building blocks of Unix:
+
+1. Kernel
+---------
+- The kernel is the heart of the operating system. 
+- It interacts with the hardware and does most of the tasks like memory management, task scheduling and file management.
+
+2. Shell
+--------
+- The shell is the utility that processes your requests. 
+- When you type in a command at your terminal, the shell interprets the command and calls the program that you want. 
+
+3. Commands and Utilities
+-------------------------
+- There are various commands and utilities which you can make use of in your day to day activities. 
+
+- cp, mv, cat and grep, etc. are few examples of commands and utilities. 
+
+- There are over 250 standard commands plus numerous others provided through 3rd party software. 
+
+- All the commands come along with various options.
+
+4. Files and Directories
+------------------------
+− All the data of Unix is organized into files. 
+- All files are then organized into directories. 
+- These directories are further organized into a tree-like structure called the filesystem.
+
+Consumer OS
+===========
+The three popular consumer Operating Systems are:
+1. Linux
+2. MacOS
+3. Windows
+
+Linux
+=====
+- Linux is a free and open-source Unix-like operating system kernel
+
+- Linux serves as the core component of various operating systems, commonly referred to as "Linux distributions" or "Linux flavors" 
+
+- It was created by Linus Torvalds in 1991
+
+- It quickly gained popularity due to its open nature, community-driven development, and versatility.
+
+- The popular flavors of Linux are:
+	1. Red Hat Enterprise Linux (RHEL)
+	2. Ubuntu
+	3. Debian
+	4. Fedora
+	5. CentOS
+	6. Suse Linux Enterprise Server (SLES)
+
+- Most of the Unix commands will also work on the above Linux distributions
+
+MacOS
+-----
+- MacOS is the operating system for all Apple products
+- MacOS is based on Darwin operating system
+- Darwin is based on Unix-like kernel.
+- Many Unix command will also work on MacOS
+
+Windows
+-------
+- Windows does not have Unix kernel
+
+- Instead it has its own proprietory Windows NT kernel.
+
+- The Unix/Linux commands do not work on Windows OS
+
+- Windows has its own command-line utilities that differ from Unix commands. 
+
+- As both operating systems are meant for managing the system, their commands can be different but many of them are used for similar purpose.
+
+List of commands
+================
+1. Windows DOS Commands : 01_Windows_Commands.txt
+
+2. Unix/Linux Commands : Refer doc 02_Unix_Linux_Commands.txt
+
+Basic Commands
+--------------
+List of Windows Command Prompt (DOS) commands to perform different tasks:
+
+=> Open Command Prompt
+
+Window + R -> Dialog Box -> write cmd -> enter 
+
+=> Navigate to a Directory:
+
+Start by opening the Command Prompt. Use the `cd` command to navigate to a directory on your computer, for example, navigate to your Documents folder:
+   
+   from c: to d: => d:
+   
+   use cd command to navigate to any directory
+   
+   cd folder-name
+
+=> Forward arrow : It lists all the files and folders within the directory you are in
+
+=> Up/Down Arrow : It browses through all the commands we have executed in a session
+
+=> Terminal : Another name for Command Line Interface
+
+=> Close the terminal : exit
+
+=> Clear the terminal : cls
+
+=> Create a Directory: Create a new directory called "Folder1" using the `mkdir` command:
+   
+   mkdir folder1
+
+=> List Directory Contents: Use the `dir` command to list the contents of the current directory. Ensure that the "Folder1" directory is listed.
+   
+   dir
+   
+   move inside folder 1 => cd folder1
+
+=> Create Text Files: Create two text files named "file1.txt" and "file2.txt" using the `echo` command:
+
+   echo This is the content of file 1. > file1.txt
+   echo This is the content of file 2. > file2.txt
+   
+=> Display File Contents: Use the `type` command to display the contents of "file1.txt":
+   
+   type file1.txt
+
+=> Create a new folder : folder2 inside folder1
+
+=> Copy Files: Use the `copy` command to make a copy of "file1.txt" into the "folder2" directory:
+   
+   copy file1.txt folder2\
+
+=> Rename file
+
+   move file2.txt file3.txt
+
+=> Move Files: Use the `move` command to move "file3.txt" into the "folder2" directory:
+   
+   move file3.txt folder2\
+
+=> List Directory Contents Again: Use the `dir` command to confirm that the files were copied and moved correctly to the "Folder1" directory:
+   
+   dir
+   
+   to see the content of folder2=> dir folder2
+
+=> Clean Up: Finally, delete the "Folder1" directory and its contents using the `rmdir` command:
+
+    rmdir /s /q Folder1
+	
+System config
+-------------
+=> Display IP Configuration: Use the `ipconfig` command to display information about your computer's network interfaces:
+
+   ipconfig   
+   
+The value of IPv4 Address is our systems IP. 
+Here : 192.168.1.3
+
+=> Display System Information: Use the `systeminfo` command to display detailed system information:
+    
+    systeminfo
+	
+=> Ping a Host: Choose a host (e.g., "www.google.com") and use the `ping` command to send a few echo requests to it:
+
+    ping www.google.com 
+	ping 8.8.8.8
+	
+This command is particularly helpful in testing whether a our system is connected to some other system (for information interchange) 
+	
+=> Display Running Processes: Use the `tasklist` command to display a list of running processes:
+    
+    tasklist
+
+The same list we get in Task Manager > Details Tab
+   
+Task, Process Id and Port
+=========================
+: Open eclipse
+: Change the port for Tomcat to 8081
+: start Tomcat 
+
+1. Check whether port 8081 is running:
+
+=> netstat -ano | findstr "8081"
+
+Probable result:
+
+TCP  0.0.0.0:8081  0.0.0.0:0  LISTENING  484
+.
+TCP  127.0.0.1:55146  127.0.0.1:8081  ESTABLISHED 10956
+.
+
+484 and 10956 are Process IDs (PID)
+
+2. Find out the name of the process running on these ports/pids
+=> tasklist /FI "PID eq 484"
+=> tasklist /FI "PID eq 10956"
+
+Probable result:
+
+Image Name   PID
+javaw.exe    484
+eclipse.exe  10956
+
+We can see that PID 484 corresponds to javaw.exe process.
+
+Tomcat is a Java-based web server and it runs Java applications using the `javaw.exe` process.
+
+When you run a Java application like Tomcat, it starts a `javaw.exe` process in the background to manage and execute the Java code. This is a common behavior for Java-based applications on Windows.
+
+3. Kill the process
+
+=> taskkill /F /PID <PID>
+=> taskkill /F /PID 484
+-----X-----X-----X-----X-----X-----X-----

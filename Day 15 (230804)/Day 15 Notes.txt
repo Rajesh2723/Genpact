@@ -1,0 +1,142 @@
+Day 15 Notes
+============
+Sending data to Server
+----------------------
+The HTML ways
+
+The data can be sent to the server through:
+1. Anchor
+2. Forms
+
+Anchor
+======
+- Anchor is also used to send request (data) to the server.
+- With an anchor tag, we can only send "get" request (post isn't possible)
+- We can send limited data to server through URL rewriting (ex: request?mobile=9926535458&email=k@gmail.com)
+
+Syntax: <a href="request?mobile=9926535458&email=k@gmail.com">Send mobile & email</a>
+
+Request URL : http://127.0.0.1:5500/html/request?mobile=9926535458&email=k@gmail.com
+
+Form
+====
+- It is used to create a container for various form elements, such as input fields, checkboxes, radio buttons, and buttons. 
+
+- It is used to gather user input which can be sent to a server for processing. 
+
+Syntax:
+
+<form action = "" method = "">
+	element 1
+	element 2
+	.
+	.
+	
+	submit button
+</form>
+
+Attributes:
+
+- action: Specifies the URL (resource-file) where the form data should be submitted.
+
+- method: Specifies the HTTP method to be used when submitting the form (e.g., GET or POST).
+
+Method => Get
+If the method is get, the dat from the form will travel to the Server from the URL
+
+Ex: action = "register", method = "get"
+Request URL : http://127.0.0.1:5500/html/register?username=kaus1234
+
+Ex: action = "registration", method = "get"
+Request URL : 
+http://127.0.0.1:5500/html/registration?username=kaus1234
+
+Data : username=kaus1234
+
+username => key
+kaus1234 => value
+
+Key
+---
+- The key is defined as the "name" attribute in the input element. 
+- Key remains the same throughout all requests
+- Key is compulsory to transfer data
+- That is why name attribute is compulsory.
+- Without name attribute data wont travel
+Ex: URL without key/name
+http://127.0.0.1:5500/html/registration?
+
+Input elements
+--------------
+<input type="text" name="username">
+
+<input type="password" name="password">
+
+<input type="email" name="email">
+
+<input type="number" name="quantity">
+
+<input type="checkbox" name="subscribe">
+
+<input type="radio" name="gender" value="male">
+
+<input type="radio" name="gender" value="female">
+
+<input type="file" name="fileUpload">
+
+<input type="date" name="birthdate">
+
+<textarea name="message" rows="4" cols="50">
+
+</textarea>
+
+<select name="country">
+	<option value="us">United States</option>
+	<option value="ca">Canada</option>
+	<option value="uk">United Kingdom</option>
+</select>
+
+<input type="submit" value="Submit">
+
+<input type="reset" value="Reset">
+-----------------------
+Request URL: http://127.0.0.1:5500/html/registration?username=kaus1234&password=5678&email=k%40gmail.com&mobileno=9926535458&hobbies=driving&hobbies=reading&hobbies=biking&gender=male&fileUpload=&birthdate=2023-08-15&message=This+is+a+beautiful+day&country=ca
+
+Scheme => http
+
+IP of the system where Server is running: 127.0.0.1
+
+Port of the system (127.0.0.1) where the server is running => 5500
+
+Resource where the data is going : /registration
+
+Data => 
+
+username=kaus1234
+&
+password=5678
+&
+email=k%40gmail.com
+&
+mobileno=9926535458
+&
+hobbies=driving&hobbies=reading&hobbies=biking
+&
+gender=male
+&
+fileUpload=
+&
+birthdate=2023-08-15
+&
+message=This+is+a+beautiful+day
+&
+country=us
+&
+country=ca
+(in case of multiple select)
+
+Some attributes in form:
+1. disabled => to disable editing
+2. multiple => to select multiple options in a dropdown
+3. selected => to pre-select an option in a dropdown
+4. input type hidden => to hide an input box

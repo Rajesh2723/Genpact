@@ -1,0 +1,70 @@
+Day 12 Notes
+============
+JDBC
+----
+-> JDBC stands for Java DataBase Connectivity. 
+
+-> JDBC is a Java API used to connect our Java Application to run SQL queries on the database. 
+
+-> JDBC API consists of a set of classes, interfaces and methods to work with databases
+
+-> The full JDBC API is inside the java.sql package
+
+-> JDBC can be used to interact with any type of database, be it an RDBMS such as MySQL, Oracle, or a Non-RDBMS such as MongoDB, Redis or Apache Cassandra.
+
+-> It is a part of Java SE (Java Platform, Standard Edition), there is no need to install it separately
+
+-> The current version of JDBC is 4.3
+
+First JDBC Program
+------------------
+-> A succesfull operation with the database is known as a transaction. 
+
+-> A transaction involves the exceution of several small steps. 
+
+-> Each step has a significance of its own. 
+
+-> To write efficient database code, all these steps must be implemented correctly. 
+
+-> These steps are as follows:
+	-> Step 0. Prerequisites
+		-> JDK
+		-> IDE
+		-> MySQL Server
+		-> It should be up and running
+		-> Connector should be added to build path
+	-> Step 1: Driver should be loaded
+	-> Step 2. Connect to database
+	-> Step 3. Create Statement
+	-> Step 4. Prepare the Query
+	-> Step 5. Execute the Query
+	-> Step 6. Collect Data
+	-> Step 7. Close Resources
+
+Queries for JDBC
+----------------
+com.mysql.cj.jdbc.Driver
+
+Query 1. CREATE SCHEMA company ;
+
+Query 2. CREATE TABLE employee (
+  _id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(30) NOT NULL,
+  salary DOUBLE NOT NULL,
+  doj DATE NOT NULL,
+  is_on_leave BIT(1) NOT NULL,
+  bio LONGTEXT,
+  picture BLOB,
+  PRIMARY KEY (_id))
+  
+Query 3: INSERT INTO employee(name, salary, doj, is_on_leave, bio, picture) VALUES ('Ajay',40000,'2022-10-10',true, 'test', '101')
+
+Query 4: INSERT INTO employee(name, salary, doj, is_on_leave, bio, picture) VALUES (?,?,?,?,?,?)
+
+Query 5: UPDATE employee SET salary = ?, is_on_leave = ?, bio = ? WHERE _id = ?
+
+Query 6: SELECT * FROM employee WHERE _id = ?
+
+Query 7: SELECT * FROM employee;
+
+Query 8: DELETE FROM employee WHERE _id = ?

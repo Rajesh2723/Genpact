@@ -1,0 +1,163 @@
+HashMap has 2 important values: Initial Capacity and Load Factor
+
+Initial Capacity is by default - 16 & Load Factor - 0.75
+
+- The load factor is the measure that decides when to increase the capacity of the Map. 
+- The default load factor is 75% of the capacity. 
+- The threshold of a HashMap is approximately the product of current capacity and load factor. So,
+
+If default capacity is 16, threshold is 16 * 0.75 i.e. 12 
+
+As 12th place is filled, capcity will increase. 
+
+Whenever HashMap reaches its threshold, rehashing takes place. Rehashing is a process where new HashMap object with new capacity is created and all old elements (key-value pairs) are placed into new object after recalculating their hashcode. This process of rehashing is both space and time consuming
+
+The capacity of the HashMap is doubled each time it reaches the threshold.
+So, as the capacity reaches 12, HashMap will increase its capacity to 32 
+
+Before discussing load factor, let's review a few terms:
+
+hashing
+capacity
+threshold
+rehashing
+collision
+		
+As the number of elements in the HashMap increases, the capacity is expanded. The load factor is the measure that decides when to increase the capacity of the Map. The default load factor is 75% of the capacity.
+
+The threshold of a HashMap is approximately the product of current capacity and load factor. Rehashing is the process of re-calculating the hash code of already stored entries. Simply put, when the number of entries in the hash table exceeds the threshold, the Map is rehashed so that it has approximately twice the number of buckets as before.
+
+A collision occurs when a hash function returns the same bucket location for two different keys.
+
+Let's create our HashMap:
+
+HashMap works on the principle of hashing — an algorithm to map object data to some representative integer value. The hashing function is applied to the key object to calculate the index of the bucket in order to store and retrieve any key-value pair.
+
+Capacity is the number of buckets in the HashMap. The initial capacity is the capacity at the time the Map is created. Finally, the default initial capacity of the HashMap is 16.
+
+
+public HashMap()
+	-	Constructs an empty HashMap with the default initial capacity(16) 
+	- and the default load factor (0.75).
+public HashMap(int initialCapacity)
+	-	Constructs an empty HashMap with the specified initial capacity
+ 
+	- and the default load factor (0.75).
+public HashMap(int initialCapacity, float loadFactor
+-	Constructs an empty HashMap with the specified initial capacity
+
+	- and the specified load factor
+
+
+Every bucket is a linked list (Node with members->hash, key, value, next pointer)
+
+Map<String, Integer> map = new HashMap<String, Integer>();
+map.put("Java", 5000);
+
+index will be calculated -> hash ("Java") {suppose it's 5012} + n => index {suppose 4}
+based on index the entry will be stored as a Linked List at the bucket index
+
+Node(hash("Java"), "Java", 5000, ->)
+Index (4) will store Node(5012, "Java", 5000, Pointer(null) ->)
+-------------------------------------------
+map.put("Python", 6000)
+hash("Python") suppose 6292 and some operation => index (6)
+
+at 6 index => Node(hash("Python"), "Python", 5000, Pointer(null)->)
+at 6 index => Node(6, "Python", 5000, Pointer(null)->)
+
+If hashes matches, hash collision will occur (its rare but possible)
+
+map.put("JavaScript", 4000)
+index is calculated -> hash ("JavaScript") {suppose it's 5012 again} + n => index {again 4}
+
+Node(hash("Java"), "Java", 5000, ->)
+Index (4) already has entry of Node(5012, "Java", 5000, Pointer(null) ->)
+
+Now equals method will be called on keys, if it equates to true this new entry will replace the existing entry 
+
+if equals returns false, this new entry will be linked to existing node and its address will be stroed in current node
+
+Node(5012, "Java", 5000, Pointer(address of next node) ->) [Node(5012, "JavaScript", 4000, Pointer(null)] ->)
+
+
+map.put(null, 1000)
+
+it will be inserted in index 0
+
+If linked lists grow, complexity increases
+
+In Java 8, inorder to reduce the LinkedList complexity, binary tree is introduced
+--------------------------------------------
+Hashtable, initial capacity = 11, load factor 0.75
+
+-----------------------------
+Sets
+----
+HashSet stores the objects in random order, whereas TreeSet applies the natural order of the elements. 
+
+Performance
+
+Simply put, HashSet is faster than the TreeSet.
+
+HashSet provides constant-time performance for most operations like add(), remove() and contains(), versus the log(n) time offered by the TreeSet.
+
+Usually, we can see that the execution time for adding elements into TreeSet is much more than for the HashSet.
+
+Please remember that the JVM might be not warmed up, so the execution times can differ. 
+4. Which Implementation to Use?
+
+Both implementations fulfill the contract of the idea of a set so it's up to the context which implementation we might use.
+
+Here are few quick points to remember:
+
+- If we want to keep our entries sorted, we need to go for the TreeSet
+- If we value performance more than memory consumption, we should go for the HashSet
+- If we are short on memory, we should go for the TreeSet
+- If we want to access elements that are relatively close to each other according to their natural ordering, we might want to consider TreeSet because it has greater locality
+- HashSet‘s performance can be tuned using the initialCapacity and loadFactor, which is not possible for the TreeSet
+- If we want to preserve insertion order and benefit from constant time access, we can use the LinkedHashSet
+-----------------------------------------------
+Queues
+------
+It is a designed to hold elements prior to processing.
+
+
+This is known as FIFO (First-In-First-Out) principle
+
+The end at which elements are removed is called the head or front of the queue
+
+The end of the sequence at which elements are added is called the back, tail, or rear of the queue,
+
+Example: print tasks are stored on a print queue while waiting to be printed.
+
+Priority Queue
+----------------
+PriorityQueue is the direct implementation of Queue interface
+It is used to process objects based on the priority
+Elements stored in a priority queue may not be sorted
+
+But elements are retrieved in sorted order
+Bcoz the priority is automatically set according to natural order
+
+Elements do not preserve their insertion order
+The PriorityQueue is implemented as priority heap  
+(every element has a key associated to it)
+
+A Priority Queue is different from a normal queue, because instead of being a “first-in-first-out”, values come out in order by priority. It is an abstract data type that captures the idea of a container whose elements have “priorities” attached to them. An element of highest priority always appears at the front of the queue. If that element is removed, the next highest priority element advances to the front. A priority queue is typically implemented using Heap data structure.
+Initial Capacity - 11
+
+The priority is decided by the compareTo method defined as a reult of implementing Comparable interface
+
+
+
+
+
+
+
+
+
+
+
+
+

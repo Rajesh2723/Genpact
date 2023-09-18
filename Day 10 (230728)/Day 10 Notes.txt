@@ -1,0 +1,299 @@
+Day 10 Notes
+============
+Database Modeling
+-----------------
+Data modeling is the process of creating a simplified diagram of the data elements and their structure a software system contains, using text and symbols.
+
+Refer notes in folder : 01 Data Models 
+
+Entities and Relationships
+--------------------------
+An RDBMS contains Entities that are inter-related.
+
+There are 3 types of relationships:
+1. One-to-Many
+2. Many-to-Many
+3. One-to-One
+
+Refer Doc - Relationships in RDBMS.docx
+
+Keys
+----
+Keys are used to
+- Uniquely identify a record
+- Maintain relationship between entity tables
+
+Types of Keys (Diagram : 04_dbms_keys.png)
+-------------
+There are 8 types of keys in RDBMS
+
+1. Primary Key: is a column in a table that uniquely identify every row in that table (employee_id)
+
+2. Candidate Key: is a set of attributes that uniquely identify tuples in a table (ssn, passport)
+
+3. Super Key: A super key is a group of single or multiple keys which identifies rows in a table. It can be created by pairing the candidate keys with other table columns. (employee_id, emp_name)
+
+4. Foreign Key: is a column that creates a relationship between two tables. The purpose of foreign keys is to maintain data integrity and allow navigation between two different instances of an entity. 
+
+5. Alternate Key
+
+6. Compound Key
+
+7. Composite Key
+
+8. Surrogate Key
+
+Refer Doc - Keys in Database.docx
+
+Joined Tables
+=============
+Schema : ecom
+
+CREATE SCHEMA ecom;
+
+USE schema ecom;
+
+Table 1 :  The "customers" table stores information about the website's customers, including their first and last name, email, and password.
+
+CREATE TABLE customers (
+    customerID INT AUTO_INCREMENT PRIMARY KEY,
+    firstName VARCHAR(15) NOT NULL,
+    lastName VARCHAR(15) NOT NULL,
+    email VARCHAR(35) NOT NULL,
+    password VARCHAR(30) NOT NULL
+);
+
+Table 2: The "categories" table stores information about different product categories, including the name of the category.
+
+CREATE TABLE categories (
+    categoryID INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(15) NOT NULL
+);
+
+Table 3: The "products" table stores information about the products available for purchase on the website, including their name, price, and the category they belong to.
+
+CREATE TABLE products (
+    productID INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(15) NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    categoryID INT NOT NULL,
+    FOREIGN KEY (categoryID) REFERENCES categories(categoryID)
+);
+
+Table 4: The "customer_orders" table stores information about orders made by customers, including the customer's ID, and the date of the order.
+
+CREATE TABLE customer_orders (
+    orderID INT AUTO_INCREMENT PRIMARY KEY,
+    customerID INT NOT NULL,
+    orderDate DATE NOT NULL,
+    FOREIGN KEY (customerID) REFERENCES customers(customerID)
+);
+
+Table 5: The "order_products" table stores information about the products included in each order, including the order ID, product ID, and quantity.
+
+CREATE TABLE order_products (
+    orderID INT NOT NULL,
+    productID INT NOT NULL,
+    quantity INT NOT NULL,
+    PRIMARY KEY (orderID, productID),
+    FOREIGN KEY (orderID) REFERENCES customer_orders(orderID),
+    FOREIGN KEY (productID) REFERENCES products(productID)
+);
+
+Insert data
+-----------
+Table 1: customers
+
+There are 5 customers: Harsh, Manish, Garima, Gaurav and Rahul
+
+INSERT INTO customers (firstName, lastName, email, password) VALUES 
+('Harsh', 'Nair', 'harsh@gmail.com', '1234'),
+('Manish', 'Joshi', 'manish@yahoo.com', '2345'),
+('Garima', 'Thakur', 'garima@rediff.com', '3456'),
+('Gaurav', 'Sharma', 'gaurav@gmail.com', '4567'),
+('Rahul', 'Patil', 'gaurav@yahoo.com', '5678');
+
+Table 2: categories
+
+There are 3 categories : Electronics, Apparels and Etables
+
+INSERT INTO categories (name) 
+VALUES 
+('Electronics'),
+('Apparels'),
+('Eatables');
+
+Table 3: products
+
+There are 3 products each in every category
+
+Electronics (Laptop, Smart Watch, Tablet)
+Apparels (Trouser, T-Shirt, Suit)
+Eatables (Namkeen, Knorr Soup, Ketchup)
+
+INSERT INTO products (name, price, categoryID) 
+VALUES 
+('Laptop', 35000, 1),
+('Trouser', 1199, 2),
+('Namkeen', 74.9, 3),
+('T-Shirt', 1999, 2),
+('Suit', 16999, 2),
+('Smart Watch', 1200, 1),
+('Knorr Soup', 19.99, 3),
+('Tablet', 17999, 1),
+('Ketchup', 212, 3);
+
+Table 4: customer_orders
+
+Harsh (cutomer id = 1)
+On 2nd July 2023, Harsh made an order of 2 items - 2 trousers, 2 T-shirts
+On 4th July 2023, Harsh made a 2nd order of 2 items - 4 packets of Knorr soup and 1 bottle of Ketchup
+
+Garima (cutomer id = 3)
+On 3rd July, Garima made an order of 3 packets of Namkeen
+
+Gaurav (cutomer id = 4)
+On 5th July, Gaurav made 2 orders:
+In the 1st order, he bought 1 laptop
+In the 2nd order, he bought 1 T-shirt
+
+INSERT INTO customer_orders (customerID, orderDate) 
+VALUES 
+(1, '2023-07-02'),
+(3, '2023-07-03'),
+(1, '2023-07-04'),
+(4, '2023-07-05'),
+(4, '2023-07-05');
+
+Table 5: order_products
+
+Harsh - customer 1
+Order no 1 - 2 trousers, 2 T-shirts
+Order no 3 - 4 packets of Knorr soup and 1 bottle of Ketchup
+
+Garima - customer 3
+Order no 2 - 3 packet namkeen
+
+Gaurav - customer 4
+Order no - 4 - 1 Laptop 
+Order no - 5 - 1 T-Shirt
+
+INSERT INTO order_products (orderID, productID, quantity) 
+VALUES 
+(1, 2, 2),
+(1, 4, 2),
+(3, 7, 4),
+(3, 9, 1),
+(2, 3, 3),
+(4, 1, 1),
+(5, 4, 1);
+
+Relational Tables are created and data inserted
+-----------X----------X----------X-----------
+Joins
+-----
+Joins in SQL
+============
+What are Joins?
+
+Joins in SQL are commands are commands which are used to combine rows from two or more tables based on a related column between those tables. They are predominantly used when a user is trying to extract data from tables which have one-to-many and many-to-many relationships between them.
+
+Types of Joins
+
+There are following 4 types of Joins:
+1. Inner Join
+2. Left Join
+3. Right Join
+4. Full/Cross Join
+
+Inner Join
+----------
+This type of Join returns those records which have matching values in both the tables. 
+
+So, if you perform an INNER JOIN operation between the Employee table and the Projects table, all the tuples which have matching values in both the tables will be given as output.
+
+Syntax:
+
+SELECT Table1.Column1, Table1.Column2, Table2.Column1...
+FROM Table1 
+INNER JOIN Table2 
+ON table1.MatchingColumnName = Table2.MatchingColumnName;
+
+Problem 1: Get the categories and their products
+
+SELECT categories.categoryID, categories.name, products.name, products.price
+FROM categories 
+INNER JOIN products 
+ON categories.categoryID = products.categoryID;
+
+Shorten & simplify the query with Alias
+----------------------------------------
+SELECT c.categoryID, c.name, p.name, p.price
+FROM categories AS c
+INNER JOIN products AS p
+ON c.categoryID = p.categoryID;
+
+Problem 2: Get the dates on which customers made orders
+
+SELECT c.firstName, co.orderDate
+FROM customers AS c
+INNER JOIN customer_orders AS co
+ON c.customerID = co.customerID;
+
+Problem 3: Get the customers name and products they bought
+
+SELECT c.firstName, co.orderDate, p.name, op.quantity
+FROM customers AS c
+INNER JOIN customer_orders AS co
+ON c.customerID = co.customerID
+INNER JOIN order_products AS op
+ON co.orderID = op.orderID
+INNER JOIN products as p
+ON op.productID = p.productID;
+-----------------------------
+Left Outer Join
+
+The LEFT JOIN or LEFT OUTER JOIN returns all records from the left table and also those records which satisfy a condition from the right table. 
+
+Also, for the records having no matching values in the right table, the output or the result-set will contain the NULL values.
+
+Syntax:
+
+SELECT Table1.Column1, Table1.Column2, Table2.Column1...
+FROM Table1 
+LEFT JOIN Table2 
+ON table1.MatchingColumnName = Table2.MatchingColumnName;
+
+Problem 4: Get the detail of all customers whether they have purchases something or not
+
+SELECT c.firstName, co.orderID, co.orderDate
+FROM customers AS c
+LEFT JOIN customer_orders AS co
+ON c.customerID = co.customerID;
+--------------------------------
+Right Join
+----------
+The RIGHT JOIN or RIGHT OUTER JOIN returns all records from the right table and also those records which satisfy a condition from the left table. 
+
+Also, for the records having no matching values in the left table, the output or the result-set will contain the NULL values.
+
+Syntax:
+
+SELECT Table1.Column1, Table1.Column2, Table2.Column1...
+FROM Table1 
+RIGHT JOIN Table2 
+ON table1.MatchingColumnName = Table2.MatchingColumnName;
+----------------------------------
+Full/Cross Join (Full Outer Join)
+---------------------------------
+FULL JOIN or the FULL OUTER JOIN returns all this records which either have a match in the left (Table 1) or the right (Table 2) table.
+
+Syntax:
+
+SELECT Table1.Column1, Table1.Column2, Table2.Column1...
+FROM Table1 
+FULL JOIN Table2 
+ON table1.MatchingColumnName = Table2.MatchingColumnName;
+
+Ref: https://www.youtube.com/watch?v=H6988OpZKTU
+-----X-----X-----X-----X-----X-----X-----X-----

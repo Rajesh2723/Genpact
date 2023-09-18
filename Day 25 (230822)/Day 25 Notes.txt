@@ -1,0 +1,563 @@
+Day 25 Notes
+============
+Software Testing
+================
+Overview
+--------
+- Software testing is a systematic process to identify defects and validate software functionality. 
+
+- It involves various types of tests, aims to ensure quality, and is iterative for continuous improvement.
+
+Is Software Testing Important?
+------------------------------
+In a report on software fails, tricentis.com found that in 2017, software failures cost the economy US$1.7 trillion in financial losses. (Up from US$1.1 trillion in 2016.) 
+
+In total, software failures at 314 companies affected 3.6 billion people and caused more than 268 years in downtime
+
+Famous Losses
+-------------
+- China Airlines Airbus A300 crashed due to a software bug on April 26, 1994, killing 264 innocent lives. 
+
+- In may of 1996, a software bug caused the bank accounts of 823 customers of a major U.S. bank to be credited with 920 million US dollars.
+ 
+- In 1985, Canada's Therac-25 radiation therapy machine malfunctioned due to software bug and delivered lethal radiation doses to patients, leaving 3 people dead and critically injuring 3 others.
+
+- Nissan cars have to recall over 1 million cars from the market due to software failure in the airbag sensory detectors. There has been reported two accident due to this software failure.
+
+Myths
+-----
+The following are the myths around testing:
+
+1. No Bugs: While testing significantly improves software quality, it's impossible to eliminate all bugs. Testing helps uncover a range of defects, but some issues might remain undetected due to complex interactions or unforeseen scenarios.
+
+2. Complete Coverage: Exhaustively testing every possible scenario is impractical and time-consuming. Prioritizing tests based on critical functionality and potential risks provides more practical coverage.
+
+3. Automated Fixes All: Test automation speeds up repetitive tasks, but it can't replace human intuition and creativity in identifying complex issues, user experience problems, and edge cases.
+
+4. Last-Minute Fix: Delaying testing until the end can lead to rushed fixes and inadequate validation. Early testing allows for gradual issue resolution and ensures a more stable product at release.
+
+5. Testing = Quality: While testing uncovers defects, overall software quality involves multiple factors, including proper requirements gathering, design, development practices, and effective communication among teams.
+
+6. No Planning: Successful testing requires well-defined objectives, test cases, strategies, and documentation. Testing without a plan can miss crucial scenarios and lead to inconsistent results.
+
+7. One-Size-Fits-All: Testing approaches should be tailored to each project's specific needs, technology stack, and potential risks. What works for one project might not be suitable for another.
+
+8. 100% Automated: While automation accelerates repetitive tasks, manual testing remains crucial for exploratory testing, user experience evaluation, and scenarios that are challenging to automate.
+
+9. No Need for Expertise: Skilled testers bring domain knowledge, critical thinking, and problem-solving skills to the process. Their expertise enhances test design and increases the likelihood of identifying subtle defects.
+
+10. Testing is Costly: While testing incurs expenses, overlooking it can lead to post-release issues, customer dissatisfaction, and expensive fixes. Investing in testing upfront helps prevent costly problems down the line.
+
+QA, QC & Testing
+----------------
+Quality Assurance (QA):
+
+- Preventive process to ensure proper methodologies and processes are followed throughout development.
+
+- Focuses on process improvement, standards, and best practices.
+
+- Aims to avoid defects and improve overall software development efficiency.
+
+Quality Control (QC):
+
+- Reactive process that involves reviewing and checking the final product for defects.
+
+- Focuses on identifying and correcting issues in the product before release.
+
+- Involves activities like testing, inspections, and peer reviews.
+
+Software Testing:
+
+- Part of QC, involves executing software to identify defects and ensure functionality.
+
+- Encompasses various types of tests (unit, integration, regression, etc.) to validate software.
+
+- Aims to find bugs and verify if software meets specified requirements.
+
+In all
+------
+QA is process oriented
+QC is product oriented.
+
+QA is failure prevention system.
+QC is failure detection system.
+
+Software Quality Organizations 
+------------------------------
+Several organizations provide quality standards for software products. Some of the prominent ones include:
+
+1. ISO (International Organization for Standardization):
+   - ISO/IEC 25000 series (SQuaRE): Software Quality Requirements and Evaluation.
+   - ISO/IEC 9126 series: Software product quality characteristics and metrics.
+
+2. IEEE (Institute of Electrical and Electronics Engineers):
+   - IEEE 730: Software Quality Assurance Plans.
+   - IEEE 829: Test Documentation.
+   - IEEE 1012: Software Verification and Validation.
+
+3. CMMI Institute:
+   - Capability Maturity Model Integration (CMMI) for Development: Process improvement framework.
+
+4. ISTQB (International Software Testing Qualifications Board):
+   - ISTQB Certified Tester: Global certification for software testing professionals.
+
+5. OWASP (Open Web Application Security Project):
+    - Provides guidelines for secure software development and testing.
+
+These organizations and their standards help establish best practices, guidelines, and certifications to ensure the quality, security, and reliability of software products.
+
+Types of Testing
+----------------
+Various types of software testing are performed to ensure the quality and functionality of software. Some key testing types include:
+
+1. Unit Testing: Testing individual components or units of code for correctness.
+
+2. Integration Testing: Testing interactions between integrated components to detect interface issues.
+
+3. Functional Testing: Validating software functions according to specifications.
+
+4. Regression Testing: Re-testing to ensure new changes haven't introduced new defects.
+
+5. User Acceptance Testing (UAT): Validating if software meets user requirements.
+
+6. Performance Testing: Assessing software speed, responsiveness, and scalability.
+
+7. Load Testing: Evaluating software performance under expected load conditions.
+
+8. Stress Testing: Testing software beyond normal capacity to evaluate its stability.
+
+9. Security Testing: Identifying vulnerabilities and ensuring software security.
+
+10. Usability Testing: Assessing software's user-friendliness and user experience.
+
+11. Compatibility Testing: Ensuring software functions across different environments and devices.
+
+12. Exploratory Testing: Informal testing to explore software and find defects.
+
+13. Ad-hoc Testing: Testing without formal test cases, focusing on critical areas.
+
+14. Alpha Testing: In-house testing before public release.
+
+15. Beta Testing: External testing by a select group of users before final release.
+
+16. Smoke Testing: Preliminary tests to verify basic functionality.
+
+17. Sanity Testing: Quick confirmation that specific functionality works as expected.
+
+18. White-box Testing: Examining internal code structures and logic.
+
+19. Black-box Testing: Assessing software from an external perspective.
+
+20. Gray-box Testing: Combining elements of white-box and black-box testing.
+
+21. Automated Testing: Using scripts/tools to automate test execution.
+
+22. Manual Testing: Human-driven testing without automation.
+
+23. Non-Functional Testing: Evaluating non-functional aspects like performance, security, and usability.
+
+Each testing type addresses specific aspects of software quality and helps ensure a comprehensive and robust product.
+
+JUnit
+=====
+Overview
+--------
+- JUnit is a popular open-source testing framework for Java programming language. 
+
+- It's widely used for unit testing, i.e testing individual components or units of Java code in isolation.
+
+Here's an overview of JUnit:
+
+1. Purpose: JUnit simplifies writing and running unit tests for Java applications, ensuring code correctness and helping with continuous integration.
+
+2. Annotations: JUnit uses annotations to define test methods, setup, and teardown procedures. 
+
+Common annotations include @Test, @Before, @After, @BeforeClass, and @AfterClass.
+
+3. Test Cases: Test methods annotated with @Test execute specific tests, each validating a distinct functionality or behavior.
+
+4. Assertions: JUnit provides assertion methods (e.g., assertEquals, assertTrue, assertNotNull) to validate expected outcomes in test cases.
+
+5. Test Runners: 
+- JUnit uses test runners to execute test classes. 
+- It includes a default runner and supports custom runners for advanced test configuration.
+
+6. Test Suites: Groups multiple test classes into suites for organized test execution.
+
+7. Parameterized Tests: JUnit allows running tests with different sets of input parameters using parameterized tests.
+
+8. Exception Testing: Verifies if specific exceptions are thrown during the execution of a test.
+
+9. Assumption: Conditional test execution based on assumptions using assumeTrue and assumeFalse.
+
+10. Categories: Categorizes tests for selective execution, useful in large projects.
+
+11. Extensions: JUnit can be extended through rules (implementing TestRule) and custom runners to provide additional behaviors and setup.
+
+12. Integration: Used in various integrated development environments (IDEs) and build tools like Eclipse, IntelliJ IDEA, and Maven.
+
+JUnit facilitates test-driven development (TDD) and ensures code reliability. 
+
+It supports automated testing and assists in identifying issues early in the development cycle.
+
+Benefit of JUnit
+----------------
+Software Dev Process without JUnit
+----------------------------------
+The bare minimum steps of software development with manual testing:
+
+1. Requirements gathering
+2. Planning and Designing
+3. Writing the code
+4. Testing the product
+5. Deployment and maintenance
+
+Software Dev Process
+-------------------------------
+The bare minimum steps of software development with automated tests:
+1. Requirements gathering
+2. Planning and Designin
+3. Writing the code
+4. Writing tests
+5. Running the tests
+6. Deployment and maintenance
+
+Difference between 1st & 2nd approach
+-------------------------------------
+What is the difference in the 1st vs 2nd approch?
+What is the benefit of writing test scripts then manual testing?
+
+The point of writing automated tests is not just to verify that the code works for now but it is to verify on an ongoing basis that the code continues to work in the future
+
+JUnit Versions
+--------------
+- JUnit version 3
+- JUnit version 4 (launched in 2006)
+- JUnit version 5 (latest, launched in 2016)
+
+Testing Example
+---------------
+class Calculator {
+	public int sum(int n1, int n2){
+		return n1 + n2;
+	}
+}
+
+Calculator c = new Calculator();
+
+int result = c.sum(0,1);
+
+if(result!=1){
+	s.o.p("Test failed");
+}
+
+Expected Output => 1
+Actual Output => result
+
+For test to pass Actual Output == Expected output
+
+Basic Flow of the testing process
+---------------------------------
+1. Preparation
+2. Provide Test inputs
+3. Run the tests
+4. Provide Expected output
+5. Verify result
+6. Alert the developer
+
+The steps in the above process that will vary with scenarios:
+1. Preparation
+2. Provide Test inputs
+4. Provide Expected output
+
+The steps common to all scenarios:
+3. Run the tests
+5. Verify result
+6. Alert the developer
+
+These steps are provided by JUnit Framework.
+
+So, when we use JUnit, we have to do steps 1, 2 and 4 and then ask JUnit to do steps 3, 5 and 6
+
+JUnit Architecture
+------------------
+Refer Image : junit_architecture.jpg
+
+Junit as a whole is known as the JUnit platform. It contains 3 components:
+
+JUnit Jupiter: Modern JUnit version (5) with annotations, parameterized tests, dynamic tests, and extensions.
+
+JUnit Vintage: Compatibility layer in JUnit 5 to run tests from JUnit 3 and 4.
+
+JUnit Extensions (3rd Party): Add-ons enhancing JUnit with custom runners, rules, and features.
+
+In all: 
+
+JUnit 5 = JUnit Platform + JUnit Jupiter/JUnit Vintage
+
+Environment Setup
+-----------------
+1. Install JDK
+2. Install any IDE
+3. Create a Maven project
+4. Add dependencies:
+- Jupiter Engine
+- Jupiter API
+
+JUnit API - JUnit Annotations
+-----------------
+Here's a concise list of some commonly used JUnit annotations in JUnit 5:
+
+1. @Test: Marks a method as a test case.
+
+2. @BeforeEach: Executed before each test method.
+
+3. @AfterEach: Executed after each test method.
+
+4. @BeforeAll: Executed once before all test methods in the class.
+
+5. @AfterAll: Executed once after all test methods in the class.
+
+6. @DisplayName: Provides a custom display name for a test method or class.
+
+7. @Disabled: Disables a test method or class.
+
+8. @Timeout: Sets a timeout for a test method.
+
+9. @ParameterizedTest: Marks a method as a parameterized test.
+
+10. @RepeatedTest: Marks a method as a repeated test.
+
+11. @Tag: Assigns tags to a test method or class.
+
+12. @Nested: Defines a nested test class.
+
+13. @TestFactory: Marks a method as a test factory.
+
+14. @DynamicTest: Generates dynamic tests.
+
+15. @BeforeAll: Executed before all test methods in a test class.
+
+16. @AfterAll: Executed after all test methods in a test class.
+
+These annotations help you structure and control your tests in various ways, such as setting up and tearing down resources, controlling test execution order, providing context, and more.
+------------------------------
+Using Assertion
+---------------
+Assert means "to say something clearly and firmly"
+
+Assertions in JUnit help ensure that the actual results of a test match the expected results.
+
+List of Assert methods:
+
+Certainly, here are some important assertion methods commonly used in testing frameworks like JUnit:
+
+1. assertEquals(expected, actual):
+   Checks if two values are equal. This is used for comparing numerical values or objects that have a proper equality comparison.
+
+2. assertNotEquals(expected, actual):
+   Verifies that two values are not equal. It's useful to confirm inequality between values.
+
+3. assertTrue(condition):
+   Asserts that a given condition is true. This is often used to validate boolean conditions.
+
+4. assertFalse(condition):
+   Asserts that a given condition is false. It's the opposite of `assertTrue()`.
+
+5. assertNull(object):
+   Checks if an object reference is null. Useful for verifying the absence of an object.
+
+6. assertNotNull(object):
+   Verifies that an object reference is not null. Useful to ensure the presence of an object.
+
+7. assertArrayEquals(expectedArray, actualArray):
+   Compares two arrays for equality. Useful for array-based comparisons.
+
+JUnit - Exceptions Test
+-----------------------
+8. assertThrows(exceptionClass, executable):
+    Checks if a specific exception is thrown during the execution of a given code block.
+
+9. assertDoesNotThrow(executable):
+    Verifies that no exception is thrown during the execution of a given code block.
+------------------------------
+Test Driven Development (TDD)
+-----------------------------
+It is a software development methodology that emphasizes writing tests before writing the actual code. 
+
+The process involves a cycle of writing tests, then writing code to make those tests pass, followed by refactoring the code to improve its design and maintainability. 
+
+The core principles of TDD are often summarized using the "Red-Green-Refactor" cycle:
+
+Red: Write a failing test. This test should express the desired behavior of a specific piece of code, capturing the requirements.
+
+Green: Write the minimum amount of code necessary to make the failing test pass. The goal is to fulfill the requirements of the test without any extra functionality.
+
+Refactor: After the test is passing, refactor the code to improve its structure, readability, and maintainability while ensuring that the test still passes.
+
+Exercise
+--------
+Create a test for the method: public String[] sorted(){}
+Provide test input, expected output. 
+Use assertArrayEquals and then test the method
+
+In any test there are 4 important things:
+1. Code under test
+2. Input values aka test inputs
+3. Actual Value, the one we get from the code
+4. Expected value, what we want as the answer
+
+Create a method to MathUtils class that computes the area of a circle.
+
+Follow the TDD approach
+
+Errors vs Failures
+==================
+Failures are when your test cases fail – i.e. your assertions(expected != actual) are incorrect.
+
+Errors are when unexpected errors/exceptions occur - i.e. while trying to actually run the test and an unexpected exception is thrown like FileNotFound, more time etc.
+
+Surefire Plugin
+---------------
+The Surefire Plugin is used during the test phase of the build lifecycle to execute the unit tests of an application. It generates reports in two different file formats:
+
+Plain text files (*.txt)
+XML files (*.xml)
+
+By default, these files are generated in ${basedir}/target/surefire-reports/TEST-*.xml.
+
+Step1 : Add in maven:
+
+<build>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-plugin</artifactId>
+			<version>3.1.2</version>
+		</plugin>
+	</plugins>
+</build>
+
+Step 2: Run as Maven Test
+
+Execution Procedure
+-------------------
+The execution procedure is as follows −
+
+- `@BeforeAll`: Runs once before all test methods in a test class, used for setup of shared resources.
+
+- `@AfterAll`: Runs once after all test methods in a test class, used for cleanup of shared resources.
+
+- `@BeforeEach`: Runs before each test method in a test class, used for individual test setup.
+
+- `@AfterEach`: Runs after each test method in a test class, used for individual test cleanup.
+
+- @Test : In between before() and after(), each test case executes.
+
+JUnit - Suite Test
+------------------
+Test suite is used to bundle a few unit test cases and run them together.
+
+Steps to can create and use a test suite:
+-----------------------------------------
+Step 1: Add the junit-platform-suite-engine dependency
+
+<dependency>
+	<groupId>org.junit.platform</groupId>
+	<artifactId>junit-platform-suite-engine</artifactId>
+	<version>1.10.0</version>
+</dependency>
+
+Step 2: Create Test Classes:
+---------------------------
+First, create the individual test classes that contain your test methods. These test classes will be part of the test suite.
+
+Step 3: Create a Test Suite Class
+---------------------------------
+Create a new class that acts as your test suite. This class won't contain any test methods; instead, it will use the @Suite annotation to specify which test classes to include in the suite.
+
+Step 4: Annotate the Test Suite Class
+-------------------------------------
+Annotate the test suite class with the @Suite annotation, providing an array of test classes to include. You can include multiple test classes that you want to run together.
+
+Step 5: Run the Test Suite
+--------------------------
+You can run the test suite just like any other test class. JUnit will execute all the test methods from the included test classes.
+
+These are some more packages of Suite Testing:
+
+@SelectClasses
+@SelectPackages
+@IncludePackages
+@ExcludePackages
+
+Ignore Test
+===========
+Sometimes it so happens that our code is not completely ready while running a test case. As a result, the test case fails. 
+
+In Junit 4 we had @Ignore annotation, while in Junit 5, it is replaced by @Disabled
+
+@Disabled can be used with:
+1. Methods
+A test method annotated with @Disabled will not be executed.
+
+2. Class
+If a test class is annotated with @Disabled, then none of its test methods will be executed.
+
+JUnit - Time Test
+=================
+In JUnit 5, we can use the @Timeout annotation to specify a maximum execution time for a test method. 
+
+This is known as a "time test," and it's used to ensure that a particular test method completes within a certain time limit. 
+
+Time tests are especially useful for detecting performance or concurrency-related issues.
+
+We can use:
+
+- The @Timeout annotation - to apply on the test method.
+
+- The value attribute specifies the maximum time that the test method is allowed to run.
+
+- The unit attribute specifies the time unit
+
+JUnit - Exceptions Test
+-----------------------
+assertThrows() and assertDoesNotThrow()  
+
+JUnit - Parameterized Test
+--------------------------
+Parameterized tests in JUnit 5 allow us to run the same test logic with multiple sets of input parameters. 
+
+This is particularly useful when us want to test a method's behavior across a range of different inputs, making your tests more concise and maintainable.
+
+Step1: Include the following dependency
+junit-jupiter-params
+
+<dependency>
+	<groupId>org.junit.jupiter</groupId>
+	<artifactId>junit-jupiter-params</artifactId>
+	<version>5.10.0</version>
+</dependency>
+
+JUnit - Plug with Ant
+---------------------
+ANT 
+- ANT stands for "Another Neat Tool"
+- Ant is a Java library and a software tool used for automate software build processes such as compile, run, test and assemble Java application. 
+
+Steps:
+- Download Apache ANT
+- Set ANT environment
+- Download Junit Archive
+- Create Folder Structure for ANT
+- Main package including src, test, lib, build.xml
+
+
+
+
+
+
+
+
+
+

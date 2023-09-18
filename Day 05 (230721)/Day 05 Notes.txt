@@ -1,0 +1,221 @@
+Day 05 Notes
+============
+Types of anomalies
+==================
+These are the different types of anomalies that can happen in a program:
+
+1. Syntax Error 
+- Errors that arise from wrong syntax
+- Also known as compile time error. 
+- These are severe in nature. 
+- Program wont be compiled without removing them
+- These can be detected by IDE.
+
+2. Warning 
+- These are intimations to structure the code. 
+- These are not severe.
+- These are also detected by IDE.
+
+3. Semantic/Logical Error 
+- Errors arising due to wrong logic. 
+- These could not be detected by IDE. 
+- These can be detected by testing the code by execution or observation
+- Their severity depends on business requirements
+
+4. Runtime Error
+- Errors arising due to wrong data, failure in connection, setup mistakes, wrong logic
+- These are runtime errors
+- These have to be handled by programmer
+
+Exception handling
+==================
+What is an Exception?
+---------------------
+- The term exception is shorthand for the phrase "exceptional event." 
+
+- It is an event that disrupts the normal flow of the program and causes its abnormal termination. 
+
+Causes of Exception
+-------------------
+Exceptions in java can arise from different kind of situations such as: 
+
+- Wrong data entered by user, 
+
+- Hardware failure, 
+
+- Network connection failure, 
+
+- Database server down etc.
+
+Java Exeption Mechanism
+-----------------------
+All the exceptions that can be thrown are already known in Java and so there is a mechanism in place.
+
+For every exception there is a class.
+
+Whenever an exception occurs, 2 things happen:
+1. An exception object is created
+2. This object is thrown
+
+for ex: When in code 10/0 happens
+
+1. JRE creates an object of ArithmeticException class
+ArithmeticException a = new ArithmeticException();
+		
+2. JRE throws this exception: throw a;
+
+Now as a developer our job is to catch the exception and handle it in a rational manner
+
+If the exception is not caught, program will terminate at the point of exception.
+
+Exception Hierarchy
+-------------------
+All the exception classes are arranged in a hierarchy
+
+Refer figure - 01_excp_hierarchy.png
+
+Throwable is the root class of Exception and Errors
+
+Exception is the root class of Exception Mechanism Hierarchy
+
+Types of Exceptions
+-------------------
+There are 2 types of exceptions:
+
+1. Runtime Exceptions
+	- All the exception classes that extend the RuntimeException class 
+
+	- Handling them is optional. 
+
+	- AKA Unchecked exceptions (not checked by compiler)
+
+2. Compile Time Exceptions: 
+
+	- Handling them is mandatory
+
+	- Compiler checks whether certain conditions are handled before executing them.
+
+	- AKA Checked Exceptions
+
+	- Generally when our program deals with outside resources (that are beyond its control), it assumes that problems will come. So handling them is compulsory
+
+Exception Handling Keywords
+---------------------------
+Java provides 5 keywords to handle exceptions - try, catch, throw, throws, finally
+
+Java try-catch block
+--------------------
+In the try block
+	Enclose the code that we think may produce an exception
+In the catch block
+	Handle the exception thrown
+
+StackTrace
+==========
+- The list(Stack is a List) of method calls that have been used in a particular operation is known as Stacktrace.
+
+- The stack trace contains all the information of the exception (exception type, description, some time suggestions to fix it, line number, exact point of error)
+
+- Here we have to identify the class and method that is under our control (so that we can check the data, handle the exception, validate the data)
+
+Try catch use cases
+-------------------
+- If you want to handle all the exceptions in only 1 way, you can specify the parent class of all exceptions that may come. catch(Exception a){}
+
+- If you want to handle all the exceptions specifically, you can specify multiple catch blocks. 
+catch(ArithmeticException a){}
+catch(NullPointerException n){}
+catch(StringIndexOutOfBoundsException s){}
+
+- If you want to group some catches together, use pipe (|) operator. 
+catch(ArithmeticException | NullPointerException n){}
+catch(StringIndexOutOfBoundsException s){}
+
+Throwing an exception
+---------------------
+As Java implicitly throws an exception so could we.
+To do so we use throw & throws keyword.
+
+throw is used from within a method to throw an exception explicitly
+
+if(age<18) throw new InvalidAgeException("Age less than 18");
+
+throws is used to pass-on/delegate the reponsibility of handling the exception to calling method
+
+void validateAge() throws InvalidAgeException {
+	if(age<18) 
+		throw new InvalidAgeException("Age less than 18");
+}
+
+Custom Exception in Java
+------------------------
+- We can create our own exceptions. 
+- It can be achieved by deriving classes of Exception. 
+
+Steps
+-----
+There are 3 steps to create a custom exception:
+
+Step 1. Define the exception class
+	- Define a simple class: InsufficientFundsException
+	- Extend this class from any exception class
+
+Step2. Define atleast 1 constructor
+
+Step3. Specify throw in exception-producing method
+Use throws keyword to declare the method which will be producing exception. 
+
+Step 4. Handle the exception in calling Method
+
+Types of Interfaces
+===================
+There are 2 types of Interfaces:
+1. Marker Interface - HW
+2. Functional Interface
+
+Functional Interface
+====================
+An interface with exactly 1 abstract method is known as a Functional Interface
+
+There are 3 ways to define the implementation class of a interface:
+
+1. Normal implementation class
+class Telephone implements Callable {
+	@Override
+	public void call() {
+		System.out.println("Calling someone");
+	}
+}
+
+2. Anonymous class
+Call c = new Callable() {
+	@Override
+	public void call() {
+		System.out.println("Calling my friend");
+
+	}
+};
+
+c.call();
+
+Lambda Expressions
+==================
+- A Lambda expression (or function) is just an anonymous function, i.e., a function with no name and without being bounded to an identifier. 
+ 	
+- They are written exactly in the place where they are needed, typically as a parameter to some other function.
+
+Call c = () -> {
+		System.out.println("Calling my friend");
+	};
+
+c.call();
+
+Syntax: (params-list) -> {body-of-method}
+
+Features
+--------
+- Lambda expression was included in Java SE 8. 
+- It provides a clear and concise way to represent one method interface using an expression. 
+- It provides the implementation of a functional interface
+- It removes a lot of boilerplate code
+-----X-----X-----X-----X-----X-----X-----

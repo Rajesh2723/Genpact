@@ -1,0 +1,559 @@
+Day 12 Notes
+============
+Collection Framework
+====================
+Lists
+-----
+Common Properties
+-----------------
+
+1. Maintains Insertion Order
+2. Duplicates are allowed
+3. Null values are allowed
+
+ArrayList
+---------
+ArrayList stored as Object[]
+Initial Capacity of an ArrayList is 10
+We can set an initial capacity for ArrayList as well as for vector
+Stack will always be created with 0 capacity
+
+Capacity Mechanism
+------------------
+Till 10th element, the capacity will be 10
+in 11th entry, the size will grow by formula: size + size/2 = 15
+in 16th entry, the size will grow by formula: size + size/2 = 22
+
+Capacity v/s size
+
+Internal capacity of ArrayList
+size: total elements stored
+
+ArrayList(int initialCapacity)
+If we know beforehand the amount of data coming we should set an initial capacity.
+It will reduce the time spent in growing the objects array
+
+Operations Efficiency
+---------------------
+Retrieval - Fast as retrieval works on index basis	
+
+Add/delete in Middle - Slow, as shifting occurs
+
+Add/delete at ends - Fast, as traversing is fast and shifting does not happen
+
+LinkedList
+----------
+LinkedList stored as Doubly Linked List
+
+Internal Memory
+---------------
+Initially the LinkedList is of size 0.
+It will grow acc to elements
+
+Elements are stored in class Node
+
+Node contains 3 fields: 
+	- 1 to hold address of previous node
+	- 1 to hold address of next node
+	- 1 to hold data
+
+Iteration
+---------
+Traversing the elements in any collection is known as iterating
+
+For iterating, we have different interface
+
+In Java 1.0, Collection Framework was not there
+
+We only had legacy classes, such as: Vector, Stack, Dictionery, Properties and Hashtable
+
+To iterate through them, Enumeration interface was used
+
+Later on with re-engineered Collection Framework, Iterable and Iterator were used.
+
+Many new iterators are now available 
+
+Operations Efficiency
+--------------------
+
+Traversal - is slow	
+Add/delete in Middle - Fast, as it involves reassignment of pointers	
+
+Add/delete at ends - Slow, as traversing is slow, reaching to end is slow.
+Note: When an LinkedList is implemented as a Deque, this problem has sorted
+
+*LinkedList takes more space as compared to ArrayList, Vector, Stack
+
+Vector
+------
+Vector stored as Object[]
+Initial Capacity of an Vector is 10
+
+Vector methods are synchronized
+
+Thread Safety
+-------------
+All the legacy classes (Vector, Stack, Hashtable, Dictionary, Properties) are synchronized
+
+All the new classes in CF are non-synchronized
+
+The same effect of Vector class add() can be acheived with:
+synchronized(this){
+	ArrayList al = new ArrayList();
+	al.add();
+}
+
+Capacity Mechanism
+------------------
+Till 10th element, the capacity will be 10
+in 11th entry, the size will grow by formula: size + size/2 = 15
+in 16th entry, the size will grow by formula: size + size/2 = 22
+
+Stack
+-----
+Stack is stored as Dynamic Object[]
+
+Stack works on the principle of LIFO
+
+Mainly used to add or remove elements from the top (last entry)
+
+removing elements one by one
+adding elements one by one
+
+In cases when we have to maintain the history of something, we use stacks
+- Browsing History
+- Call logs
+- Commands of terminal
+- method calls
+- undo/redo commands
+
+push(), pop(), peek()
+
+Sets
+----
+Common Properties
+
+All elements in any Set is Unique
+All are non-synchronized/not thread safe
+We can use them in concurrent applications/environment
+
+Concurrent Environment means code that is accessed by multiple threads at once
+
+Choose a set over list if 
+	- we want to store unique elements
+	- there is no need of accessing elements in a sequence
+
+HashSet
+-------
+Underlying data structure - HashMap
+
+HashMap is not a part of Collection Framework
+It is a part of Map Framework
+It stores <key, value> pairs
+
+Collection classes store individual objects
+Map classes store objects as key-value pairs 
+
+HashSet
+--------
+h.add("Vijay");
+h.add("Raj");
+
+
+HashMap internally
+------------------
+h.push("Vijay", obj);
+h.push("Raj", obj)
+
+Only the keys change, the value remains the same
+
+* The keys in a HashMap cant be duplicate
+* The keys form as HashSet
+
+There are 2 important factors in the the creation of a HashSet
+- Initial Capacity
+- Load Factor
+
+The initial capacity of a HashSet is 16
+The default load factor is 0.75. What it means is once 0.75*16 = 12 spaces are occupied by elements, the size of HshSet will grow in the order 2 raised to n
+
+from 16 -> 32 
+from 32 -> 64
+etc 
+
+We can set an initial capacity if we know the size of data before-hand
+If the data is coming at regular intervals, keep the load factor low otherwise high
+
+Hashing
+--------
+The elements are stored through a technique known as Hashing
+
+1. HashSet<String> h = new HshSet<String>();
+Whenever we create a HashSet, a bucket(ref variables) of size 16 is created (0 to 15)
+
+2. h.add("Vijay")
+
+hash will be calculated from key "Vijay" [internally hashset is stored as a key of a hashmap]
+
+hash("Vijay")
+
+hash is an encryption mechanism to generate equal sized value(String/Numerical)
+
+MD5 hash for "Vijay" => 03f8e154b1ff9a18c1a238a42e558f1a
+SHA1 hash for "Vijay" => 5e12b7c2fd2b963de55b2446a3d653b3ccda3134
+
+hash("Vijay ")
+MD5 hash for "Vijay" => ceb1c7d2ba790f31a4703d2dd88a4caa
+SHA1 hash for "Vijay" => bff05fe545e45512721bc530f8859a7d8b0ddefc
+
+SHA1 is hacked/broken
+
+SHA512 is in the market nowadays
+
+hash("Vijay") is calculated and after some more processing index is calculated
+
+suppose the index is 4
+
+So this entry will add at index 4 in our bucket
+
+Node [hash("Vijay"), "Vijay", obj, pointer to next entry (null)]
+
+h.add("Madhav")
+
+index 6 is generated
+
+Node [hash("Madhav"), "Madhav", obj, pointer to next entry (null)]
+
+h.add("Vijay")/ "Jay"
+
+hash("Vijay") equals hash("Vijay")
+so its index is also equated as 4
+
+It is known as Hash Collision
+
+When hash collission happens, the values are compared using equals method of repective class if it returns true, the new Node will super impose on the existing node
+
+hm.push("Vijay", 100);
+Vijay=>100
+
+Superimposed(Replacing the old value)
+hm.push("Vijay", 200);
+Vijay=>200
+
+HashSet can not have duplicate values
+HashMaps can not have duplicate keys
+
+h.add(null)
+Automatically it will go to 0th index
+
+Hashing is related to speed
+
+Operation Efficiency
+--------------------
+Retrieval - O(1) i.e constant time
+
+Add/delete in Middle - O(1) i.e constant time
+
+Add/delete at ends - O(1) i.e constant time
+
+**HashSet is very fast 
+
+TreeSet
+-------
+Underlying data structure is TreeMap implemented as a Self Balancing Binary Search Tree (a.k.a red black tree)
+
+Operation Efficiency
+--------------------
+Retrieval - O(log n) 
+
+Add/delete in Middle - O(log n)
+
+Add/delete at ends - O(log n)
+
+Takes more time as compared to HashSet
+
+Space taken by HashSet is more as compared to TreeSet
+
+HashSet v/s TreeSet
+-------------------
+If Sorting and storing nulls is not of significance we should use HashSet over TreeSet as it is fast		
+
+If performance is not of significance we can choose TreeSet over HashSet, as it takes less memory
+
+If we need sorted elements, use TreeSet
+
+If we want to preserve insertion order and benefit from constant time access, we can use the LinkedHashSet
+
+Iterator
+--------
+HashSet can call iterator(), but not descendingIterator()
+While TreeSet can call both
+
+LinkedHashSet 
+-------------
+Underlying data structure is LinkedHashMap
+
+It preserves the insertion order, stores unique values, allows 1 null
+	
+Queue
+-----
+Queue is linear data structure
+
+It works on completing priority tasks (FIFO principle)
+
+Common Property
+---------------
+They does not allow null values
+
+Priority Queue
+-------------
+It is the purest implementation of Queue
+
+Underlying data structure is Priority Heap
+
+Priority Heap is just like a Binary Tree
+
+The elements are stored in Sorted Order
+
+The class MUST implement Comparable interface to be stored in TreeSet, TreeMap, PriorityQueue and (~)ArrayDeque 
+
+Use cases: Access Based on Priority, ex: Printing papers, Calendar scheduling, to-do lists
+----------------------
+Map Framework
+
+Map Framework is a separate Framework to deal with Key-Value pairs
+
+HashMap
+-------
+The most used implementation of Map interface
+
+Underlying data structure is Hashtable and LinkedList
+
+The initial Capacity is 16
+The load factor is 0.75
+
+Both are customizable
+
+The storing mechanism is same as that of HashSet
+
+put() adds a new entry if key is not present before
+put() replaces the value of existing key
+
+replace replaces the value of an existing key
+But does not make a new entry
+
+------------------------------
+Assignment:
+
+Create a TreeMap storing the Movie as key and box office collection as a value
+Store 5 values
+Get the list of Movies and display them
+Get the box office collections and add them up
+
+The data members of Movie: name, releaseDate, cities (String[] cities), rating
+
+Task 1
+------
+Step 1: Create Movie class
+Step 2: Create the members - 4 members
+Step 3: Create default + parametrized cosntructors
+Step 4: Create getters and setters
+Step 5: Create toString 
+
+Task 2
+-------
+Step 1: Create a String[] of cities
+Step 2: Create a Movie object with param. constructor (pass the String [] ref)
+Step 3: Similarly create 5 movies: m1, m2, m3, m4, m5
+
+
+Task 3
+------
+Step 1: Create a TreeMap with Movie as the key and Double as the value
+Step 2: Add m1 in TreeMap with double box office collection
+Step 3: Add all 5 movies in TreeMap with double box office collection
+
+Task 4
+------
+Step 1: Use keySet() on TreeMap to get all movies
+Step 2: Use values() on TreeMap to get all box office collections
+Step 3: Iterate the values and add them up
+------------------------------------------------------------------
+
+Streams API
+-----------
+Streams API is used for sorting and filtering of collections
+Stream API uses the technique of parallel processing
+
+To make a Collection available for parallel processing, there are 3 steps:
+
+1. Get the stream from the collection: call stream() on a collection
+
+2. Call intermediate functions: 
+	- filter() is an intermediate function.
+	- Calling intermediate functions is optional. 
+	- We can have multiple intermediate functions
+
+3. Call Terminal functions: 
+	- count() is the terminal function
+	- terminal function is mandatory
+	
+Intermdiate Functions
+---------------------
+There are 8 intermediate operations:
+1.	filter()
+2.	map()
+3.	flatMap()
+4.	distinct()
+5.	sorted()
+6.	peek()
+7.	limit()
+8.	skip()
+
+Terminal Operations
+--------------------
+There are 13 terminal operations 
+1.	toArray()
+2.	collect()
+3.	count()
+4.	reduce()
+5.	forEach()
+6.	forEachOrdered()
+7.	min()
+8.	max()
+9.	anyMatch()
+10.	allMatch()
+11.	noneMatch()
+12.	findAny()
+13.	findFirst()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Queues
+------
+Maps
+----
+
+Streams API
+===========
+Process
+------------
+Steps
+-----
+Terminal Operations
+-------------------
+Intermediate Operations
+-----------------------
+
+I/O
+===
+Java IO Hierarchy
+File IO Reader
+File IO Writer
+File IO InputStream
+File IO OutputStream classes
+Object IO Serializable interface
+
+
+
+
+
+
+
+
+

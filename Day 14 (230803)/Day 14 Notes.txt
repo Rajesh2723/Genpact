@@ -1,0 +1,339 @@
+Day 14 Notes
+============
+Introduction
+------------
+Every developer must learn the following 3 languages for web development:
+1. HTML
+2. CSS
+3. JavaScript
+
+Brief
+-----
+HTML
+====
+- HTML stands for Hyper Text Markup Language
+- The latest version is HTML 5.0
+- HTML describes the content/structure of Web pages.
+- Content means text, images, lists, table, form, media, audio, video, animation etc.
+
+CSS
+===
+- CSS stands for Cascading Style Sheets
+- The latest version is CSS 3.0
+- CSS provides styling to HTML Elements
+- If we want to set the font color, background color, increase/decrease the font size we use CSS
+
+JavaScript
+==========
+- JavaScript is a client side scripting language used to manipulate HTML and CSS
+- It is also used to process and validate data at client side (browser)
+- The most used version is JavaScript ES6
+
+Frameworks and Libraries
+========================
+Bootstrap
+---------
+- Bootstrap is a framework of CSS
+- It is used to quickly add CSS to our web elements
+- It makes our web pages responsive
+- What it means is that with it the web pages adjust according to the screen
+- The latest version is Bootstrap 5
+
+JQuery
+------
+- JQuery is a popular, lightweight JavaScript library.
+- It can modify HTML elements, change content, attributes, and styles.
+- It can create smooth animations and transitions, adding visual appeal to websites.
+- It can Apply various visual effects like fading, sliding, and toggling elements.
+- Its latest version is 3.7.0
+
+AJAX
+----
+- AJAX stands for Asynchronous JavaScript and XML
+- It is not a specific library, tool or framework itself.
+- Its main task is to facilitates data exchange between web browsers and servers
+- It enables dynamic content updates without full page reloads.
+----------------------------------
+HTML
+====
+Basic HTML document structure
+------------------------------
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Title</title>
+	</head>
+	<body>
+
+	</body>
+</html>
+
+Tags
+----
+HTML defines tags and according to the tags the content is treated in an HTML page.
+
+If wrapped in h1 tag, the content will be treated important, if in p, it will be treated as normal content.
+
+So HTML is a study of tags.
+
+Element
+-------
+The tag along with content is known as element.
+<h1>Heading</h1> => h1 element
+
+Types of Elements
+-----------------
+There are 2 classification of elements:
+1. Based on pairing
+2. Based on space occupied
+
+Based on pairirng
+-----------------
+There are 2 types of elements:
+
+1. Paired Elements
+Ex: <html></html>, <h1></h1> etc
+
+2. Unpaired elements (aka Empty elements)
+Ex: <br/>, <img/> etc
+
+Based on space occupied
+-----------------------
+There are 2 types of elements:
+
+1. Inline elements - Inline elements only occupy the width of their content
+Ex: <a></a>, <img/>
+
+2. Block level elements
+Block-level elements spans the full width.
+Ex: <p></p>, <h1></h1>, <div></div>
+
+<!-- To comment/uncomment, use key Ctrl + / -->
+    <!-- meta is the tag, charset is the attribute name -->
+    <!-- UTF-8 is the attribute value -->
+    <!-- We can have multiple attributes in the opening tag -->
+
+Basic elements
+==============
+Document Type
+-------------
+<!DOCTYPE html> => This must be the 1st tag in an HTML5 page. With this we inform the browser that the webpage it has to render will have HTML5 tags
+
+Head Tag
+---------
+<head> => Inside the head tag, the information about the webpage is provided
+Inside <head> tag, we can have:
+1. title tag
+2. meta tags
+3. style tag : write css
+4. script tag : write and link javascript
+5. link tag : link css
+
+The content inside <head> tag is not visible, execpt for title tag 
+
+Body Tag
+---------
+<body> => The body tag contains the visible content of a web page.
+
+It is the parent to a lot of other tags.
+
+Heading Tags
+-------------
+<h1></h1>, <h2></h2>, <h3></h3>, <h4></h4>, <h5></h5>, <h6></h6> 
+
+- Heading tags are used to structure the content.
+- h1 represents the topmost heading
+- h6 represents the smallest heading
+- These MUST NOT BE used to make text bigger or bolder
+- These are paired block level elements
+
+Paragraph Tags
+---------------
+<p></p> 
+- The content apart from headings is wrapped inside paragraph tag
+- It does not preserve line breaks. Solution: use <br/>
+- It does not preserve spaces. Solution: use &nbsp;
+- It is a paired block level element
+
+<pre></pre>
+- If we want the text content to preserve line breaks and spaces, we CAN use pre tag.
+- <pre> stands for preformatted
+- It is a paired block level element
+
+Note: <p></p> tag is the preferred choice to present text content
+
+Link Documents
+---------------
+<a></a>
+- <a> stands for anchor tag
+- It helps to link different web pages
+- It helps to send "get" requests to the server
+- It is a paired inline element
+
+- We specify the destination URL into href attribute and display text between <a> and </a>
+
+Syntax: <a href="link">Display Text</a>
+
+Ex: <a href="https://www.google.com/">Visit Google</a>
+
+Include images
+---------------
+<img/>
+- img stands for image
+- We can include any image in a web page
+- The image could be located in a folder or at any other url
+- We use src to locate the image
+- We use style attribute width and height properties to specify dimensions
+- alt attribute must be used to specify alternate text incase image does not load
+- It is an un-paired inline element
+
+Syntax: <img src="image-url" style="styling"/>
+
+Ex: <img src="../images/motivation.jpg" style="width:100px;height:100px"/>
+----------------------------
+Advanced Elements
+-----------------
+These are advanced elements:
+1. List
+2. Table
+3. Form
+
+Lists
+======
+There are 3 types of lists:
+1. Unordered Lists: These are used to display items that are not in any particular sequence bullet wise (no sequence/order)
+
+2. Ordered Lists: These are used to display a list that has a sequence
+
+3. Definition Lists: These are used to list definitions
+
+- The list items for both are defined by <li></li> tag
+- The pointers for both can be controlled by list-style-type property of CSS
+Syntax:
+
+<ul>
+	Java
+	<li>Core Java</li>
+	<li>Advanced Java</li>
+</ul>
+
+<ol>
+	Python
+	<li>Core Python</li>
+	<li>Django</li>
+</ol>
+
+3. Definition Lists: These are defined by <dl></dl>
+Syntax:
+<dl>
+	<dt> 
+		Cold Drink:
+		<dd>Coke</dd>
+		<dd>Sprite</dd>
+	</dt>
+	<dt>
+		Hot Drink:
+		<dd>Tea</dd>
+		<dd>Coffee</dd>
+	</dt>
+</dl>
+
+<dt></dt> => Used to define definition term
+<dd></dd> => Used to define definition description
+-----------------
+Table
+======
+- A table consists of rows, columns, headings and caption
+- Table is defined with <table></table> tag
+- Row is defined with <tr></tr> tag
+- Column is defined with <td></td> tag
+- Heading is defined with <th></th> tag
+- Caption is defined with <caption></caption> tag
+Syntax:
+<table>
+	<caption>List of Courses</caption>
+	<tr>
+		<th>Course Name</th>
+		<th>Course Fees</th>
+	</tr>
+	<tr>
+		<th>C</th>
+		<th>3000</th>
+	</tr>
+	<tr>
+		<th>C++</th>
+		<th>3500</th>
+	</tr>
+</table>
+
+- table, caption, tr are block level elements
+- td, th are inline elements
+- borders don't come in by default, we have to specify following styling to get them:
+
+table, th, td {
+	border: 1px solid black;
+}
+
+table {
+	border-collapse: collapse
+}
+
+- We can nest any other element such as <a></a>, <img/>, even another table inside a cell, i.e (<td></td>)
+-----------------
+Form
+====
+- It is used to create a container for various form elements, such as input fields, checkboxes, radio buttons, and buttons. 
+
+- It is used to gather user input which can be sent to a server for processing. 
+
+Syntax:
+
+<form action = "" method = "">
+	element 1
+	element 2
+	.
+	.
+	
+	submit button
+</form>
+
+Attributes:
+
+- action: Specifies the URL where the form data should be submitted.
+
+- method: Specifies the HTTP method to be used when submitting the form (e.g., GET or POST).
+
+Input elements
+--------------
+<input type="text" name="username">
+
+<input type="password" name="password">
+
+<input type="email" name="email">
+
+<input type="number" name="quantity">
+
+<input type="checkbox" name="subscribe">
+
+<input type="radio" name="gender" value="male">
+
+<input type="radio" name="gender" value="female">
+
+<input type="file" name="fileUpload">
+
+<input type="date" name="birthdate">
+
+<textarea name="message" rows="4" cols="50">
+
+</textarea>
+
+<select name="country">
+	<option value="us">United States</option>
+	<option value="ca">Canada</option>
+	<option value="uk">United Kingdom</option>
+</select>
+
+<input type="submit" value="Submit">
+
+<input type="reset" value="Reset">
+-----------------------

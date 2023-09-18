@@ -1,0 +1,284 @@
+Day 16 Notes
+============
+Database Design
+---------------
+Database Designing involves:
+
+- Structuring data storage and organization.
+- Defining tables, fields, relationships.
+- Ensuring data integrity, efficiency.
+- Meeting application requirements.
+- Utilizing a relational model.
+- Normalizing to reduce redundancy.
+- Optimizing for data retrieval.
+- Adapting to changing needs.
+- Supporting efficient queries.
+- Enhancing system performance.
+
+It contains the following steps:
+
+- Requirements Gathering: Understand data needs and user requirements.
+
+- Conceptual Design: Create high-level schema, identify entities and relationships.
+
+- Logical Design: Define tables, attributes, primary/foreign keys.
+
+- Normalization: Reduce redundancy, improve data integrity.
+
+- Physical Design: Decide storage structures, indexes, performance optimization.
+
+- Implementation: Build actual database schema, tables, constraints.
+
+- Testing and Refinement: Ensure data integrity, validate design.
+
+- Data Loading: Populate tables with initial data.
+
+- Documentation: Record schema, relationships, constraints.
+
+- Maintenance and Evolution: Adapt to changes, optimize performance over time.
+-----------------------------
+Normalization
+-------------
+1. Is a process of organizing the data in database 
+2. Reduces data redundancy
+3. Improves data integrity
+
+There are following Normal Forms:
+1. 1NF
+2. 2NF
+3. 3NF
+4. BCNF (Boyce-Codd Normal Form)
+5. 4NF
+6. 5NF
+7. 6NF
+
+First Normal Form - 1NF
+-----------------------
+- Column names should be easily distinguishable
+- Columns should hold values of the same type
+- The order of entries do not matter
+- Each attribute of a table must have atomic (single) values
+
+Second Normal Form - 2NF
+------------------------
+A table is said to be in 2NF if both the following conditions hold:
+
+1. Table is in 1NF (First normal form)
+
+2. No non-prime attribute is dependent on the proper subset of any candidate key of table.
+
+In other words
+
+There should be no Partial Dependency
+	
+Third Normal Form - 3NF
+-----------------------
+A table is said to be in 3NF if both the following conditions hold:
+
+1. The table should be in the Second Normal Form.
+
+2. There should be no transitive dependency for non-prime attributes
+---------------------------------
+Stored Procedures
+=================
+- A stored procedure (often called just a procedure) is a collection of pre-compiled SQL statements stored inside the database.
+
+- It is nothing but a group of SQL statements just like a Java function/method
+
+- It optionally accepts some input in the form of parameters and returns a value. 
+
+A stored procedure contains a name, parameter lists, and SQL statements.
+
+Syntax:
+
+CREATE PROCEDURE procedure_name ([IN | OUT | INOUT] parameter(s)_name datatype)
+BEGIN    
+	Declaration_section    
+	Executable_section    
+END
+
+Parameters
+----------
+The stored procedures consists of 3 types of parameters
+
+1. IN parameters: Input value passed to a Stored Procedure for processing.
+
+2. OUT parameters: Value returned from a Stored Procedure to the calling program or user.
+
+3. INOUT parameters: Parameter allowing both input and output values between a Stored Procedure and calling program.
+
+Practical:
+
+create schema training;
+
+use training;
+
+CREATE TABLE trainees (
+  _id int NOT NULL AUTO_INCREMENT,
+  name varchar(30) NOT NULL,
+  fees double NOT NULL,
+  course varchar(15) NOT NULL,
+  PRIMARY KEY (_id)
+);
+
+INSERT INTO trainees VALUES 
+(1,'Jay',10000,'Java'),
+(2,'Yash',12000,'Java'),
+(3,'Ram',8000,'PHP'),
+(4,'Megha',10000,'Python'),
+(5,'Sapna',11000,'Java'),
+(6,'Madhav',9000,'PHP'),
+(7,'Harsh',6000,'PHP'),
+(8,'Jitesh',7000,'Java');
+
+CREATE PROCEDURE `getNoOfPhpTrainees`(OUT noOfTrainees int)
+BEGIN
+SELECT COUNT(*) INTO noOfTrainees FROM trainees WHERE course = 'PHP';
+END
+
+CREATE PROCEDURE `getNoOfTraineesWithFees`(INOUT no int)
+BEGIN
+SELECT COUNT(*) INTO no FROM trainees WHERE fees>= no;
+END
+
+Test with value = 10000
+
+CREATE PROCEDURE `getTraineesNames`(IN t_course varchar(5), IN t_fees double)
+BEGIN
+SELECT name FROM trainees WHERE course = t_course AND fees >= t_fees;
+END
+
+Test with values = Java and 10000
+
+Callable Statement
+------------------
+This interface is used to call stored procedures or user-defined functions in a database.
+
+Views
+=====
+- A view is a virtual table based on the result-set of an SQL statement.
+- A view contains rows and columns, just like a real table. 
+- The fields in a view are fields from one or more real tables in the database.
+
+Syntax:
+
+CREATE VIEW view_name AS
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition; 
+
+Example:
+
+CREATE VIEW trainees_fees AS
+SELECT name, fees
+FROM trainees;
+
+Test: SELECT * FROM trainees_fees;
+--------------------------------
+Views and stored procedures are both database objects in a relational database management system (RDBMS), but they serve different purposes and have distinct characteristics:
+
+1. Purpose:
+   - Views: Views are used to create a virtual table that represents the result of a query. They provide a way to simplify complex queries, present specific subsets of data, and abstract the underlying table structure.
+   - Stored Procedures: Stored procedures are used to encapsulate a series of SQL statements and logic into a reusable and callable routine. They are mainly used for performing operations or tasks, such as data manipulation, calculations, or business logic.
+
+2. Data Representation:
+   - Views: Views store no data themselves. They provide a dynamic way to present data from one or more underlying tables.
+   - Stored Procedures: Stored procedures do not store data either; they contain executable code that can manipulate data, perform calculations, and carry out specific tasks.
+
+3. Usage:
+   - Views: Views are typically used for querying data in a simplified or organized manner. They are suitable for reporting, data presentation, and data access control.
+   - Stored Procedures: Stored procedures are used to perform operations on data, such as inserting, updating, deleting, or calculating data values. They are often used for business logic, data validation, and complex data processing.
+
+4. Execution:
+   - Views: Views are executed at the time of query execution. Each time you query a view, the underlying query is executed.
+   - Stored Procedures: Stored procedures are precompiled and stored in the database. They are executed explicitly by calling the procedure's name.
+
+5. Data Modification:
+   - Views: In most cases, views are read-only. While some views can be updatable, this depends on the complexity and structure of the underlying tables.
+   - Stored Procedures: Stored procedures can perform data modification operations, such as inserting, updating, or deleting data.
+
+6. Security and Access Control:
+   - Views: Views can be used to control access to specific columns or rows of data, providing a layer of security.
+   - Stored Procedures: Stored procedures can enforce business logic and access control, allowing you to control how data is manipulated.
+
+In summary, views are primarily used for querying and presenting data, while stored procedures are used for encapsulating and executing complex logic and operations on data.
+---------------------------------
+Viewing a Database:
+
+- Examine schema, tables, and relationships.
+- Explore data content and patterns.
+- Use DBMS interface or design tools.
+- Visualize data with graphs, charts.
+- Write SQL queries for insights.
+
+Evaluating a Database:
+
+- Check data quality and accuracy.
+- Analyze performance and responsiveness.
+- Assess security and access controls.
+- Ensure normalization and optimization.
+- Align with business requirements.
+- Document findings and improvements.
+---------------------------
+Database Backup and Recovery
+============================
+- It is important to back up the databases so that we can recover our data and be up and running again in case problems occur, such as system crashes, hardware failures, or users deleting data by mistake. 
+
+- MySQL offers a variety of backup strategies.
+
+Backup Strategies
+-----------------
+1. Full Backups:
+   - Capture: Entire database is copied in a single snapshot.
+   - Advantages: Simple and complete restore; suitable for small databases.
+   - Considerations: Consumes more storage and time for large databases.
+
+2. Incremental Backups:
+   - Capture: Only changes since the last backup are recorded.
+   - Advantages: Faster backups, less storage usage.
+   - Considerations: Requires a full backup as a starting point; longer restore times.
+
+3. Differential Backups:
+   - Capture: Changes since the last full backup are recorded.
+   - Advantages: Faster restores than incremental; suitable for moderate-sized databases.
+   - Considerations: Requires both full and differential backups for restore.
+
+4. Point-in-Time Recovery:
+   - Capture: Combines full backup with incremental backups up to a specific time.
+   - Advantages: Allows recovery to a specific moment; useful for data loss scenarios.
+   - Considerations: Requires careful management of backup chain.
+
+5. Logical Backups (mysqldump):
+   - Capture: Exports data in SQL format for easy human readability.
+   - Advantages: Portable, suitable for migrating data between different MySQL versions.
+   - Considerations: Slower backup and restore for large databases.
+
+6. Physical Backups (File Copy):
+   - Capture: Directly copy the physical database files.
+   - Advantages: Faster backup and restore; useful for large databases.
+   - Considerations: Less portable across MySQL versions.
+
+Remember, the most suitable backup strategy depends on factors such as your database size, criticality, available resources, and recovery time objectives. 
+
+It's important to carefully plan and implement a strategy that meets your organization's needs for data protection and recovery.
+-------------------------------
+Creating a backup strategy
+--------------------------
+Creating a backup strategy involves careful planning to ensure the safety and recoverability of your data
+
+Here are the steps for creating a backup strategy:
+
+1. Assess your needs.
+2. Choose backup types.
+3. Select backup tools.
+4. Define backup schedule.
+5. Decide on storage and location.
+6. Automate backups.
+7. Test backups.
+8. Document the strategy.
+9. Implement security and encryption.
+10. Monitor and review.
+11. Create a disaster recovery plan.
+12. Provide employee training.
+13. Conduct regular testing and drills.
+----------------------------------

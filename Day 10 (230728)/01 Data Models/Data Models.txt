@@ -1,0 +1,85 @@
+Data Models
+===========
+What are Data Models?
+
+> Data Models is a collection of concepts to describe the structure of a database
+
+> Most data models also include a set of basic operations for specifying data retrieval and data updation
+
+What are the different categories of Data Models?
+
+There are 3 categories of data models:
+
+1. High level or conceptual data model
+2. Representational or implementational data model
+3. Low level or pysical data model
+
+High level data model
+---------------------
+> High level data model or conceptual data model provide concepts that are close to the way many users perceive data
+> Using this, even a person without technical knowledge can understand data storage
+> It uses concepts like entity relation and attributes to describe the data model
+
+Representational data model
+---------------------------
+> Representational data model or the implementational data model shows how actually the data will be stored
+
+> Its hides the details of data storage disc but is implemented on a computer directly
+
+Types of Data Models
+--------------------
+1. Entity Relationship model (E-R diagram) - High Level
+2. Relational data model - Representational
+3. Hierarchical Model - Representational
+4. Network model - Representational
+
+Entity Relationship model
+--------------------------
+> It is a type of high level data model
+> In entity relation data model, an entity represents a real world object or concepts such as an employee or a student
+> Every entity has its characteristics, which are represented as attributes
+> The connection between different entities are representd with relations
+
+Explanation-Entity, Entity Type, Entity set
+--------------------------------------------
+// Type  <actual object>
+Student s1 = new Student();
+Entity -> s1
+Entity Type -> Student
+Student s2;
+Student s3;
+Student s4;
+
+Group of s1, s2, s3, etc -> Entity Set
+
+Diagram: 02_high_level_entity_relationship_model.png
+
+Relational data model
+---------------------
+> It is a type of Representational data model
+> Relational data model uses the concepts of database as a collection of tables, where each table can be stored separately as a file
+> All the db operations are done with relations between the tables
+> Most relational databases use high level language like SQL
+ 
+Hierarchical Model
+------------------
+> It is a type of Representational data model
+> It organises data in a tree like structure 
+> Lets say we have a company and that company has multiple departments. Each department has multiple employees
+> Now one important factor is that each child node will have a single parent node
+
+Network model
+-------------
+> It is a type of Representational data model
+> It is a like a graph but here one child node can have multiple parent nodes
+
+Low Level Data Model
+--------------------
+> Low Level Data Model or physical data model dscribes how the data is stored on the physical storage
+> It is not for common end user
+> It is for more knowledgeable persons
+
+Low level Database details
+INNO DB Engine
+Data stored - Student
+Location -  

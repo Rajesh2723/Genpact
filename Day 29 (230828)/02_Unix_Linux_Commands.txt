@@ -1,0 +1,340 @@
+Unix / Linux commands
+=====================
+Unix / Linux - File Management
+==============================
+1. `ls`: List files and directories.
+   - Usage: `ls [options] [file(s) or directory]`
+
+2. `cp`: Copy files and directories.
+   - Usage: `cp [options] source destination`
+
+3. `mv`: Move or rename files and directories.
+   - Usage: `mv [options] source destination`
+
+4. `rm`: Remove files and directories.
+   - Usage: `rm [options] file(s) or directory`
+
+5. `touch`: Create an empty file or update timestamps.
+   - Usage: `touch file_name`
+
+Unix / Linux - Directories
+==========================
+1. `cd`: Change directory.
+   - Usage: `cd [directory]`
+
+2. `pwd`: Print the present working directory.
+   - Usage: `pwd`
+
+3. `mkdir`: Create directories.
+   - Usage: `mkdir [options] directory_name`
+
+4. `rmdir`: Remove empty directories.
+   - Usage: `rmdir [options] directory_name`
+
+5. `ls`: List files and directories within a directory.
+   - Usage: `ls [options] [directory]`
+
+Unix / Linux - File Permission
+==============================
+1. `chmod`: Change file permissions.
+   - Usage: `chmod [options] permissions file(s)`
+
+2. `chown`: Change file ownership.
+   - Usage: `chown [options] new_owner[:new_group] file(s)`
+
+3. `chgrp`: Change group ownership.
+   - Usage: `chgrp [options] new_group file(s)`
+
+4. `umask`: Set the default file permission mask.
+   - Usage: `umask [options] [mask]`
+
+5. `ls`: List files and directories with detailed permission information.
+   - Usage: `ls -l [file(s) or directory]`
+
+Unix / Linux - Environment
+==========================
+1. `env`: Display environment variables.
+   - Usage: `env`
+
+2. `export`: Set an environment variable.
+   - Usage: `export VARIABLE=value`
+
+3. `echo`: Display text or environment variables.
+   - Usage: `echo [options] [text or variable]`
+
+4. `printenv`: Print environment variables.
+   - Usage: `printenv [variable]`
+
+5. `unset`: Remove environment variables.
+   - Usage: `unset VARIABLE`
+
+Unix / Linux - Basic Utilities
+==============================
+1. `cat`: Concatenate and display file contents.
+   - Usage: `cat [options] file(s)`
+
+2. `grep`: Search for text patterns in files.
+   - Usage: `grep [options] pattern file(s)`
+
+3. `sort`: Sort lines of text files.
+   - Usage: `sort [options] file(s)`
+
+4. `wc`: Count lines, words, and characters in files.
+   - Usage: `wc [options] file(s)`
+
+5. `head`: Display the first lines of a file.
+   - Usage: `head [options] file(s)`
+
+Unix / Linux - Pipes & Filters
+==============================
+1. `pipe (|)`: Connect commands to create a pipeline.
+   - Usage: `command1 | command2`
+
+2. `tee`: Read from standard input and write to standard output and files.
+   - Usage: `command | tee [options] file(s)`
+
+3. `grep`: Search for text patterns in files.
+   - Usage: `grep [options] pattern file(s)`
+
+4. `sed`: Stream editor for text manipulation.
+   - Usage: `sed [options] 'script' file(s)`
+
+5. `awk`: Text processing and pattern scanning tool.
+   - Usage: `awk [options] 'script' file(s)`
+
+Unix / Linux - Processes
+========================
+1. `ps`: Display information about running processes.
+   - Usage: `ps [options]`
+
+2. `top`: Monitor system processes and resource usage.
+   - Usage: `top`
+
+3. `kill`: Terminate a process by sending a signal.
+   - Usage: `kill [signal] process_id`
+
+4. `nice`: Run a command with a modified scheduling priority.
+   - Usage: `nice [options] command`
+
+5. `bg`: Move a suspended job to the background.
+   - Usage: `bg [job_id]`
+
+Unix / Linux - Commands
+=======================
+1. To Open an Editor to Modify and Reexecute Previously Entered Commands
+
+fc [ -r ] [ -e Editor ] [ First [ Last ] ]
+
+2. To Generate a Listing of Previously Entered Commands
+
+fc -l [ -n ] [ -r ] [ First [ Last ] ]
+
+3. To Generate a Listing of Previously Entered Commands with Time of Execution
+
+fc -t [ -n ] [ -r ] [ First [ Last ] ]
+
+Basic Commands
+==============
+Here are some of the most basic and commonly used commands in Unix/Linux:
+
+1. `ls`, `cd`, `pwd`, `mkdir`, `rmdir`
+2. `cp`, `mv`, `rm`, `touch`
+3. `echo`, `export`, `env`, `printenv`, `unset`
+4. `cat`, `grep`, `sort`, `wc`, `head`
+5. `ps`, `top`, `kill`, `nice`, `bg`
+
+These commands cover a wide range of tasks in Unix/Linux systems and are essential for various operations and tasks. Keep in mind that many of these commands have additional options and functionalities.
+---------------------------------------
+Exercises
+=========
+Certainly! Here are the exercises along with the commands for each step:
+
+Note: Everything between  & is the command
+
+Exercise 1 - File Management
+============================
+1. Create a file named "my_file.txt":
+   
+   touch my_file.txt
+
+2. Copy the file to "copy_of_file.txt":
+   
+   cp my_file.txt copy_of_file.txt
+
+3. Move the copy to a directory named "backup":
+   
+   mv copy_of_file.txt backup/
+   
+4. Remove the original file:
+   
+   rm my_file.txt
+   
+5. Create and remove a directory:
+   
+   mkdir documents
+   rmdir documents
+
+Exercise 2 - Directories
+========================
+1. Navigate to the home directory:
+   
+   cd ~
+   
+2. List the contents of the home directory:
+   
+   ls
+   
+
+3. Create a directory named "work":
+   
+   mkdir work
+   
+
+4. Move into the "work" directory:
+   
+   cd work
+   
+
+5. Create a subdirectory named "projects" and navigate into it:
+   
+   mkdir projects
+   cd projects
+   
+   
+Exercise 3 - File Permission
+============================
+1. List permissions of files:
+   
+   ls -l
+   
+
+2. Give read and write permissions to the owner of "data.txt":
+   
+   chmod u+rw data.txt
+   
+
+3. Change group ownership of "data.txt":
+   
+   chown :finance data.txt
+   
+
+4. Remove write permission from group and others:
+   
+   chmod go-w data.txt
+   
+
+5. Set default permission mask:
+   
+   umask 077
+   
+
+Exercise 4 - Environment:
+==========================
+1. Display `PATH` environment variable:
+   
+   echo $PATH
+   
+
+2. Set an environment variable:
+   
+   export MY_VARIABLE="Hello, World!"
+   
+
+3. Display the value of the variable:
+   
+   echo $MY_VARIABLE
+   
+
+4. Print all environment variables:
+   
+   printenv
+   
+
+5. Remove the environment variable:
+   
+   unset MY_VARIABLE
+   
+
+Exercise 5 - Basic Utilities
+============================
+1. Display file contents:
+   
+   cat sample.txt
+   
+
+2. Search for a word in a file:
+   
+   grep "apple" fruits.txt
+   
+
+3. Sort lines in a file:
+   
+   sort numbers.txt
+   
+
+4. Count lines, words, and characters:
+   
+   wc paragraph.txt
+   
+
+5. Display first lines of a file:
+   
+   head long_text.txt
+   
+
+Exercise 6 - Pipes & Filters
+============================
+1. List files and filter with `grep`:
+   
+   ls | grep "important"
+   
+
+2. Display log file and filter with `grep`:
+   
+   cat system.log | grep "error"
+   
+
+3. Sort scores and display top 5:
+   
+   sort -rn scores.txt | head -n 5
+   
+
+4. Display the value of the present working directory
+   
+   echo $(pwd)
+   
+
+5. Replace text using `sed`:
+   
+   cat data.txt | sed "s/old/new/g"
+   
+
+Exercise 7 - Processes
+======================
+1. Display running processes:
+   
+   ps
+   
+
+2. Monitor resource usage with `top`:
+   
+   top
+   
+
+3. Terminate a process with `kill`:
+   
+   kill PROCESS_ID
+   
+
+4. Run a command with lower priority using `nice`:
+   
+   nice -n 10 command
+   
+
+5. Start a process in the background and move it to the foreground using `bg`:
+   
+   command &
+   bg %1
+   
+
+Feel free to practice these exercises in a Unix/Linux terminal to enhance your familiarity with the commands and concepts.

@@ -1,0 +1,121 @@
+Joins in SQL
+============
+What are Joins?
+
+Joins in SQL are commands are commands which are used to combine rows from two or more tables based on a related column between those tables. They are predominantly used when a user is trying to extract data from tables which have one-to-many and many-to-many relationships between them.
+
+Types of Joins
+
+There are following 4 types of Joins:
+1. Inner Join
+2. Left Join
+3. Right Join
+4. Full/Cross Join
+
+Inner Join
+----------
+This type of Join returns those records which have matching values in both the tables. 
+
+So, if you perform an INNER JOIN operation between the Employee table and the Projects table, all the tuples which have matching values in both the tables will be given as output.
+
+Syntax:
+
+SELECT Table1.Column1, Table1.Column2, Table2.Column1...
+FROM Table1 
+INNER JOIN Table2 
+ON table1.MatchingColumnName = Table2.MatchingColumnName;
+
+Example: In mysql_joins database
+SELECT customers.customer_id, customers.customer_name, 
+orders.order_amount, orders.order_date
+FROM customers
+INNER JOIN orders
+ON customers.customer_id = orders.customer_id;
+
+As a result we will get the records of only those customers who placed an order
+
+Left Join
+---------
+The LEFT JOIN or LEFT OUTER JOIN returns all records from the left table and also those records which satisfy a condition from the right table. 
+
+Also, for the records having no matching values in the right table, the output or the result-set will contain the NULL values.
+
+Syntax:
+
+SELECT Table1.Column1, Table1.Column2, Table2.Column1...
+FROM Table1 
+LEFT JOIN Table2 
+ON table1.MatchingColumnName = Table2.MatchingColumnName;
+
+Example:
+SELECT customers.customer_id, customers.customer_name, orders.order_amount, orders.order_date, orders.order_id
+FROM customers
+LEFT JOIN orders
+ON customers.customer_id = orders.customer_id;
+
+As a result we will get the records of all the customers whether or not they placed an order.
+
+For the customers who didn't place an order, order_amount, order_date, order_id values will be null
+
+Order is the dependent entity
+
+Right Join
+----------
+The RIGHT JOIN or RIGHT OUTER JOIN returns all records from the right table and also those records which satisfy a condition from the left table. 
+
+Also, for the records having no matching values in the left table, the output or the result-set will contain the NULL values.
+
+Syntax:
+
+SELECT Table1.Column1, Table1.Column2, Table2.Column1...
+FROM Table1 
+RIGHT JOIN Table2 
+ON table1.MatchingColumnName = Table2.MatchingColumnName;
+
+Example:
+SELECT customers.customer_id, customers.customer_name, orders.order_amount, orders.order_date, orders.order_id
+FROM customers
+RIGHT JOIN orders
+ON customers.customer_id = orders.customer_id;
+
+As a result we will get the records of all the orders whether or not someone placed them.
+
+BUT this scenario is not possible since Order is a dependent entity, i.e an order cannot be placed without a customer, so an oredr will always have a customer id entry
+
+For the customers who didn't place an order, order_amount, order_date, order_id values will be null
+
+Full Join
+---------
+FULL JOIN or the FULL OUTER JOIN returns all this records which either have a match in the left (Table 1) or the right (Table 2) table.
+
+Syntax:
+
+SELECT Table1.Column1, Table1.Column2, Table2.Column1...
+FROM Table1 
+FULL JOIN Table2 
+ON table1.MatchingColumnName = Table2.MatchingColumnName;
+
+Example:
+SELECT customers.customer_id, customers.customer_name, orders.order_amount, orders.order_date, orders.order_id
+FROM customers
+FULL JOIN orders
+ON customers.customer_id = orders.customer_id;
+
+*MySQL does not support FULL/CROSS join.
+
+Full join can be thought of as a union of both left and right joins, as such we can create a query that unites both - the left and right joins.
+
+Syntax:
+
+(SELECT customers.customer_id, customers.customer_name, orders.order_amount, orders.order_date, orders.order_id
+FROM customers
+LEFT JOIN orders
+ON customers.customer_id = orders.customer_id)
+
+UNION
+
+(SELECT customers.customer_id, customers.customer_name, orders.order_amount, orders.order_date, orders.order_id
+FROM customers
+RIGHT JOIN orders
+ON customers.customer_id = orders.customer_id);
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

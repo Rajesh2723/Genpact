@@ -1,0 +1,46 @@
+package ex05.inh_multilevel;
+
+public class Figure {
+	private double dimension1;
+	private double dimension2;
+
+	public Figure() {
+		System.out.println("Figure class default const");
+	}
+
+	public Figure(double dimension1, double dimension2) {
+		super();
+		this.dimension1 = dimension1;
+		this.dimension2 = dimension2;
+	}
+
+	public double getDimension1() {
+		return dimension1;
+	}
+
+	public void setDimension1(double dimension1) {
+		this.dimension1 = dimension1;
+	}
+
+	public double getDimension2() {
+		return dimension2;
+	}
+
+	public void setDimension2(double dimension2) {
+		this.dimension2 = dimension2;
+	}
+
+	public double area() {
+		return dimension1 * dimension2;
+	}
+
+	public void display() {
+		System.out.println("Dim1 : " + dimension1 + ", Dim2 : " + dimension2);
+	}
+}
+
+
+
+
+
+
