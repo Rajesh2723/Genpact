@@ -16,6 +16,42 @@ There are 2 ways of injecting dependencies:
 1. Property/Setter Injection
 2. Constructor Injection
 
+public class MyService {
+    private MyDependency myDependency;
+
+    // Setter method for dependency injection
+    public void setMyDependency(MyDependency myDependency) {
+        this.myDependency = myDependency;
+    }
+
+    // Other methods of MyService that use myDependency
+}
+
+// Configuration in Spring context file (XML configuration)
+<bean id="myService" class="com.example.MyService">
+    <property name="myDependency" ref="myDependencyBean"/>
+</bean>
+
+<bean id="myDependencyBean" class="com.example.MyDependency"/>
+
+public class MyService {
+    private MyDependency myDependency;
+
+    // Constructor for dependency injection
+    public MyService(MyDependency myDependency) {
+        this.myDependency = myDependency;
+    }
+
+    // Other methods of MyService that use myDependency
+}
+
+// Configuration in Spring context file (XML configuration)
+<bean id="myService" class="com.example.MyService">
+    <constructor-arg ref="myDependencyBean"/>
+</bean>
+
+<bean id="myDependencyBean" class="com.example.MyDependency"/>
+
 Autowiring
 
 Spring Web MVC
