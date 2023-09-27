@@ -29,4 +29,7 @@
 	<bean class="spring_jdbc.dao.BookDaoImpl" name="bookDao">
 		<property name="jdbcTemplate" ref="jdbcTemplate" />
 	</bean>
+	/*
+	This allows the BookDaoImpl bean to have access to the JdbcTemplate instance defined elsewhere in the Spring configuration.
+	*/
 </beans>
