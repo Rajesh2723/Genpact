@@ -261,7 +261,7 @@ Spring Web MVC
 @RequestParam
 	- Used to fetch data from a request
 	- It can trnsform the String data into basic data types
-	- It is written as a method parameter
+	- It is written as a method parameter 
 	
 @PathVariable
 	- Used to fetch data from template url
