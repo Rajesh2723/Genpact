@@ -247,7 +247,7 @@ Spring Core
 
 @Autowired
 	- Marks a constructor, field, setter method, or config method as to be autowired by Spring's dependency injection facilities. 
-
+In all these cases, Spring uses its ApplicationContext to find the appropriate bean to inject. It matches the dependency type with the available beans and resolves the dependency automatically.
 Spring Web MVC
 --------------
 
